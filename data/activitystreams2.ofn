@@ -1,0 +1,975 @@
+Prefix(:=<http://www.w3.org/ns/activitystreams#>)
+Prefix(as:=<http://www.w3.org/ns/activitystreams#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.w3.org/ns/activitystreams#>
+Annotation(rdfs:comment "Extended Activity Streams 2.0 Vocabulary"@en)
+Annotation(rdfs:label "Activity Streams 2.0"@en)
+
+Declaration(Class(rdf:Property))
+Declaration(Class(rdf:Statement))
+Declaration(Class(as:Accept))
+Declaration(Class(as:Activity))
+Declaration(Class(as:Add))
+Declaration(Class(as:Announce))
+Declaration(Class(as:Application))
+Declaration(Class(as:Arrive))
+Declaration(Class(as:Article))
+Declaration(Class(as:Audio))
+Declaration(Class(as:Block))
+Declaration(Class(as:Collection))
+Declaration(Class(as:CollectionPage))
+Declaration(Class(as:Create))
+Declaration(Class(as:Delete))
+Declaration(Class(as:Dislike))
+Declaration(Class(as:Document))
+Declaration(Class(as:Event))
+Declaration(Class(as:Flag))
+Declaration(Class(as:Follow))
+Declaration(Class(as:Group))
+Declaration(Class(as:Ignore))
+Declaration(Class(as:Image))
+Declaration(Class(as:IntransitiveActivity))
+Declaration(Class(as:Invite))
+Declaration(Class(as:Join))
+Declaration(Class(as:Leave))
+Declaration(Class(as:Like))
+Declaration(Class(as:Link))
+Declaration(Class(as:Listen))
+Declaration(Class(as:Mention))
+Declaration(Class(as:Move))
+Declaration(Class(as:Note))
+Declaration(Class(as:Object))
+Declaration(Class(as:Offer))
+Declaration(Class(as:OrderedItems))
+Declaration(Class(as:Organization))
+Declaration(Class(as:Page))
+Declaration(Class(as:Person))
+Declaration(Class(as:Place))
+Declaration(Class(as:Profile))
+Declaration(Class(as:Question))
+Declaration(Class(as:Read))
+Declaration(Class(as:Reject))
+Declaration(Class(as:Relationship))
+Declaration(Class(as:Remove))
+Declaration(Class(as:Service))
+Declaration(Class(as:TentativeAccept))
+Declaration(Class(as:TentativeReject))
+Declaration(Class(as:Tombstone))
+Declaration(Class(as:Travel))
+Declaration(Class(as:Undo))
+Declaration(Class(as:Update))
+Declaration(Class(as:Video))
+Declaration(Class(as:View))
+Declaration(ObjectProperty(rdf:predicate))
+Declaration(ObjectProperty(rdf:subject))
+Declaration(ObjectProperty(as:actor))
+Declaration(ObjectProperty(as:anyOf))
+Declaration(ObjectProperty(as:attachment))
+Declaration(ObjectProperty(as:attachments))
+Declaration(ObjectProperty(as:attributedTo))
+Declaration(ObjectProperty(as:audience))
+Declaration(ObjectProperty(as:author))
+Declaration(ObjectProperty(as:bcc))
+Declaration(ObjectProperty(as:bto))
+Declaration(ObjectProperty(as:cc))
+Declaration(ObjectProperty(as:context))
+Declaration(ObjectProperty(as:current))
+Declaration(ObjectProperty(as:describes))
+Declaration(ObjectProperty(as:first))
+Declaration(ObjectProperty(as:formerType))
+Declaration(ObjectProperty(as:generator))
+Declaration(ObjectProperty(as:icon))
+Declaration(ObjectProperty(as:image))
+Declaration(ObjectProperty(as:inReplyTo))
+Declaration(ObjectProperty(as:instrument))
+Declaration(ObjectProperty(as:items))
+Declaration(ObjectProperty(as:last))
+Declaration(ObjectProperty(as:location))
+Declaration(ObjectProperty(as:next))
+Declaration(ObjectProperty(as:object))
+Declaration(ObjectProperty(as:oneOf))
+Declaration(ObjectProperty(as:origin))
+Declaration(ObjectProperty(as:partOf))
+Declaration(ObjectProperty(as:prev))
+Declaration(ObjectProperty(as:preview))
+Declaration(ObjectProperty(as:provider))
+Declaration(ObjectProperty(as:relationship))
+Declaration(ObjectProperty(as:replies))
+Declaration(ObjectProperty(as:result))
+Declaration(ObjectProperty(as:subject))
+Declaration(ObjectProperty(as:tag))
+Declaration(ObjectProperty(as:tags))
+Declaration(ObjectProperty(as:target))
+Declaration(ObjectProperty(as:to))
+Declaration(ObjectProperty(as:url))
+Declaration(DataProperty(as:accuracy))
+Declaration(DataProperty(as:altitude))
+Declaration(DataProperty(as:content))
+Declaration(DataProperty(as:deleted))
+Declaration(DataProperty(as:downstreamDuplicates))
+Declaration(DataProperty(as:duration))
+Declaration(DataProperty(as:endTime))
+Declaration(DataProperty(as:height))
+Declaration(DataProperty(as:href))
+Declaration(DataProperty(as:hreflang))
+Declaration(DataProperty(as:id))
+Declaration(DataProperty(as:latitude))
+Declaration(DataProperty(as:longitude))
+Declaration(DataProperty(as:mediaType))
+Declaration(DataProperty(as:name))
+Declaration(DataProperty(as:objectType))
+Declaration(DataProperty(as:published))
+Declaration(DataProperty(as:radius))
+Declaration(DataProperty(as:rating))
+Declaration(DataProperty(as:rel))
+Declaration(DataProperty(as:startTime))
+Declaration(DataProperty(as:summary))
+Declaration(DataProperty(as:totalItems))
+Declaration(DataProperty(as:units))
+Declaration(DataProperty(as:updated))
+Declaration(DataProperty(as:upstreamDuplicates))
+Declaration(DataProperty(as:verb))
+Declaration(DataProperty(as:width))
+Declaration(NamedIndividual(rdf:nil))
+Declaration(NamedIndividual(as:Relationship))
+Declaration(AnnotationProperty(rdfs:name))
+Declaration(Datatype(rdf:langString))
+Declaration(Datatype(xsd:duration))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: as:actor (actor)
+
+AnnotationAssertion(rdfs:comment as:actor "Subproperty of as:attributedTo that identifies the primary actor"@en)
+AnnotationAssertion(rdfs:label as:actor "actor"@en)
+SubObjectPropertyOf(as:actor as:attributedTo)
+ObjectPropertyDomain(as:actor as:Activity)
+ObjectPropertyRange(as:actor ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:anyOf (oneOf)
+
+AnnotationAssertion(rdfs:comment as:anyOf "Describes a possible inclusive answer or option for a question."@en)
+AnnotationAssertion(rdfs:label as:anyOf "oneOf"@en)
+ObjectPropertyDomain(as:anyOf as:Question)
+ObjectPropertyRange(as:anyOf ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:attachment (attachment)
+
+AnnotationAssertion(rdfs:label as:attachment "attachment"@en)
+EquivalentObjectProperties(as:attachment as:attachments)
+ObjectPropertyDomain(as:attachment as:Object)
+ObjectPropertyRange(as:attachment ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:attachments (attachments)
+
+AnnotationAssertion(rdfs:label as:attachments "attachments"@en)
+AnnotationAssertion(owl:deprecated as:attachments "true"^^xsd:boolean)
+ObjectPropertyDomain(as:attachments as:Object)
+ObjectPropertyRange(as:attachments ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:attributedTo (attributedTo)
+
+AnnotationAssertion(rdfs:comment as:attributedTo "Identifies an entity to which an object is attributed"@en)
+AnnotationAssertion(rdfs:label as:attributedTo "attributedTo"@en)
+ObjectPropertyDomain(as:attributedTo ObjectUnionOf(as:Link as:Object))
+ObjectPropertyRange(as:attributedTo ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:audience (audience)
+
+AnnotationAssertion(rdfs:label as:audience "audience"@en)
+ObjectPropertyDomain(as:audience as:Object)
+ObjectPropertyRange(as:audience ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:author (author)
+
+AnnotationAssertion(rdfs:comment as:author "Identifies the author of an object. Deprecated. Use as:attributedTo instead"@en)
+AnnotationAssertion(rdfs:label as:author "author"@en)
+AnnotationAssertion(owl:deprecated as:author "true"^^xsd:boolean)
+SubObjectPropertyOf(as:author as:attributedTo)
+ObjectPropertyDomain(as:author as:Object)
+ObjectPropertyRange(as:author ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:bcc (bcc)
+
+AnnotationAssertion(rdfs:label as:bcc "bcc"@en)
+ObjectPropertyDomain(as:bcc as:Object)
+ObjectPropertyRange(as:bcc ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:bto (bto)
+
+AnnotationAssertion(rdfs:label as:bto "bto"@en)
+ObjectPropertyDomain(as:bto as:Object)
+ObjectPropertyRange(as:bto ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:cc (cc)
+
+AnnotationAssertion(rdfs:label as:cc "cc"@en)
+ObjectPropertyDomain(as:cc as:Object)
+ObjectPropertyRange(as:cc ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:content (content)
+
+AnnotationAssertion(rdfs:comment as:content "The content of the object."@en)
+AnnotationAssertion(rdfs:label as:content "content"@en)
+ObjectPropertyDomain(as:content as:Object)
+ObjectPropertyRange(as:content ObjectUnionOf(rdf:langString xsd:string))
+
+# Object Property: as:context (context)
+
+AnnotationAssertion(rdfs:comment as:context "Specifies the context within which an object exists or an activity was performed"@en)
+AnnotationAssertion(rdfs:label as:context "context"@en)
+ObjectPropertyDomain(as:context as:Object)
+ObjectPropertyRange(as:context ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:current (current)
+
+AnnotationAssertion(rdfs:label as:current "current"@en)
+FunctionalObjectProperty(as:current)
+ObjectPropertyDomain(as:current as:Collection)
+ObjectPropertyRange(as:current ObjectUnionOf(as:CollectionPage as:Link))
+
+# Object Property: as:describes (describes)
+
+AnnotationAssertion(rdfs:comment as:describes "On a Profile object, describes the object described by the profile"@en)
+AnnotationAssertion(rdfs:label as:describes "describes"@en)
+FunctionalObjectProperty(as:describes)
+ObjectPropertyDomain(as:describes as:Profile)
+ObjectPropertyRange(as:describes as:Object)
+
+# Object Property: as:first (first)
+
+AnnotationAssertion(rdfs:label as:first "first"@en)
+FunctionalObjectProperty(as:first)
+ObjectPropertyDomain(as:first as:Collection)
+ObjectPropertyRange(as:first ObjectUnionOf(as:CollectionPage as:Link))
+
+# Object Property: as:formerType (formerType)
+
+AnnotationAssertion(rdfs:comment as:formerType "On a Tombstone object, describes the former type of the deleted object"@en)
+AnnotationAssertion(rdfs:label as:formerType "formerType"@en)
+FunctionalObjectProperty(as:formerType)
+ObjectPropertyDomain(as:formerType as:Tombstone)
+ObjectPropertyRange(as:formerType as:Object)
+
+# Object Property: as:generator (generator)
+
+AnnotationAssertion(rdfs:label as:generator "generator"@en)
+ObjectPropertyDomain(as:generator as:Object)
+ObjectPropertyRange(as:generator ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:icon (icon)
+
+AnnotationAssertion(rdfs:label as:icon "icon"@en)
+ObjectPropertyDomain(as:icon as:Object)
+ObjectPropertyRange(as:icon ObjectUnionOf(as:Image as:Link))
+
+# Object Property: as:image (image)
+
+AnnotationAssertion(rdfs:label as:image "image"@en)
+ObjectPropertyDomain(as:image as:Object)
+ObjectPropertyRange(as:image ObjectUnionOf(as:Image as:Link))
+
+# Object Property: as:inReplyTo (inReplyTo)
+
+AnnotationAssertion(rdfs:label as:inReplyTo "inReplyTo"@en)
+ObjectPropertyDomain(as:inReplyTo as:Object)
+ObjectPropertyRange(as:inReplyTo ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:instrument (instrument)
+
+AnnotationAssertion(rdfs:comment as:instrument "Indentifies an object used (or to be used) to complete an activity"@en)
+AnnotationAssertion(rdfs:label as:instrument "instrument"@en)
+ObjectPropertyDomain(as:instrument as:Activity)
+ObjectPropertyRange(as:instrument ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:items (items)
+
+AnnotationAssertion(rdfs:label as:items "items"@en)
+ObjectPropertyDomain(as:items as:Collection)
+ObjectPropertyRange(as:items ObjectUnionOf(as:OrderedItems ObjectUnionOf(as:Link as:Object)))
+
+# Object Property: as:last (last)
+
+AnnotationAssertion(rdfs:label as:last "last"@en)
+FunctionalObjectProperty(as:last)
+ObjectPropertyDomain(as:last as:Collection)
+ObjectPropertyRange(as:last ObjectUnionOf(as:CollectionPage as:Link))
+
+# Object Property: as:location (location)
+
+AnnotationAssertion(rdfs:label as:location "location"@en)
+ObjectPropertyDomain(as:location as:Object)
+ObjectPropertyRange(as:location ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:name (name)
+
+AnnotationAssertion(rdfs:label as:name "name"@en)
+AnnotationAssertion(rdfs:name as:name "The default, plain-text display name of the object or link."@en)
+ObjectPropertyDomain(as:name ObjectUnionOf(as:Link as:Object))
+ObjectPropertyRange(as:name ObjectUnionOf(rdf:langString xsd:string))
+
+# Object Property: as:next (next)
+
+AnnotationAssertion(rdfs:label as:next "next"@en)
+FunctionalObjectProperty(as:next)
+ObjectPropertyDomain(as:next as:CollectionPage)
+ObjectPropertyRange(as:next ObjectUnionOf(as:CollectionPage as:Link))
+
+# Object Property: as:object (object)
+
+AnnotationAssertion(rdfs:label as:object "object"@en)
+ObjectPropertyDomain(as:object ObjectUnionOf(as:Activity as:Relationship))
+ObjectPropertyRange(as:object ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:oneOf (oneOf)
+
+AnnotationAssertion(rdfs:comment as:oneOf "Describes a possible exclusive answer or option for a question."@en)
+AnnotationAssertion(rdfs:label as:oneOf "oneOf"@en)
+ObjectPropertyDomain(as:oneOf as:Question)
+ObjectPropertyRange(as:oneOf ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:origin (origin)
+
+AnnotationAssertion(rdfs:comment as:origin "For certain activities, specifies the entity from which the action is directed."@en)
+AnnotationAssertion(rdfs:label as:origin "origin"@en)
+ObjectPropertyDomain(as:origin as:Activity)
+ObjectPropertyRange(as:origin ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:partOf (partOf)
+
+AnnotationAssertion(rdfs:label as:partOf "partOf"@en)
+FunctionalObjectProperty(as:partOf)
+ObjectPropertyDomain(as:partOf as:CollectionPage)
+ObjectPropertyRange(as:partOf ObjectUnionOf(as:Collection as:Link))
+
+# Object Property: as:prev (prev)
+
+AnnotationAssertion(rdfs:label as:prev "prev"@en)
+FunctionalObjectProperty(as:prev)
+ObjectPropertyDomain(as:prev as:CollectionPage)
+ObjectPropertyRange(as:prev ObjectUnionOf(as:CollectionPage as:Link))
+
+# Object Property: as:preview (preview)
+
+AnnotationAssertion(rdfs:label as:preview "preview"@en)
+ObjectPropertyDomain(as:preview ObjectUnionOf(as:Link as:Object))
+ObjectPropertyRange(as:preview ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:provider (provider)
+
+AnnotationAssertion(rdfs:label as:provider "provider"@en)
+AnnotationAssertion(owl:deprecated as:provider "true"^^xsd:boolean)
+ObjectPropertyDomain(as:provider as:Object)
+ObjectPropertyRange(as:provider ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:relationship (relationship)
+
+AnnotationAssertion(rdfs:comment as:relationship "On a Relationship object, describes the type of relationship"@en)
+AnnotationAssertion(rdfs:label as:relationship "relationship"@en)
+SubObjectPropertyOf(as:relationship rdf:predicate)
+ObjectPropertyDomain(as:relationship as:Relationship)
+ObjectPropertyRange(as:relationship rdf:Property)
+
+# Object Property: as:replies (replies)
+
+AnnotationAssertion(rdfs:label as:replies "replies"@en)
+ObjectPropertyDomain(as:replies as:Object)
+ObjectPropertyRange(as:replies as:Collection)
+
+# Object Property: as:result (result)
+
+AnnotationAssertion(rdfs:label as:result "result"@en)
+ObjectPropertyDomain(as:result as:Activity)
+ObjectPropertyRange(as:result ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:subject (a)
+
+AnnotationAssertion(rdfs:comment as:subject "On a Relationship object, identifies the subject. e.g. when saying \"John is connected to Sally\", 'subject' refers to 'John'"@en)
+AnnotationAssertion(rdfs:label as:subject "a"@en)
+SubObjectPropertyOf(as:subject rdf:subject)
+FunctionalObjectProperty(as:subject)
+ObjectPropertyDomain(as:subject as:Relationship)
+ObjectPropertyRange(as:subject ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:summary (summary)
+
+AnnotationAssertion(rdfs:comment as:summary "A short summary of the object"@en)
+AnnotationAssertion(rdfs:label as:summary "summary"@en)
+ObjectPropertyDomain(as:summary as:Object)
+ObjectPropertyRange(as:summary ObjectUnionOf(rdf:langString xsd:string))
+
+# Object Property: as:tag (tag)
+
+AnnotationAssertion(rdfs:label as:tag "tag"@en)
+EquivalentObjectProperties(as:tag as:tags)
+ObjectPropertyDomain(as:tag as:Object)
+ObjectPropertyRange(as:tag ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:tags (tags)
+
+AnnotationAssertion(rdfs:label as:tags "tags"@en)
+AnnotationAssertion(owl:deprecated as:tags "true"^^xsd:boolean)
+ObjectPropertyDomain(as:tags as:Object)
+ObjectPropertyRange(as:tags ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:target (target)
+
+AnnotationAssertion(rdfs:label as:target "target"@en)
+ObjectPropertyDomain(as:target as:Activity)
+ObjectPropertyRange(as:target ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:to (to)
+
+AnnotationAssertion(rdfs:label as:to "to"@en)
+ObjectPropertyDomain(as:to as:Object)
+ObjectPropertyRange(as:to ObjectUnionOf(as:Link as:Object))
+
+# Object Property: as:url (url)
+
+AnnotationAssertion(rdfs:comment as:url "Specifies a link to a specific representation of the Object"@en)
+AnnotationAssertion(rdfs:label as:url "url"@en)
+ObjectPropertyDomain(as:url as:Object)
+ObjectPropertyRange(as:url ObjectUnionOf(owl:Thing as:Link))
+
+
+############################
+#   Data Properties
+############################
+
+# Data Property: as:accuracy (accuracy)
+
+AnnotationAssertion(rdfs:comment as:accuracy "Specifies the accuracy around the point established by the longitude and latitude"@en)
+AnnotationAssertion(rdfs:label as:accuracy "accuracy"@en)
+FunctionalDataProperty(as:accuracy)
+DataPropertyDomain(as:accuracy as:Place)
+DataPropertyRange(as:accuracy DatatypeRestriction(xsd:float xsd:minInclusive "0.0"^^xsd:float))
+
+# Data Property: as:altitude (altitude)
+
+AnnotationAssertion(rdfs:comment as:altitude "The altitude of a place"@en)
+AnnotationAssertion(rdfs:label as:altitude "altitude"@en)
+FunctionalDataProperty(as:altitude)
+DataPropertyDomain(as:altitude as:Place)
+DataPropertyRange(as:altitude xsd:float)
+
+# Data Property: as:deleted (deleted)
+
+AnnotationAssertion(rdfs:comment as:deleted "Specifies the date and time the object was deleted"@en)
+AnnotationAssertion(rdfs:label as:deleted "deleted"@en)
+FunctionalDataProperty(as:deleted)
+DataPropertyDomain(as:deleted as:Tombstone)
+DataPropertyRange(as:deleted xsd:dateTime)
+
+# Data Property: as:downstreamDuplicates (downstreamDuplicates)
+
+AnnotationAssertion(rdfs:label as:downstreamDuplicates "downstreamDuplicates"@en)
+AnnotationAssertion(owl:deprecated as:downstreamDuplicates "true"^^xsd:boolean)
+DataPropertyDomain(as:downstreamDuplicates as:Object)
+DataPropertyRange(as:downstreamDuplicates xsd:anyURI)
+
+# Data Property: as:duration (duration)
+
+AnnotationAssertion(rdfs:comment as:duration "The duration of the object"@en)
+AnnotationAssertion(rdfs:label as:duration "duration"@en)
+FunctionalDataProperty(as:duration)
+DataPropertyDomain(as:duration as:Object)
+DataPropertyRange(as:duration xsd:duration)
+
+# Data Property: as:endTime (endTime)
+
+AnnotationAssertion(rdfs:comment as:endTime "The ending time of the object"@en)
+AnnotationAssertion(rdfs:label as:endTime "endTime"@en)
+FunctionalDataProperty(as:endTime)
+DataPropertyDomain(as:endTime as:Object)
+DataPropertyRange(as:endTime xsd:dateTime)
+
+# Data Property: as:height (height)
+
+AnnotationAssertion(rdfs:comment as:height "The display height expressed as device independent pixels"@en)
+AnnotationAssertion(rdfs:label as:height "height"@en)
+FunctionalDataProperty(as:height)
+DataPropertyDomain(as:height as:Link)
+DataPropertyRange(as:height xsd:nonNegativeInteger)
+
+# Data Property: as:href (href)
+
+AnnotationAssertion(rdfs:comment as:href "The target URI of the Link"@en)
+AnnotationAssertion(rdfs:label as:href "href"@en)
+FunctionalDataProperty(as:href)
+DataPropertyDomain(as:href as:Link)
+DataPropertyRange(as:href xsd:anyURI)
+
+# Data Property: as:hreflang (hreflang)
+
+AnnotationAssertion(rdfs:comment as:hreflang "A hint about the language of the referenced resource"@en)
+AnnotationAssertion(rdfs:label as:hreflang "hreflang"@en)
+FunctionalDataProperty(as:hreflang)
+DataPropertyDomain(as:hreflang as:Link)
+DataPropertyRange(as:hreflang xsd:language)
+
+# Data Property: as:id (id)
+
+AnnotationAssertion(rdfs:label as:id "id"@en)
+AnnotationAssertion(owl:deprecated as:id "true"^^xsd:boolean)
+FunctionalDataProperty(as:id)
+DataPropertyDomain(as:id ObjectUnionOf(as:Link as:Object))
+DataPropertyRange(as:id xsd:anyURI)
+
+# Data Property: as:latitude (latitude)
+
+AnnotationAssertion(rdfs:comment as:latitude "The latitude"@en)
+AnnotationAssertion(rdfs:label as:latitude "latitude"@en)
+FunctionalDataProperty(as:latitude)
+DataPropertyDomain(as:latitude as:Place)
+DataPropertyRange(as:latitude xsd:float)
+
+# Data Property: as:longitude (longitude)
+
+AnnotationAssertion(rdfs:comment as:longitude "The longitude"@en)
+AnnotationAssertion(rdfs:label as:longitude "longitude"@en)
+FunctionalDataProperty(as:longitude)
+DataPropertyDomain(as:longitude as:Place)
+DataPropertyRange(as:longitude xsd:float)
+
+# Data Property: as:mediaType (mediaType)
+
+AnnotationAssertion(rdfs:comment as:mediaType "The MIME Media Type"@en)
+AnnotationAssertion(rdfs:label as:mediaType "mediaType"@en)
+FunctionalDataProperty(as:mediaType)
+DataPropertyDomain(as:mediaType ObjectUnionOf(as:Link as:Object))
+DataPropertyRange(as:mediaType xsd:string)
+
+# Data Property: as:objectType (objectType)
+
+AnnotationAssertion(rdfs:label as:objectType "objectType"@en)
+AnnotationAssertion(owl:deprecated as:objectType "true"^^xsd:boolean)
+FunctionalDataProperty(as:objectType)
+DataPropertyDomain(as:objectType as:Object)
+DataPropertyRange(as:objectType xsd:anyURI)
+
+# Data Property: as:published (published)
+
+AnnotationAssertion(rdfs:comment as:published "Specifies the date and time the object was published"@en)
+AnnotationAssertion(rdfs:label as:published "published"@en)
+FunctionalDataProperty(as:published)
+DataPropertyDomain(as:published as:Object)
+DataPropertyRange(as:published xsd:dateTime)
+
+# Data Property: as:radius (radius)
+
+AnnotationAssertion(rdfs:comment as:radius "Specifies a radius around the point established by the longitude and latitude"@en)
+AnnotationAssertion(rdfs:label as:radius "radius"@en)
+FunctionalDataProperty(as:radius)
+DataPropertyDomain(as:radius as:Place)
+DataPropertyRange(as:radius DatatypeRestriction(xsd:float xsd:minInclusive "0.0"^^xsd:float))
+
+# Data Property: as:rating (rating)
+
+AnnotationAssertion(rdfs:comment as:rating "A numeric rating (>= 0.0, <= 5.0) for the object"@en)
+AnnotationAssertion(rdfs:label as:rating "rating"@en)
+AnnotationAssertion(owl:deprecated as:rating "true"^^xsd:boolean)
+FunctionalDataProperty(as:rating)
+DataPropertyDomain(as:rating as:Object)
+DataPropertyRange(as:rating DatatypeRestriction(xsd:float xsd:minInclusive "0.0"^^xsd:float xsd:maxInclusive "5.0"^^xsd:float))
+
+# Data Property: as:rel (rel)
+
+AnnotationAssertion(rdfs:comment as:rel "The RFC 5988 or HTML5 Link Relation associated with the Link"@en)
+AnnotationAssertion(rdfs:label as:rel "rel"@en)
+DataPropertyDomain(as:rel as:Link)
+DataPropertyRange(as:rel xsd:string)
+
+# Data Property: as:startTime (startTime)
+
+AnnotationAssertion(rdfs:comment as:startTime "The starting time of the object"@en)
+AnnotationAssertion(rdfs:label as:startTime "startTime"@en)
+FunctionalDataProperty(as:startTime)
+DataPropertyDomain(as:startTime as:Object)
+DataPropertyRange(as:startTime xsd:dateTime)
+
+# Data Property: as:totalItems (totalItems)
+
+AnnotationAssertion(rdfs:comment as:totalItems "The total number of items in a logical collection"@en)
+AnnotationAssertion(rdfs:label as:totalItems "totalItems"@en)
+FunctionalDataProperty(as:totalItems)
+DataPropertyDomain(as:totalItems as:Collection)
+DataPropertyRange(as:totalItems xsd:nonNegativeInteger)
+
+# Data Property: as:units (units)
+
+AnnotationAssertion(rdfs:comment as:units "Identifies the unit of measurement used by the radius, altitude and accuracy properties. The value can be expressed either as one of a set of predefined units or as a well-known common URI that identifies units."@en)
+AnnotationAssertion(rdfs:label as:units "units"@en)
+FunctionalDataProperty(as:units)
+DataPropertyDomain(as:units as:Place)
+DataPropertyRange(as:units DataUnionOf(xsd:anyURI DataOneOf("cm" "feet" "inches" "km" "m" "miles")))
+
+# Data Property: as:updated (updated)
+
+AnnotationAssertion(rdfs:comment as:updated "Specifies when the object was last updated"@en)
+AnnotationAssertion(rdfs:label as:updated "updated"@en)
+FunctionalDataProperty(as:updated)
+DataPropertyDomain(as:updated as:Object)
+DataPropertyRange(as:updated xsd:dateTime)
+
+# Data Property: as:upstreamDuplicates (upstreamDuplicates)
+
+AnnotationAssertion(rdfs:label as:upstreamDuplicates "upstreamDuplicates"@en)
+AnnotationAssertion(owl:deprecated as:upstreamDuplicates "true"^^xsd:boolean)
+DataPropertyDomain(as:upstreamDuplicates as:Object)
+DataPropertyRange(as:upstreamDuplicates xsd:anyURI)
+
+# Data Property: as:verb (verb)
+
+AnnotationAssertion(rdfs:label as:verb "verb"@en)
+AnnotationAssertion(owl:deprecated as:verb "true"^^xsd:boolean)
+FunctionalDataProperty(as:verb)
+DataPropertyDomain(as:verb as:Activity)
+DataPropertyRange(as:verb xsd:anyURI)
+
+# Data Property: as:width (width)
+
+AnnotationAssertion(rdfs:comment as:width "Specifies the preferred display width of the content, expressed in terms of device independent pixels."@en)
+AnnotationAssertion(rdfs:label as:width "width"@en)
+FunctionalDataProperty(as:width)
+DataPropertyDomain(as:width as:Link)
+DataPropertyRange(as:width xsd:nonNegativeInteger)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: as:Accept (Accept)
+
+AnnotationAssertion(rdfs:comment as:Accept "Actor accepts the Object"@en)
+AnnotationAssertion(rdfs:label as:Accept "Accept"@en)
+SubClassOf(as:Accept as:Activity)
+
+# Class: as:Activity (Activity)
+
+AnnotationAssertion(rdfs:comment as:Activity "An Object representing some form of Action that has been taken"@en)
+AnnotationAssertion(rdfs:label as:Activity "Activity"@en)
+SubClassOf(as:Activity as:Object)
+
+# Class: as:Add (Add)
+
+AnnotationAssertion(rdfs:comment as:Add "To Add an Object or Link to Something"@en)
+AnnotationAssertion(rdfs:label as:Add "Add"@en)
+SubClassOf(as:Add as:Activity)
+
+# Class: as:Announce (Announce)
+
+AnnotationAssertion(rdfs:comment as:Announce "Actor announces the object to the target"@en)
+AnnotationAssertion(rdfs:label as:Announce "Announce"@en)
+SubClassOf(as:Announce as:Activity)
+
+# Class: as:Application (Application)
+
+AnnotationAssertion(rdfs:comment as:Application "Represents a software application of any sort"@en)
+AnnotationAssertion(rdfs:label as:Application "Application"@en)
+SubClassOf(as:Application as:Object)
+
+# Class: as:Arrive (Arrive)
+
+AnnotationAssertion(rdfs:comment as:Arrive "To Arrive Somewhere (can be used, for instance, to indicate that a particular entity is currently located somewhere, e.g. a \"check-in\")"@en)
+AnnotationAssertion(rdfs:label as:Arrive "Arrive"@en)
+SubClassOf(as:Arrive as:IntransitiveActivity)
+
+# Class: as:Article (Article)
+
+AnnotationAssertion(rdfs:comment as:Article "A written work. Typically several paragraphs long. For example, a blog post or a news article."@en)
+AnnotationAssertion(rdfs:label as:Article "Article"@en)
+SubClassOf(as:Article as:Object)
+
+# Class: as:Audio (Audio)
+
+AnnotationAssertion(rdfs:comment as:Audio "An audio file"@en)
+AnnotationAssertion(rdfs:label as:Audio "Audio"@en)
+SubClassOf(as:Audio as:Document)
+
+# Class: as:Block (Block)
+
+AnnotationAssertion(rdfs:label as:Block "Block"@en)
+SubClassOf(as:Block as:Ignore)
+
+# Class: as:Collection (Collection)
+
+AnnotationAssertion(rdfs:comment as:Collection "An ordered or unordered collection of Objects or Links"@en)
+AnnotationAssertion(rdfs:label as:Collection "Collection"@en)
+SubClassOf(as:Collection as:Object)
+
+# Class: as:CollectionPage (CollectionPage)
+
+AnnotationAssertion(rdfs:comment as:CollectionPage "A subset of items from a Collection"@en)
+AnnotationAssertion(rdfs:label as:CollectionPage "CollectionPage"@en)
+SubClassOf(as:CollectionPage as:Collection)
+
+# Class: as:Create (Create)
+
+AnnotationAssertion(rdfs:comment as:Create "To Create Something"@en)
+AnnotationAssertion(rdfs:label as:Create "Create"@en)
+SubClassOf(as:Create as:Activity)
+
+# Class: as:Delete (Delete)
+
+AnnotationAssertion(rdfs:comment as:Delete "To Delete Something"@en)
+AnnotationAssertion(rdfs:label as:Delete "Delete"@en)
+SubClassOf(as:Delete as:Activity)
+
+# Class: as:Dislike (Dislike)
+
+AnnotationAssertion(rdfs:comment as:Dislike "The actor dislikes the object"@en)
+AnnotationAssertion(rdfs:label as:Dislike "Dislike"@en)
+SubClassOf(as:Dislike as:Activity)
+
+# Class: as:Document (Document)
+
+AnnotationAssertion(rdfs:comment as:Document "Represents a digital document/file of any sort"@en)
+AnnotationAssertion(rdfs:label as:Document "Document"@en)
+SubClassOf(as:Document as:Object)
+
+# Class: as:Event (Event)
+
+AnnotationAssertion(rdfs:comment as:Event "An Event of any kind"@en)
+AnnotationAssertion(rdfs:label as:Event "Event"@en)
+SubClassOf(as:Event as:Object)
+
+# Class: as:Flag (Flag)
+
+AnnotationAssertion(rdfs:comment as:Flag "To flag something (e.g. flag as inappropriate, flag as spam, etc)"@en)
+AnnotationAssertion(rdfs:label as:Flag "Flag"@en)
+SubClassOf(as:Flag as:Activity)
+
+# Class: as:Follow (Follow)
+
+AnnotationAssertion(rdfs:comment as:Follow "To Express Interest in Something"@en)
+AnnotationAssertion(rdfs:label as:Follow "Follow"@en)
+SubClassOf(as:Follow as:Activity)
+
+# Class: as:Group (Group)
+
+AnnotationAssertion(rdfs:comment as:Group "A Group of any kind."@en)
+AnnotationAssertion(rdfs:label as:Group "Group"@en)
+SubClassOf(as:Group as:Object)
+
+# Class: as:Ignore (Ignore)
+
+AnnotationAssertion(rdfs:comment as:Ignore "Actor is ignoring the Object"@en)
+AnnotationAssertion(rdfs:label as:Ignore "Ignore"@en)
+SubClassOf(as:Ignore as:Activity)
+
+# Class: as:Image (Image)
+
+AnnotationAssertion(rdfs:comment as:Image "An Image file"@en)
+AnnotationAssertion(rdfs:label as:Image "Image"@en)
+SubClassOf(as:Image as:Document)
+
+# Class: as:IntransitiveActivity (IntransitiveActivity)
+
+AnnotationAssertion(rdfs:comment as:IntransitiveActivity "An Activity that has no direct object"@en)
+AnnotationAssertion(rdfs:label as:IntransitiveActivity "IntransitiveActivity"@en)
+SubClassOf(as:IntransitiveActivity as:Activity)
+SubClassOf(as:IntransitiveActivity ObjectMaxCardinality(0 as:object))
+
+# Class: as:Invite (Invite)
+
+AnnotationAssertion(rdfs:comment as:Invite "To invite someone or something to something"@en)
+AnnotationAssertion(rdfs:label as:Invite "Invite"@en)
+SubClassOf(as:Invite as:Offer)
+
+# Class: as:Join (Join)
+
+AnnotationAssertion(rdfs:comment as:Join "To Join Something"@en)
+AnnotationAssertion(rdfs:label as:Join "Join"@en)
+SubClassOf(as:Join as:Activity)
+
+# Class: as:Leave (Leave)
+
+AnnotationAssertion(rdfs:comment as:Leave "To Leave Something"@en)
+AnnotationAssertion(rdfs:label as:Leave "Leave"@en)
+SubClassOf(as:Leave as:Activity)
+
+# Class: as:Like (Like)
+
+AnnotationAssertion(rdfs:comment as:Like "To Like Something"@en)
+AnnotationAssertion(rdfs:label as:Like "Like"@en)
+SubClassOf(as:Like as:Activity)
+
+# Class: as:Link (Link)
+
+AnnotationAssertion(rdfs:comment as:Link "Represents a qualified reference to another resource. Patterned after the RFC5988 Web Linking Model"@en)
+AnnotationAssertion(rdfs:label as:Link "Link"@en)
+DisjointClasses(as:Link as:Object)
+
+# Class: as:Listen (Listen)
+
+AnnotationAssertion(rdfs:comment as:Listen "The actor listened to the object"@en)
+AnnotationAssertion(rdfs:label as:Listen "Listen"@en)
+SubClassOf(as:Listen as:Activity)
+
+# Class: as:Mention (Mention)
+
+AnnotationAssertion(rdfs:comment as:Mention "A specialized Link that represents an @mention"@en)
+AnnotationAssertion(rdfs:label as:Mention "Mention"@en)
+SubClassOf(as:Mention as:Link)
+
+# Class: as:Move (Move)
+
+AnnotationAssertion(rdfs:comment as:Move "The actor is moving the object. The target specifies where the object is moving to. The origin specifies where the object is moving from.")
+AnnotationAssertion(rdfs:label as:Move "Move"@en)
+SubClassOf(as:Move as:Activity)
+
+# Class: as:Note (Note)
+
+AnnotationAssertion(rdfs:comment as:Note "A Short note, typically less than a single paragraph. A \"tweet\" is an example, or a \"status update\""@en)
+AnnotationAssertion(rdfs:label as:Note "Note"@en)
+SubClassOf(as:Note as:Object)
+
+# Class: as:Object (Object)
+
+AnnotationAssertion(rdfs:label as:Object "Object"@en)
+
+# Class: as:Offer (Offer)
+
+AnnotationAssertion(rdfs:comment as:Offer "To Offer something to someone or something"@en)
+AnnotationAssertion(rdfs:label as:Offer "Offer"@en)
+SubClassOf(as:Offer as:Activity)
+
+# Class: as:Organization (Organization)
+
+AnnotationAssertion(rdfs:comment as:Organization "An Organization"@en)
+AnnotationAssertion(rdfs:label as:Organization "Organization"@en)
+SubClassOf(as:Organization as:Object)
+
+# Class: as:Page (Page)
+
+AnnotationAssertion(rdfs:comment as:Page "A Web Page"@en)
+AnnotationAssertion(rdfs:label as:Page "Page"@en)
+SubClassOf(as:Page as:Object)
+
+# Class: as:Person (Person)
+
+AnnotationAssertion(rdfs:comment as:Person "A Person"@en)
+AnnotationAssertion(rdfs:label as:Person "Person"@en)
+SubClassOf(as:Person as:Object)
+
+# Class: as:Place (Place)
+
+AnnotationAssertion(rdfs:comment as:Place "A physical or logical location"@en)
+AnnotationAssertion(rdfs:label as:Place "Place"@en)
+SubClassOf(as:Place as:Object)
+
+# Class: as:Profile (Profile)
+
+AnnotationAssertion(rdfs:comment as:Profile "A Profile Document"@en)
+AnnotationAssertion(rdfs:label as:Profile "Profile"@en)
+SubClassOf(as:Profile as:Object)
+
+# Class: as:Question (Question)
+
+AnnotationAssertion(rdfs:comment as:Question "A question of any sort."@en)
+AnnotationAssertion(rdfs:label as:Question "Question"@en)
+SubClassOf(as:Question as:IntransitiveActivity)
+
+# Class: as:Read (Read)
+
+AnnotationAssertion(rdfs:comment as:Read "The actor read the object"@en)
+AnnotationAssertion(rdfs:label as:Read "Read"@en)
+SubClassOf(as:Read as:Activity)
+
+# Class: as:Reject (Reject)
+
+AnnotationAssertion(rdfs:comment as:Reject "Actor rejects the Object"@en)
+AnnotationAssertion(rdfs:label as:Reject "Reject"@en)
+SubClassOf(as:Reject as:Activity)
+
+# Class: as:Relationship (Relationship)
+
+AnnotationAssertion(rdfs:comment as:Relationship "Represents a Social Graph relationship between two Individuals (indicated by the 'a' and 'b' properties)"@en)
+AnnotationAssertion(rdfs:label as:Relationship "Relationship"@en)
+SubClassOf(as:Relationship as:Object)
+
+# Class: as:Remove (Remove)
+
+AnnotationAssertion(rdfs:comment as:Remove "To Remove Something"@en)
+AnnotationAssertion(rdfs:label as:Remove "Remove"@en)
+SubClassOf(as:Remove as:Activity)
+
+# Class: as:Service (Service)
+
+AnnotationAssertion(rdfs:comment as:Service "A service provided by some entity"@en)
+AnnotationAssertion(rdfs:label as:Service "Service"@en)
+SubClassOf(as:Service as:Object)
+
+# Class: as:TentativeAccept (TentativeAccept)
+
+AnnotationAssertion(rdfs:comment as:TentativeAccept "Actor tentatively accepts the Object"@en)
+AnnotationAssertion(rdfs:label as:TentativeAccept "TentativeAccept"@en)
+SubClassOf(as:TentativeAccept as:Accept)
+
+# Class: as:TentativeReject (TentativeReject)
+
+AnnotationAssertion(rdfs:comment as:TentativeReject "Actor tentatively rejects the object"@en)
+AnnotationAssertion(rdfs:label as:TentativeReject "TentativeReject"@en)
+SubClassOf(as:TentativeReject as:Reject)
+
+# Class: as:Tombstone (Tombstone)
+
+AnnotationAssertion(rdfs:comment as:Tombstone "A placeholder for a deleted object"@en)
+AnnotationAssertion(rdfs:label as:Tombstone "Tombstone"@en)
+SubClassOf(as:Tombstone as:Object)
+
+# Class: as:Travel (Travel)
+
+AnnotationAssertion(rdfs:comment as:Travel "The actor is traveling to the target. The origin specifies where the actor is traveling from.")
+AnnotationAssertion(rdfs:label as:Travel "Travel"@en)
+SubClassOf(as:Travel as:IntransitiveActivity)
+
+# Class: as:Undo (Undo)
+
+AnnotationAssertion(rdfs:comment as:Undo "To Undo Something. This would typically be used to indicate that a previous Activity has been undone."@en)
+AnnotationAssertion(rdfs:label as:Undo "Undo"@en)
+SubClassOf(as:Undo as:Activity)
+
+# Class: as:Update (Update)
+
+AnnotationAssertion(rdfs:comment as:Update "To Update/Modify Something"@en)
+AnnotationAssertion(rdfs:label as:Update "Update"@en)
+SubClassOf(as:Update as:Activity)
+
+# Class: as:Video (Video)
+
+AnnotationAssertion(rdfs:comment as:Video "A Video document of any kind."@en)
+AnnotationAssertion(rdfs:label as:Video "Video"@en)
+SubClassOf(as:Video as:Document)
+
+# Class: as:View (View)
+
+AnnotationAssertion(rdfs:comment as:View "The actor viewed the object"@en)
+AnnotationAssertion(rdfs:label as:View "View"@en)
+SubClassOf(as:View as:Activity)
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: rdf:nil (rdf:nil)
+
+ClassAssertion(as:OrderedItems rdf:nil)
+
+# Individual: as:Relationship (Relationship)
+
+ClassAssertion(rdf:Statement as:Relationship)
+
+
+)

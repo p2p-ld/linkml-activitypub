@@ -1,0 +1,673 @@
+id: https://github.com/p2p_ld/linkml-activitypub
+name: linkml-activitypub
+title: linkml-activitypub
+description: |-
+  LinkML representation of Activitypub (ActivityStreams) Schema
+license: GNU GPL v3.0
+see_also:
+  - https://linkml-activitypub.readthedocs.io
+  - https://github.com/p2p_ld/linkml-activitypub
+
+imports:
+- linkml:types
+prefixes:
+  as: http://www.w3.org/ns/activitystreams#
+  linkml: https://w3id.org/linkml/
+  owl: http://www.w3.org/2002/07/owl#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  xml: http://www.w3.org/XML/1998/namespace
+  xsd: http://www.w3.org/2001/XMLSchema#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+default_prefix: as
+
+types:
+  langString:
+
+classes:
+  Object:
+    slots:
+      - attachment
+      - attachments
+      - attributedTo
+      - audience
+      - author
+      - bcc
+      - bto
+      - cc
+      - content
+      - context
+      - generator
+      - icon
+      - image
+      - inReplyTo
+      - location
+      - name
+      - preview
+      - provider
+      - replies
+      - summary
+      - tag
+      - tags
+      - to
+      - url
+      - downstreamDuplicates
+      - duration
+      - endTime
+      - id
+      - mediaType
+      - objectType
+      - published
+      - rating
+      - startTime
+      - updated
+      - upstreamDuplicates
+    class_uri: as:Object
+
+
+  Property:
+    class_uri: rdf:Property
+  Statement:
+    class_uri: rdf:Statement
+  Accept:
+    comments:
+    - Actor accepts the Object@en
+    is_a: Activity
+    class_uri: as:Accept
+  Activity:
+    comments:
+    - An Object representing some form of Action that has been taken@en
+    is_a: Object
+    slots:
+    - actor
+    - instrument
+    - object
+    - origin
+    - result
+    - target
+    - verb
+    class_uri: as:Activity
+  Add:
+    comments:
+    - To Add an Object or Link to Something@en
+    is_a: Activity
+    class_uri: as:Add
+  Announce:
+    comments:
+    - Actor announces the object to the target@en
+    is_a: Activity
+    class_uri: as:Announce
+  Application:
+    comments:
+    - Represents a software application of any sort@en
+    is_a: Object
+    class_uri: as:Application
+  Arrive:
+    comments:
+    - To Arrive Somewhere (can be used, for instance, to indicate that a particular
+      entity is currently located somewhere, e.g. a \"check-in\")@en
+    is_a: IntransitiveActivity
+    class_uri: as:Arrive
+  Article:
+    comments:
+    - A written work. Typically several paragraphs long. For example, a blog post
+      or a news article.@en
+    is_a: Object
+    class_uri: as:Article
+  Audio:
+    comments:
+    - An audio file@en
+    is_a: Document
+    class_uri: as:Audio
+  Block:
+    is_a: Ignore
+    class_uri: as:Block
+  Collection:
+    comments:
+    - An ordered or unordered collection of Objects or Links@en
+    is_a: Object
+    slots:
+    - current
+    - first
+    - items
+    - last
+    - totalItems
+    class_uri: as:Collection
+  CollectionPage:
+    comments:
+    - A subset of items from a Collection@en
+    is_a: Collection
+    slots:
+    - next
+    - partOf
+    - prev
+    class_uri: as:CollectionPage
+  Create:
+    comments:
+    - To Create Something@en
+    is_a: Activity
+    class_uri: as:Create
+  Delete:
+    comments:
+    - To Delete Something@en
+    is_a: Activity
+    class_uri: as:Delete
+  Dislike:
+    comments:
+    - The actor dislikes the object@en
+    is_a: Activity
+    class_uri: as:Dislike
+  Document:
+    comments:
+    - Represents a digital document/file of any sort@en
+    is_a: Object
+    class_uri: as:Document
+  Event:
+    comments:
+    - An Event of any kind@en
+    is_a: Object
+    class_uri: as:Event
+  Flag:
+    comments:
+    - To flag something (e.g. flag as inappropriate, flag as spam, etc)@en
+    is_a: Activity
+    class_uri: as:Flag
+  Follow:
+    comments:
+    - To Express Interest in Something@en
+    is_a: Activity
+    class_uri: as:Follow
+  Group:
+    comments:
+    - A Group of any kind.@en
+    is_a: Object
+    class_uri: as:Group
+  Ignore:
+    comments:
+    - Actor is ignoring the Object@en
+    is_a: Activity
+    class_uri: as:Ignore
+  Image:
+    comments:
+    - An Image file@en
+    is_a: Document
+    class_uri: as:Image
+  IntransitiveActivity:
+    comments:
+    - An Activity that has no direct object@en
+    is_a: Activity
+    class_uri: as:IntransitiveActivity
+  Invite:
+    comments:
+    - To invite someone or something to something@en
+    is_a: Offer
+    class_uri: as:Invite
+  Join:
+    comments:
+    - To Join Something@en
+    is_a: Activity
+    class_uri: as:Join
+  Leave:
+    comments:
+    - To Leave Something@en
+    is_a: Activity
+    class_uri: as:Leave
+  Like:
+    comments:
+    - To Like Something@en
+    is_a: Activity
+    class_uri: as:Like
+  Link:
+    comments:
+    - Represents a qualified reference to another resource. Patterned after the RFC5988
+      Web Linking Model@en
+    slots:
+    - attributedTo
+    - name
+    - preview
+    - height
+    - href
+    - hreflang
+    - id
+    - mediaType
+    - rel
+    - width
+    class_uri: as:Link
+  Listen:
+    comments:
+    - The actor listened to the object@en
+    is_a: Activity
+    class_uri: as:Listen
+  Mention:
+    comments:
+    - A specialized Link that represents an @mention@en
+    is_a: Link
+    class_uri: as:Mention
+  Move:
+    comments:
+    - The actor is moving the object. The target specifies where the object is moving
+      to. The origin specifies where the object is moving from.
+    is_a: Activity
+    class_uri: as:Move
+  Note:
+    comments:
+    - A Short note, typically less than a single paragraph. A \"tweet\" is an example,
+      or a \"status update\"@en
+    is_a: Object
+    class_uri: as:Note
+
+  Offer:
+    comments:
+    - To Offer something to someone or something@en
+    is_a: Activity
+    class_uri: as:Offer
+  OrderedItems:
+    class_uri: as:OrderedItems
+  Organization:
+    comments:
+    - An Organization@en
+    is_a: Object
+    class_uri: as:Organization
+  Page:
+    comments:
+    - A Web Page@en
+    is_a: Object
+    class_uri: as:Page
+  Person:
+    comments:
+    - A Person@en
+    is_a: Object
+    class_uri: as:Person
+  Place:
+    comments:
+    - A physical or logical location@en
+    is_a: Object
+    slots:
+    - accuracy
+    - altitude
+    - latitude
+    - longitude
+    - radius
+    - units
+    class_uri: as:Place
+  Profile:
+    comments:
+    - A Profile Document@en
+    is_a: Object
+    slots:
+    - describes
+    class_uri: as:Profile
+  Question:
+    comments:
+    - A question of any sort.@en
+    is_a: IntransitiveActivity
+    slots:
+    - anyOf
+    - oneOf
+    class_uri: as:Question
+  Read:
+    comments:
+    - The actor read the object@en
+    is_a: Activity
+    class_uri: as:Read
+  Reject:
+    comments:
+    - Actor rejects the Object@en
+    is_a: Activity
+    class_uri: as:Reject
+  Relationship:
+    comments:
+    - Represents a Social Graph relationship between two Individuals (indicated by
+      the 'a' and 'b' properties)@en
+    is_a: Object
+    slots:
+    - object
+    - relationship
+    - subject
+    class_uri: as:Relationship
+  Remove:
+    comments:
+    - To Remove Something@en
+    is_a: Activity
+    class_uri: as:Remove
+  Service:
+    comments:
+    - A service provided by some entity@en
+    is_a: Object
+    class_uri: as:Service
+  TentativeAccept:
+    comments:
+    - Actor tentatively accepts the Object@en
+    is_a: Accept
+    class_uri: as:TentativeAccept
+  TentativeReject:
+    comments:
+    - Actor tentatively rejects the object@en
+    is_a: Reject
+    class_uri: as:TentativeReject
+  Tombstone:
+    comments:
+    - A placeholder for a deleted object@en
+    is_a: Object
+    slots:
+    - formerType
+    - deleted
+    class_uri: as:Tombstone
+  Travel:
+    comments:
+    - The actor is traveling to the target. The origin specifies where the actor is
+      traveling from.
+    is_a: IntransitiveActivity
+    class_uri: as:Travel
+  Undo:
+    comments:
+    - To Undo Something. This would typically be used to indicate that a previous
+      Activity has been undone.@en
+    is_a: Activity
+    class_uri: as:Undo
+  Update:
+    comments:
+    - To Update/Modify Something@en
+    is_a: Activity
+    class_uri: as:Update
+  Video:
+    comments:
+    - A Video document of any kind.@en
+    is_a: Document
+    class_uri: as:Video
+  View:
+    comments:
+    - The actor viewed the object@en
+    is_a: Activity
+    class_uri: as:View
+
+
+slots:
+  predicate:
+    slot_uri: rdf:predicate
+    multivalued: true
+  subject:
+    comments:
+    - On a Relationship object, identifies the subject. e.g. when saying \"John is
+      connected to Sally\", 'subject' refers to 'John'@en
+    is_a: subject
+    slot_uri: as:subject
+    multivalued: true
+  actor:
+    comments:
+    - Subproperty of as:attributedTo that identifies the primary actor@en
+    is_a: attributedTo
+    slot_uri: as:actor
+    multivalued: true
+  anyOf:
+    comments:
+    - Describes a possible inclusive answer or option for a question.@en
+    slot_uri: as:anyOf
+    multivalued: true
+  attachment:
+    slot_uri: as:attachment
+    multivalued: true
+  attachments:
+    slot_uri: as:attachments
+    multivalued: true
+  attributedTo:
+    comments:
+    - Identifies an entity to which an object is attributed@en
+    slot_uri: as:attributedTo
+    multivalued: true
+  audience:
+    slot_uri: as:audience
+    multivalued: true
+  author:
+    comments:
+    - Identifies the author of an object. Deprecated. Use as:attributedTo instead@en
+    is_a: attributedTo
+    slot_uri: as:author
+    multivalued: true
+  bcc:
+    slot_uri: as:bcc
+    multivalued: true
+  bto:
+    slot_uri: as:bto
+    multivalued: true
+  cc:
+    slot_uri: as:cc
+    multivalued: true
+  context:
+    comments:
+    - Specifies the context within which an object exists or an activity was performed@en
+    slot_uri: as:context
+    multivalued: true
+  current:
+    slot_uri: as:current
+    multivalued: true
+  describes:
+    comments:
+    - On a Profile object, describes the object described by the profile@en
+    slot_uri: as:describes
+    multivalued: true
+    range: Object
+  first:
+    slot_uri: as:first
+    multivalued: true
+  formerType:
+    comments:
+    - On a Tombstone object, describes the former type of the deleted object@en
+    slot_uri: as:formerType
+    multivalued: true
+    range: Object
+  generator:
+    slot_uri: as:generator
+    multivalued: true
+  icon:
+    slot_uri: as:icon
+    multivalued: true
+  image:
+    slot_uri: as:image
+    multivalued: true
+  inReplyTo:
+    slot_uri: as:inReplyTo
+    multivalued: true
+  instrument:
+    comments:
+    - Indentifies an object used (or to be used) to complete an activity@en
+    slot_uri: as:instrument
+    multivalued: true
+  items:
+    slot_uri: as:items
+    multivalued: true
+  last:
+    slot_uri: as:last
+    multivalued: true
+  location:
+    slot_uri: as:location
+    multivalued: true
+  next:
+    slot_uri: as:next
+    multivalued: true
+  object:
+    slot_uri: as:object
+    multivalued: true
+  oneOf:
+    comments:
+    - Describes a possible exclusive answer or option for a question.@en
+    slot_uri: as:oneOf
+    multivalued: true
+  origin:
+    comments:
+    - For certain activities, specifies the entity from which the action is directed.@en
+    slot_uri: as:origin
+    multivalued: true
+  partOf:
+    slot_uri: as:partOf
+    multivalued: true
+  prev:
+    slot_uri: as:prev
+    multivalued: true
+  preview:
+    slot_uri: as:preview
+    multivalued: true
+  provider:
+    slot_uri: as:provider
+    multivalued: true
+  relationship:
+    comments:
+    - On a Relationship object, describes the type of relationship@en
+    is_a: predicate
+    slot_uri: as:relationship
+    multivalued: true
+    range: Property
+  replies:
+    slot_uri: as:replies
+    multivalued: true
+    range: Collection
+  result:
+    slot_uri: as:result
+    multivalued: true
+  tag:
+    slot_uri: as:tag
+    multivalued: true
+  tags:
+    slot_uri: as:tags
+    multivalued: true
+  target:
+    slot_uri: as:target
+    multivalued: true
+  to:
+    slot_uri: as:to
+    multivalued: true
+  url:
+    comments:
+    - Specifies a link to a specific representation of the Object@en
+    slot_uri: as:url
+    multivalued: true
+  accuracy:
+    comments:
+    - Specifies the accuracy around the point established by the longitude and latitude@en
+    slot_uri: as:accuracy
+    multivalued: true
+  altitude:
+    comments:
+    - The altitude of a place@en
+    slot_uri: as:altitude
+    multivalued: true
+  content:
+    comments:
+    - The content of the object.@en
+    slot_uri: as:content
+    multivalued: true
+  deleted:
+    comments:
+    - Specifies the date and time the object was deleted@en
+    slot_uri: as:deleted
+    multivalued: true
+  downstreamDuplicates:
+    slot_uri: as:downstreamDuplicates
+    multivalued: true
+  duration:
+    comments:
+    - The duration of the object@en
+    slot_uri: as:duration
+    multivalued: true
+  endTime:
+    comments:
+    - The ending time of the object@en
+    slot_uri: as:endTime
+    multivalued: true
+  height:
+    comments:
+    - The display height expressed as device independent pixels@en
+    slot_uri: as:height
+    multivalued: true
+  href:
+    comments:
+    - The target URI of the Link@en
+    slot_uri: as:href
+    multivalued: true
+  hreflang:
+    comments:
+    - A hint about the language of the referenced resource@en
+    slot_uri: as:hreflang
+    multivalued: true
+  id:
+    slot_uri: as:id
+    multivalued: true
+  latitude:
+    comments:
+    - The latitude@en
+    slot_uri: as:latitude
+    multivalued: true
+  longitude:
+    comments:
+    - The longitude@en
+    slot_uri: as:longitude
+    multivalued: true
+  mediaType:
+    comments:
+    - The MIME Media Type@en
+    slot_uri: as:mediaType
+    multivalued: true
+  name:
+    slot_uri: rdfs:name
+    multivalued: true
+  objectType:
+    slot_uri: as:objectType
+    multivalued: true
+  published:
+    comments:
+    - Specifies the date and time the object was published@en
+    slot_uri: as:published
+    multivalued: true
+  radius:
+    comments:
+    - Specifies a radius around the point established by the longitude and latitude@en
+    slot_uri: as:radius
+    multivalued: true
+  rating:
+    comments:
+    - A numeric rating (>= 0.0, <= 5.0) for the object@en
+    slot_uri: as:rating
+    multivalued: true
+  rel:
+    comments:
+    - The RFC 5988 or HTML5 Link Relation associated with the Link@en
+    slot_uri: as:rel
+    multivalued: true
+  startTime:
+    comments:
+    - The starting time of the object@en
+    slot_uri: as:startTime
+    multivalued: true
+  summary:
+    comments:
+    - A short summary of the object@en
+    slot_uri: as:summary
+    multivalued: true
+  totalItems:
+    comments:
+    - The total number of items in a logical collection@en
+    slot_uri: as:totalItems
+    multivalued: true
+  units:
+    comments:
+    - Identifies the unit of measurement used by the radius, altitude and accuracy
+      properties. The value can be expressed either as one of a set of predefined
+      units or as a well-known common URI that identifies units.@en
+    slot_uri: as:units
+    multivalued: true
+  updated:
+    comments:
+    - Specifies when the object was last updated@en
+    slot_uri: as:updated
+    multivalued: true
+  upstreamDuplicates:
+    slot_uri: as:upstreamDuplicates
+    multivalued: true
+  verb:
+    slot_uri: as:verb
+    multivalued: true
+  width:
+    comments:
+    - Specifies the preferred display width of the content, expressed in terms of
+      device independent pixels.@en
+    slot_uri: as:width
+    multivalued: true
