@@ -2,6 +2,8 @@
 
 LinkML representation of ActivityPub schema (which is mostly ActivityStreams except where it's not)
 
+https://pypi.org/projects/linkml-activitypub
+
 ## Process
 
 Intermediate files are in the `data` directory
@@ -37,6 +39,7 @@ Then the final schema in `linkml_activitypub/activitypub.yaml`:
   - `items` is marked as `list_elements_ordered: true` on `OrderedCollection` and false on `Collection`
 - Made types
   - anyURI as `xsd:anyURI`, did not try and find a validator pattern. The spec alternatingly uses its own anyURI prop and `xsd:anyURI`
+  - `duration` as a string that indicates it's a `xsd:duration`, finding a pattern is TODO
 - Made enums
   - `unitEnum` - for `unit`
 - Copied Notes to class `description` rather than `comments`
@@ -55,6 +58,7 @@ Need properties...
   class definition, since `OrderedCollection` inherits from `Collection` but asserts that the `list_items_ordered` slot is `true`
   rather than `false`. Instead, the slots from `CollectionPage` are just duplicated.
   - Accordingly, the domain and range of slots that include `CollectionPage` also include `OrderedCollectionPage
+- Need to implement some `xsd:duration` pattern 
 
 # References
 

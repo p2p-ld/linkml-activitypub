@@ -2,7 +2,9 @@ id: https://github.com/p2p_ld/linkml-activitypub
 name: linkml-activitypub
 title: linkml-activitypub
 description: |-
-  Extension of ActivityPub/ActivityStreams to include an Actor class
+  Extension of ActivityPub/ActivityStreams to include an Actor class.
+  
+  Obviously not done yet.
 license: GNU GPL v3.0
 see_also:
   - https://linkml-activitypub.readthedocs.io

@@ -1,0 +1,595 @@
+BASE <http://www.w3.org/ns/activitystreams#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX linkml: <https://w3id.org/linkml/>
+
+
+<AnyURI> IRI
+
+<DurationType> xsd:duration
+
+<NonNegativeInteger> xsd:nonNegativeInteger
+
+<LangString> rdf:langString
+
+linkml:String xsd:string
+
+linkml:Integer xsd:integer
+
+linkml:Boolean xsd:boolean
+
+linkml:Float xsd:float
+
+linkml:Double xsd:double
+
+linkml:Decimal xsd:decimal
+
+linkml:Time xsd:time
+
+linkml:Date xsd:date
+
+linkml:Datetime xsd:dateTime
+
+linkml:DateOrDatetime linkml:DateOrDatetime
+
+linkml:Uriorcurie IRI
+
+linkml:Curie xsd:string
+
+linkml:Uri IRI
+
+linkml:Ncname xsd:string
+
+linkml:Objectidentifier IRI
+
+linkml:Nodeidentifier NONLITERAL
+
+linkml:Jsonpointer xsd:string
+
+linkml:Jsonpath xsd:string
+
+linkml:Sparqlpath xsd:string
+
+<Accept>  (
+    CLOSED {
+       (  $<Accept_tes> (  &<Activity_tes> ;
+             rdf:type [ <Activity> ] ?
+          ) ;
+          rdf:type [ <Accept> ] ?
+       )
+    } OR @<TentativeAccept>
+)
+
+<Activity>  (
+    CLOSED {
+       (  $<Activity_tes> (  &<Object_tes> ;
+             rdf:type [ <Object> ] ? ;
+             <actor> @linkml:String * ;
+             <instrument> @linkml:String * ;
+             <object> @linkml:String * ;
+             <origin> @linkml:String * ;
+             <result> @linkml:String * ;
+             <target> @linkml:String *
+          ) ;
+          rdf:type [ <Activity> ] ?
+       )
+    } OR @<Accept> OR @<Add> OR @<Announce> OR @<Create> OR @<Delete> OR @<Dislike> OR @<Flag> OR @<Follow> OR @<Ignore> OR
+    @<IntransitiveActivity> OR @<Join> OR @<Leave> OR @<Like> OR @<Listen> OR @<Move> OR @<Offer> OR @<Read> OR @<Reject> OR
+    @<Remove> OR @<Undo> OR @<Update> OR @<View>
+)
+
+<Add> CLOSED {
+    (  $<Add_tes> (  &<Activity_tes> ;
+          rdf:type [ <Activity> ] ?
+       ) ;
+       rdf:type [ <Add> ] ?
+    )
+}
+
+<Announce> CLOSED {
+    (  $<Announce_tes> (  &<Activity_tes> ;
+          rdf:type [ <Activity> ] ?
+       ) ;
+       rdf:type [ <Announce> ] ?
+    )
+}
+
+<Application> CLOSED {
+    (  $<Application_tes> (  &<Object_tes> ;
+          rdf:type [ <Object> ] ?
+       ) ;
+       rdf:type [ <Application> ] ?
+    )
+}
+
+<Arrive> CLOSED {
+    (  $<Arrive_tes> (  &<IntransitiveActivity_tes> ;
+          rdf:type [ <IntransitiveActivity> ] ?
+       ) ;
+       rdf:type [ <Arrive> ] ?
+    )
+}
+
+<Article> CLOSED {
+    (  $<Article_tes> (  &<Object_tes> ;
+          rdf:type [ <Object> ] ?
+       ) ;
+       rdf:type [ <Article> ] ?
+    )
+}
+
+<Audio> CLOSED {
+    (  $<Audio_tes> (  &<Document_tes> ;
+          rdf:type [ <Document> ] ?
+       ) ;
+       rdf:type [ <Audio> ] ?
+    )
+}
+
+<Block> CLOSED {
+    (  $<Block_tes> (  &<Ignore_tes> ;
+          rdf:type [ <Ignore> ] ?
+       ) ;
+       rdf:type [ <Block> ] ?
+    )
+}
+
+<Collection>  (
+    CLOSED {
+       (  $<Collection_tes> (  &<Object_tes> ;
+             rdf:type [ <Object> ] ? ;
+             <current> @linkml:String ? ;
+             <first> @linkml:String ? ;
+             <items> @linkml:String * ;
+             <last> @linkml:String ? ;
+             <totalItems> @<NonNegativeInteger> ?
+          ) ;
+          rdf:type [ <Collection> ] ?
+       )
+    } OR @<CollectionPage> OR @<OrderedCollection>
+)
+
+<CollectionPage> CLOSED {
+    (  $<CollectionPage_tes> (  &<Collection_tes> ;
+          rdf:type [ <Collection> ] ? ;
+          <next> @linkml:String ? ;
+          <partOf> @linkml:String ? ;
+          <prev> @linkml:String ?
+       ) ;
+       rdf:type [ <CollectionPage> ] ?
+    )
+}
+
+<Create> CLOSED {
+    (  $<Create_tes> (  &<Activity_tes> ;
+          rdf:type [ <Activity> ] ?
+       ) ;
+       rdf:type [ <Create> ] ?
+    )
+}
+
+<Delete> CLOSED {
+    (  $<Delete_tes> (  &<Activity_tes> ;
+          rdf:type [ <Activity> ] ?
+       ) ;
+       rdf:type [ <Delete> ] ?
+    )
+}
+
+<Dislike> CLOSED {
+    (  $<Dislike_tes> (  &<Activity_tes> ;
+          rdf:type [ <Activity> ] ?
+       ) ;
+       rdf:type [ <Dislike> ] ?
+    )
+}
+
+<Document>  (
+    CLOSED {
+       (  $<Document_tes> (  &<Object_tes> ;
+             rdf:type [ <Object> ] ?
+          ) ;
+          rdf:type [ <Document> ] ?
+       )
+    } OR @<Audio> OR @<Image> OR @<Video>
+)
+
+<Event> CLOSED {
+    (  $<Event_tes> (  &<Object_tes> ;
+          rdf:type [ <Object> ] ?
+       ) ;
+       rdf:type [ <Event> ] ?
+    )
+}
+
+<Flag> CLOSED {
+    (  $<Flag_tes> (  &<Activity_tes> ;
+          rdf:type [ <Activity> ] ?
+       ) ;
+       rdf:type [ <Flag> ] ?
+    )
+}
+
+<Follow> CLOSED {
+    (  $<Follow_tes> (  &<Activity_tes> ;
+          rdf:type [ <Activity> ] ?
+       ) ;
+       rdf:type [ <Follow> ] ?
+    )
+}
+
+<Group> CLOSED {
+    (  $<Group_tes> (  &<Object_tes> ;
+          rdf:type [ <Object> ] ?
+       ) ;
+       rdf:type [ <Group> ] ?
+    )
+}
+
+<Ignore>  (
+    CLOSED {
+       (  $<Ignore_tes> (  &<Activity_tes> ;
+             rdf:type [ <Activity> ] ?
+          ) ;
+          rdf:type [ <Ignore> ] ?
+       )
+    } OR @<Block>
+)
+
+<Image> CLOSED {
+    (  $<Image_tes> (  &<Document_tes> ;
+          rdf:type [ <Document> ] ?
+       ) ;
+       rdf:type [ <Image> ] ?
+    )
+}
+
+<IntransitiveActivity>  (
+    CLOSED {
+       (  $<IntransitiveActivity_tes> (  &<Activity_tes> ;
+             rdf:type [ <Activity> ] ?
+          ) ;
+          rdf:type [ <IntransitiveActivity> ] ?
+       )
+    } OR @<Arrive> OR @<Question> OR @<Travel>
+)
+
+<Invite> CLOSED {
+    (  $<Invite_tes> (  &<Offer_tes> ;
+          rdf:type [ <Offer> ] ?
+       ) ;
+       rdf:type [ <Invite> ] ?
+    )
+}
+
+<Join> CLOSED {
+    (  $<Join_tes> (  &<Activity_tes> ;
+          rdf:type [ <Activity> ] ?
+       ) ;
+       rdf:type [ <Join> ] ?
+    )
+}
+
+<Leave> CLOSED {
+    (  $<Leave_tes> (  &<Activity_tes> ;
+          rdf:type [ <Activity> ] ?
+       ) ;
+       rdf:type [ <Leave> ] ?
+    )
+}
+
+<Like> CLOSED {
+    (  $<Like_tes> (  &<Activity_tes> ;
+          rdf:type [ <Activity> ] ?
+       ) ;
+       rdf:type [ <Like> ] ?
+    )
+}
+
+<Link>  (
+    CLOSED {
+       (  $<Link_tes> (  rdfs:name @linkml:String * ;
+             <preview> @linkml:String * ;
+             <height> @<NonNegativeInteger> ? ;
+             <href> @<AnyURI> ? ;
+             <hreflang> @linkml:String ? ;
+             <id> @<AnyURI> ? ;
+             <mediaType> @linkml:String ? ;
+             <rel> @linkml:String * ;
+             <width> @<NonNegativeInteger> ?
+          ) ;
+          rdf:type [ <Link> ] ?
+       )
+    } OR @<Mention>
+)
+
+<Listen> CLOSED {
+    (  $<Listen_tes> (  &<Activity_tes> ;
+          rdf:type [ <Activity> ] ?
+       ) ;
+       rdf:type [ <Listen> ] ?
+    )
+}
+
+<Mention> CLOSED {
+    (  $<Mention_tes> (  &<Link_tes> ;
+          rdf:type [ <Link> ] ?
+       ) ;
+       rdf:type [ <Mention> ] ?
+    )
+}
+
+<Move> CLOSED {
+    (  $<Move_tes> (  &<Activity_tes> ;
+          rdf:type [ <Activity> ] ?
+       ) ;
+       rdf:type [ <Move> ] ?
+    )
+}
+
+<Note> CLOSED {
+    (  $<Note_tes> (  &<Object_tes> ;
+          rdf:type [ <Object> ] ?
+       ) ;
+       rdf:type [ <Note> ] ?
+    )
+}
+
+<Object>  (
+    CLOSED {
+       (  $<Object_tes> (  <attachment> @linkml:String * ;
+             <attributedTo> @linkml:String * ;
+             <audience> @linkml:String * ;
+             <bcc> @linkml:String * ;
+             <bto> @linkml:String * ;
+             <cc> @linkml:String * ;
+             <content> @linkml:String * ;
+             <context> @linkml:String * ;
+             <generator> @linkml:String * ;
+             <icon> @linkml:String * ;
+             <image> @linkml:String * ;
+             <inReplyTo> @linkml:String * ;
+             <location> @linkml:String * ;
+             rdfs:name @linkml:String * ;
+             <preview> @linkml:String * ;
+             <replies> @<Collection> ? ;
+             <summary> @linkml:String * ;
+             <tag> @linkml:String * ;
+             <to> @linkml:String * ;
+             <url> @linkml:String * ;
+             <duration> @<DurationType> ? ;
+             <endTime> @linkml:Datetime ? ;
+             <id> @<AnyURI> ? ;
+             <mediaType> @linkml:String ? ;
+             <published> @linkml:Datetime ? ;
+             <startTime> @linkml:Datetime ? ;
+             <updated> @linkml:Datetime ?
+          ) ;
+          rdf:type [ <Object> ] ?
+       )
+    } OR @<Activity> OR @<Application> OR @<Article> OR @<Collection> OR @<Document> OR @<Event> OR @<Group> OR @<Note> OR
+    @<Organization> OR @<Page> OR @<Person> OR @<Place> OR @<Profile> OR @<Relationship> OR @<Service> OR @<Tombstone>
+)
+
+<Offer>  (
+    CLOSED {
+       (  $<Offer_tes> (  &<Activity_tes> ;
+             rdf:type [ <Activity> ] ?
+          ) ;
+          rdf:type [ <Offer> ] ?
+       )
+    } OR @<Invite>
+)
+
+<OrderedCollection>  (
+    CLOSED {
+       (  $<OrderedCollection_tes> (  &<Collection_tes> ;
+             rdf:type [ <Collection> ] ? ;
+             <items> @linkml:String *
+          ) ;
+          rdf:type [ <OrderedCollection> ] ?
+       )
+    } OR @<OrderedCollectionPage>
+)
+
+<OrderedCollectionPage> CLOSED {
+    (  $<OrderedCollectionPage_tes> (  &<OrderedCollection_tes> ;
+          rdf:type [ <OrderedCollection> ] ? ;
+          <startIndex> @<NonNegativeInteger> ? ;
+          <next> @linkml:String ? ;
+          <partOf> @linkml:String ? ;
+          <prev> @linkml:String ? ;
+          <items> @linkml:String *
+       ) ;
+       rdf:type [ <OrderedCollectionPage> ] ?
+    )
+}
+
+<OrderedItems> CLOSED {
+    (  $<OrderedItems_tes> rdf:type . * ;
+       rdf:type [ <OrderedItems> ] ?
+    )
+}
+
+<Organization> CLOSED {
+    (  $<Organization_tes> (  &<Object_tes> ;
+          rdf:type [ <Object> ] ?
+       ) ;
+       rdf:type [ <Organization> ] ?
+    )
+}
+
+<Page> CLOSED {
+    (  $<Page_tes> (  &<Object_tes> ;
+          rdf:type [ <Object> ] ?
+       ) ;
+       rdf:type [ <Page> ] ?
+    )
+}
+
+<Person> CLOSED {
+    (  $<Person_tes> (  &<Object_tes> ;
+          rdf:type [ <Object> ] ?
+       ) ;
+       rdf:type [ <Person> ] ?
+    )
+}
+
+<Place> CLOSED {
+    (  $<Place_tes> (  &<Object_tes> ;
+          rdf:type [ <Object> ] ? ;
+          <accuracy> @linkml:Float ? ;
+          <altitude> @linkml:Float ? ;
+          <latitude> @linkml:Float ? ;
+          <longitude> @linkml:Float ? ;
+          <radius> @linkml:Float ? ;
+          <units> @linkml:String ?
+       ) ;
+       rdf:type [ <Place> ] ?
+    )
+}
+
+<Profile> CLOSED {
+    (  $<Profile_tes> (  &<Object_tes> ;
+          rdf:type [ <Object> ] ? ;
+          <describes> @<Object> ?
+       ) ;
+       rdf:type [ <Profile> ] ?
+    )
+}
+
+<Property> CLOSED {
+    (  $<Property_tes> rdf:type . * ;
+       rdf:type [ rdf:Property ] ?
+    )
+}
+
+<Question> CLOSED {
+    (  $<Question_tes> (  &<IntransitiveActivity_tes> ;
+          rdf:type [ <IntransitiveActivity> ] ? ;
+          <anyOf> @linkml:String * ;
+          <oneOf> @linkml:String *
+       ) ;
+       rdf:type [ <Question> ] ?
+    )
+}
+
+<Read> CLOSED {
+    (  $<Read_tes> (  &<Activity_tes> ;
+          rdf:type [ <Activity> ] ?
+       ) ;
+       rdf:type [ <Read> ] ?
+    )
+}
+
+<Reject>  (
+    CLOSED {
+       (  $<Reject_tes> (  &<Activity_tes> ;
+             rdf:type [ <Activity> ] ?
+          ) ;
+          rdf:type [ <Reject> ] ?
+       )
+    } OR @<TentativeReject>
+)
+
+<Relationship> CLOSED {
+    (  $<Relationship_tes> (  &<Object_tes> ;
+          rdf:type [ <Object> ] ? ;
+          <object> @linkml:String * ;
+          <relationship> @<Object> * ;
+          <subject> @linkml:String *
+       ) ;
+       rdf:type [ <Relationship> ] ?
+    )
+}
+
+<Remove> CLOSED {
+    (  $<Remove_tes> (  &<Activity_tes> ;
+          rdf:type [ <Activity> ] ?
+       ) ;
+       rdf:type [ <Remove> ] ?
+    )
+}
+
+<Service> CLOSED {
+    (  $<Service_tes> (  &<Object_tes> ;
+          rdf:type [ <Object> ] ?
+       ) ;
+       rdf:type [ <Service> ] ?
+    )
+}
+
+<Statement> CLOSED {
+    (  $<Statement_tes> rdf:type . * ;
+       rdf:type [ rdf:Statement ] ?
+    )
+}
+
+<TentativeAccept> CLOSED {
+    (  $<TentativeAccept_tes> (  &<Accept_tes> ;
+          rdf:type [ <Accept> ] ?
+       ) ;
+       rdf:type [ <TentativeAccept> ] ?
+    )
+}
+
+<TentativeReject> CLOSED {
+    (  $<TentativeReject_tes> (  &<Reject_tes> ;
+          rdf:type [ <Reject> ] ?
+       ) ;
+       rdf:type [ <TentativeReject> ] ?
+    )
+}
+
+<Tombstone> CLOSED {
+    (  $<Tombstone_tes> (  &<Object_tes> ;
+          rdf:type [ <Object> ] ? ;
+          <formerType> @<Object> * ;
+          <deleted> @linkml:Datetime ?
+       ) ;
+       rdf:type [ <Tombstone> ] ?
+    )
+}
+
+<Travel> CLOSED {
+    (  $<Travel_tes> (  &<IntransitiveActivity_tes> ;
+          rdf:type [ <IntransitiveActivity> ] ?
+       ) ;
+       rdf:type [ <Travel> ] ?
+    )
+}
+
+<Undo> CLOSED {
+    (  $<Undo_tes> (  &<Activity_tes> ;
+          rdf:type [ <Activity> ] ?
+       ) ;
+       rdf:type [ <Undo> ] ?
+    )
+}
+
+<Update> CLOSED {
+    (  $<Update_tes> (  &<Activity_tes> ;
+          rdf:type [ <Activity> ] ?
+       ) ;
+       rdf:type [ <Update> ] ?
+    )
+}
+
+<Video> CLOSED {
+    (  $<Video_tes> (  &<Document_tes> ;
+          rdf:type [ <Document> ] ?
+       ) ;
+       rdf:type [ <Video> ] ?
+    )
+}
+
+<View> CLOSED {
+    (  $<View_tes> (  &<Activity_tes> ;
+          rdf:type [ <Activity> ] ?
+       ) ;
+       rdf:type [ <View> ] ?
+    )
+}
+
+

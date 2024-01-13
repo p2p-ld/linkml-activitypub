@@ -22,14 +22,29 @@ prefixes:
   xml: http://www.w3.org/XML/1998/namespace
   xsd: http://www.w3.org/2001/XMLSchema#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
-  schema: https://schema.org/
   unit: http://qudt.org/2.1/vocab/unit/
+
 default_prefix: as
+default_range: string
 
 types:
-  langString:
   anyURI:
-    typeof: xsd:anyURI
+    uri: xsd:anyURI
+    typeof: string
+    base: str
+  durationType:
+    uri: xsd:duration
+    typeof: string
+    base: str
+  nonNegativeInteger:
+    uri: xsd:nonNegativeInteger
+    typeof: integer
+    base: int
+    minimum_value: 0
+  langString:
+    uri: rdf:langString
+    typeof: string
+    base: str
 
 enums:
   unitEnum:
@@ -61,7 +76,6 @@ classes:
     description: Describes an object of any kind. The Object type serves as the base type for most of the other kinds of objects defined in the Activity Vocabulary, including other Core types such as Activity, IntransitiveActivity, Collection and OrderedCollection.
     slots:
       - attachment
-      - attachments
       - attributedTo
       - audience
       - bcc
@@ -85,13 +99,11 @@ classes:
       - endTime
       - id
       - mediaType
-      - objectType
       - published
-      - rating
       - startTime
       - updated
     class_uri: as:Object
-    disjoint_with: as:Link
+    disjoint_with: Link
 
   Link:
     description: A Link is an indirect, qualified reference to a resource identified by a URL. The fundamental model for links is established by [ RFC5988]. Many of the properties defined by the Activity Vocabulary allow values that are either instances of Object or Link. When a Link is used, it establishes a qualified relation connecting the subject (the containing object) to the resource identified by the href. Properties of the Link are properties of the reference as opposed to properties of the resource.
@@ -140,14 +152,14 @@ classes:
     class_uri: as:Collection
     slot_usage:
       items:
-        list_items_ordered: false
+        list_elements_ordered: false
 
   OrderedCollection:
     description: A subtype of Collection in which members of the logical collection are assumed to always be strictly ordered.
     is_a: Collection
     slot_usage:
       items:
-        list_items_ordered: true
+        list_elements_ordered: true
 
   CollectionPage:
     description: Used to represent distinct subsets of items from a Collection. Refer to the Activity Streams 2.0 Core for a complete description of the CollectionPage object.
@@ -169,7 +181,7 @@ classes:
     class_uri: as:OrderedCollectionPage
     slot_usage:
       items:
-        list_items_ordered: false
+        list_elements_ordered: false
 
   # ----------------------------
   # Extended Types
@@ -432,7 +444,7 @@ classes:
     class_uri: as:Profile
 
   Tombstone:
-    description:  	A Tombstone represents a content object that has been deleted. It can be used in Collections to signify that there used to be an object at this position, but it has been deleted.
+    description: A Tombstone represents a content object that has been deleted. It can be used in Collections to signify that there used to be an object at this position, but it has been deleted.
     is_a: Object
     slots:
       - formerType
@@ -454,15 +466,15 @@ slots:
   id:
     description: Provides the globally unique identifier for an Object or Link.
     slot_uri: as:id
-    domain:
-      - as:Object
-      - as:Link
+    domain_of:
+      - Object
+      - Link
     range: anyURI
   type:
-    description:  	Identifies the Object or Link type. Multiple values may be specified.
-    domain:
-      - as:Object
-      - as:Link
+    description: Identifies the Object or Link type. Multiple values may be specified.
+    domain_of:
+      - Object
+      - Link
     range: anyURI
     multivalued: true
   actor:
@@ -470,60 +482,60 @@ slots:
     is_a: attributedTo
     slot_uri: as:actor
     multivalued: true
-    domain: as:Activity
-    range:
-      - as:Object
-      - as:Link
+    domain_of: as:Activity
+    any_of:
+      - range: Object
+      - range: Link
   attachment:
     description: Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
     slot_uri: as:attachment
     multivalued: true
-    domain: as:Object
-    range:
-      - as:Object
-      - as:Link
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
   attributedTo:
     description: Identifies one or more entities to which this object is attributed. The attributed entities might not be Actors. For instance, an object might be attributed to the completion of another activity.
     slot_uri: as:attributedTo
     multivalued: true
-    domain:
-      - as:Link
-      - as:Object
-    range:
-      - as:Link
-      - as:Object
+    domain_of:
+      - Link
+      - Object
+    any_of:
+      - range: Link
+      - range: Object
   audience:
     description: Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
     slot_uri: as:audience
     multivalued: true
-    domain: Object
-    range:
-      - Object
-      - Link
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
   bcc:
     description: Identifies one or more Objects that are part of the private secondary audience of this Object.
     slot_uri: as:bcc
     multivalued: true
-    domain: Object
-    range:
-      - Object
-      - Link
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
   bto:
     description: Identifies an Object that is part of the private primary audience of this Object.
     slot_uri: as:bto
     multivalued: true
-    domain: Object
-    range:
-      - Object
-      - Link
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
   cc:
     description: Identifies an Object that is part of the public secondary audience of this Object.
     slot_uri: as:cc
     multivalued: true
-    domain: Object
-    range:
-      - Object
-      - Link
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
   context:
     description: > 
       Identifies the context within which the object exists or an activity was performed.
@@ -531,132 +543,132 @@ slots:
       The notion of "context" used is intentionally vague. The intended function is to serve as a means of grouping objects and activities that share a common originating context or purpose. An example could be all activities relating to a common project or event.
     slot_uri: as:context
     multivalued: true
-    domain: Object
-    range:
-      - Object
-      - Link
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
   current:
-    description:  	In a paged Collection, indicates the page that contains the most recently updated member items.
+    description: In a paged Collection, indicates the page that contains the most recently updated member items.
     slot_uri: as:current
-    domain: as:Collection
-    range:
-      - as:CollectionPage
-      - as:OrderedCollectionPage
-      - as:Link
+    domain_of: as:Collection
+    any_of:
+      - range: CollectionPage
+      - range: OrderedCollectionPage
+      - range: Link
   first:
-    description:  	In a paged Collection, indicates the furthest preceeding page of items in the collection.
+    description: In a paged Collection, indicates the furthest preceeding page of items in the collection.
     slot_uri: as:first
-    domain: as:Collection
-    range:
-      - as:CollectionPage
-      - as:OrderedCollectionPage
-      - as:Link
+    domain_of: as:Collection
+    any_of:
+      - range: CollectionPage
+      - range: OrderedCollectionPage
+      - range: Link
   generator:
     description: Identifies the entity (e.g. an application) that generated the object.
     slot_uri: as:generator
     multivalued: true
-    domain: as:Object
-    range:
-      - as:Object
-      - as:Link
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
   icon:
     description: Indicates an entity that describes an icon for this object. The image should have an aspect ratio of one (horizontal) to one (vertical) and should be suitable for presentation at a small size.
     slot_uri: as:icon
     multivalued: true
-    domain: as:Object
-    range:
-      - as:Image
-      - as:Link
+    domain_of: Object
+    any_of:
+      - range: Image
+      - range: Link
   image:
     description: Indicates an entity that describes an image for this object. Unlike the icon property, there are no aspect ratio or display size limitations assumed.
     slot_uri: as:image
     multivalued: true
-    domain: as:Object
-    range:
-      - as:Image
-      - as:Link
+    domain_of: Object
+    any_of:
+      - range: Image
+      - range: Link
   inReplyTo:
     description: Indicates one or more entities for which this object is considered a response.
     slot_uri: as:inReplyTo
     multivalued: true
-    domain: as:Object
-    range:
-      - as:Object
-      - as:Link
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
   instrument:
     description: Identifies one or more objects used (or to be used) in the completion of an Activity.
     slot_uri: as:instrument
     multivalued: true
-    domain: Activity
-    range:
-      - Object
-      - Link
+    domain_of: Activity
+    any_of:
+      - range: Object
+      - range: Link
   last:
     description: In a paged Collection, indicates the furthest proceeding page of the collection.
     slot_uri: as:last
-    domain: Collection
-    range:
-      - CollectionPage
-      - OrderedCollectionPage
-      - Link
+    domain_of: Collection
+    any_of:
+      - range: CollectionPage
+      - range: OrderedCollectionPage
+      - range: Link
   location:
     description: Indicates one or more physical or logical locations associated with the object.
     slot_uri: as:location
     multivalued: true
-    domain: Object
-    range:
-      - Object
-      - Link
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
   items:
     description: Identifies the items contained in a collection. The items might be ordered or unordered.
     slot_uri: as:items
     multivalued: true
-    domain: Collection
-    range:
-      - Object
-      - Link
+    domain_of: Collection
+    any_of:
+      - range: Object
+      - range: Link
   oneOf:
     description: Identifies an exclusive option for a Question. Use of oneOf implies that the Question can have only a single answer. To indicate that a Question can have multiple answers, use anyOf.
     slot_uri: as:oneOf
     multivalued: true
-    domain: Question
-    range:
-      - Object
-      - Link
+    domain_of: Question
+    any_of:
+      - range: Object
+      - range: Link
   anyOf:
     description: Identifies an inclusive option for a Question. Use of anyOf implies that the Question can have multiple answers. To indicate that a Question can have only one answer, use oneOf.
     slot_uri: as:anyOf
     multivalued: true
-    domain: Question
-    range:
-      - Object
-      - Link
+    domain_of: Question
+    any_of:
+      - range: Object
+      - range: Link
   closed:
     description: Indicates that a question has been closed, and answers are no longer accepted.
-    domain: Question
-    range:
-      - Object
-      - Link
-      - xsd:dateTime
-      - xsd:boolean
+    domain_of: Question
+    any_of:
+      - range: Object
+      - range: Link
+      - range: datetime
+      - range: boolean
   origin:
     description: Describes an indirect object of the activity from which the activity is directed. The precise meaning of the origin is the object of the English preposition "from". For instance, in the activity "John moved an item to List B from List A", the origin of the activity is "List A".
     slot_uri: as:origin
     multivalued: true
-    domain: Activity
-    range:
-      - Object
-      - Link
+    domain_of: Activity
+    any_of:
+      - range: Object
+      - range: Link
   next:
     description: In a paged Collection, indicates the next page of items.
     slot_uri: as:next
-    domain:
+    domain_of:
       - CollectionPage
       - OrderedCollectionPage
-    range:
-      - CollectionPage
-      - OrderedCollectionPage
-      - Link
+    any_of:
+      - range: CollectionPage
+      - range: OrderedCollectionPage
+      - range: Link
   object:
     description: >
       When used within an Activity, describes the direct object of the activity. For instance, in the activity "John added a movie to his wishlist", the object of the activity is the movie added.
@@ -664,183 +676,185 @@ slots:
       When used within a Relationship describes the entity to which the subject is related.
     slot_uri: as:object
     multivalued: true
-    domain:
+    domain_of:
       - Activity
       - Relationship
-    range:
-      - Object
-      - Link
+    any_of:
+      - range: Object
+      - range: Link
   prev:
-    description:  	In a paged Collection, identifies the previous page of items.
+    description: In a paged Collection, identifies the previous page of items.
     slot_uri: as:prev
-    domain:
+    domain_of:
       - CollectionPage
       - OrderedCollectionPage
-    range:
-      - CollectionPage
-      - OrderedCollectionPage
-      - Link
+    any_of:
+      - range: CollectionPage
+      - range: OrderedCollectionPage
+      - range: Link
   preview:
     description: Identifies an entity that provides a preview of this object.
     slot_uri: as:preview
     multivalued: true
-    domain:
+    domain_of:
       - Link
       - Object
-    range:
-      - Link
-      - Object
+    any_of:
+      - range: Link
+      - range: Object
   result:
     description: Describes the result of the activity. For instance, if a particular action results in the creation of a new resource, the result property can be used to describe that new resource.
     slot_uri: as:result
     multivalued: true
-    domain: Activity
-    range:
-      - Object
-      - Link
+    domain_of: Activity
+    any_of:
+      - range: Object
+      - range: Link
   replies:
     description: Identifies a Collection containing objects considered to be responses to this object.
     slot_uri: as:replies
-    domain: Object
+    domain_of: Object
     range: Collection
   tag:
     description: One or more "tags" that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
     slot_uri: as:tag
     multivalued: true
-    domain: Object
-    range:
-      - Object
-      - Link
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
   target:
     description: Describes the indirect object, or target, of the activity. The precise meaning of the target is largely dependent on the type of action being described but will often be the object of the English preposition "to". For instance, in the activity "John added a movie to his wishlist", the target of the activity is John's wishlist. An activity can have more than one target.
     slot_uri: as:target
     multivalued: true
-    domain: Activity
-    range:
-      - Object
-      - Link
+    domain_of: Activity
+    any_of:
+      - range: Object
+      - range: Link
   to:
     description: Identifies an entity considered to be part of the public primary audience of an Object
     slot_uri: as:to
     multivalued: true
-    domain: Object
-    range:
-      - Object
-      - Link
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
   url:
     description: Identifies one or more links to representations of the object
     slot_uri: as:url
     multivalued: true
-    domain: Object
-    range:
-      - xsd:anyURI
-      - Link
+    domain_of: Object
+    any_of:
+      - range: anyURI
+      - range: Link
   accuracy:
     description: Indicates the accuracy of position coordinates on a Place objects. Expressed in properties of percentage. e.g. "94.0" means "94.0% accurate".
     slot_uri: as:accuracy
-    domain: Place
-    range: xsd:float
+    domain_of: Place
+    range: float
     minimum_value: 0
     maximum_value: 100
   altitude:
     description: Indicates the altitude of a place. The measurement units is indicated using the units property. If units is not specified, the default is assumed to be "m" indicating meters.
     slot_uri: as:altitude
-    domain: Object
-    range: xsd:float
+    domain_of: Object
+    range: float
   content:
     description:  The content or textual representation of the Object encoded as a JSON string. By default, the value of content is HTML. The mediaType property can be used in the object to indicate a different content type. The content MAY be expressed using multiple language-tagged values.
     slot_uri: as:content
     multivalued: true
-    domain: Object
-    range:
-      - xsd:string
-      - rdf:langString
+    domain_of: Object
+    any_of:
+      - range: string
+      - range: langString
   name:
     description: A simple, human-readable, plain-text name for the object. HTML markup MUST NOT be included. The name MAY be expressed using multiple language-tagged values.
     slot_uri: rdfs:name
     multivalued: true
-    domain:
+    domain_of:
       - Object
       - Link
-    range:
-      - xsd:string
-      - rdf:langString
+    any_of:
+      - range: string
+      - range: langString
   duration:
     description: When the object describes a time-bound resource, such as an audio or video, a meeting, etc, the duration property indicates the object's approximate duration. The value MUST be expressed as an xsd:duration as defined by [ xmlschema11-2], section 3.3.6 (e.g. a period of 5 seconds is represented as "PT5S").
     slot_uri: as:duration
-    domain: Object
-    range: xsd:duration
+    domain_of: Object
+    range: durationType
     see_also:
       - https://www.w3.org/TR/xmlschema11-2/
   height:
     description: On a Link, specifies a hint as to the rendering height in device-independent pixels of the linked resource.
     slot_uri: as:height
-    domain: Link
-    range: xsd:nonNegativeInteger
+    domain_of: Link
+    range: nonNegativeInteger
     minimum_value: 0
   href:
     description: The target resource pointed to by a Link.
     slot_uri: as:href
-    domain: Link
-    range: xsd:anyURI
+    domain_of: Link
+    range: anyURI
   hreflang:
     description: Hints as to the language used by the target resource. Value MUST be a [BCP47] Language-Tag.
     slot_uri: as:hreflang
-    is_a: schema:inLanguage
+    close_mappings:
+      - schema:inLanguage
     notes: Inheriting from schema:inLanguage in order to specify IETF BCP47 language codes since there isn't a formal ontology I can find
-    domain: Link
+    domain_of: Link
     range: string
   partOf:
     description: Identifies the Collection to which a CollectionPage objects items belong.
     slot_uri: as:partOf
-    domain:
+    domain_of:
       - CollectionPage
       - OrderedCollectionPage
-    range:
-      - Link
-      - Collection
+    any_of:
+      - range: Link
+      - range: Collection
   latitude:
     description: The latitude of a place
     slot_uri: as:latitude
-    domain: Place
-    range: xsd:float
+    domain_of: Place
+    range: float
   longitude:
     description: The longitude of a place
     slot_uri: as:longitude
-    domain: Place
-    range: xsd:float
+    domain_of: Place
+    range: float
   mediaType:
     description: >
       When used on a Link, identifies the MIME media type of the referenced resource.
 
       When used on an Object, identifies the MIME media type of the value of the content property. If not specified, the content property is assumed to contain text/html content.
     slot_uri: as:mediaType
-    is_a: schema:encodingFormat
+    exact_mappings:
+      - schema:encodingFormat
     notes: Like hreflang, casting as schema:encodingFormat to specify a MIME type
-    domain:
+    domain_of:
       - Link
       - Object
     range: string
   endTime:
     description: The date and time describing the actual or expected ending time of the object. When used with an Activity object, for instance, the endTime property specifies the moment the activity concluded or is expected to conclude.
     slot_uri: as:endTime
-    domain: Object
+    domain_of: Object
     range: datetime
   published:
     description: The date and time at which the object was published
     slot_uri: as:published
-    domain: Object
+    domain_of: Object
     range: datetime
   startTime:
     description: The date and time describing the actual or expected starting time of the object. When used with an Activity object, for instance, the startTime property specifies the moment the activity began or is scheduled to begin.
     slot_uri: as:startTime
-    domain: Object
+    domain_of: Object
     range: datetime
   radius:
     description: The radius from the given latitude and longitude for a Place. The units is expressed by the units property. If units is not specified, the default is assumed to be "m" indicating "meters".
     slot_uri: as:radius
-    domain: Place
-    range: xsd:float
+    domain_of: Place
+    range: float
     minimum_value: 0
   rel:
     description: > 
@@ -850,76 +864,74 @@ slots:
     notes: No validation is done or type could be found for declaring the RCF5988 or HTML5 link relation types
     slot_uri: as:rel
     multivalued: true
-    domain: Link
+    domain_of: Link
     range: string
   startIndex:
     description: A non-negative integer value identifying the relative position within the logical view of a strictly ordered collection.
-    domain: OrderedCollectionPage
-    range: xsd:nonNegativeInteger
+    domain_of: OrderedCollectionPage
+    range: nonNegativeInteger
     minimum_value: 0
   summary:
     description: A natural language summarization of the object encoded as HTML. Multiple language tagged summaries MAY be provided.
     slot_uri: as:summary
     multivalued: true
-    domain: Object
-    range:
-      - xsd:string
-      - rdf:langString
+    domain_of: Object
+    any_of:
+      - range: string
+      - range: langString
   totalItems:
     description: A non-negative integer specifying the total number of objects contained by the logical view of the collection. This number might not reflect the actual number of items serialized within the Collection object instance.
     slot_uri: as:totalItems
-    domain: Collection
-    range: xsd:nonNegativeInteger
+    domain_of: Collection
+    range: nonNegativeInteger
     minimum_value: 0.0
   units:
     description: Specifies the measurement units for the radius and altitude properties on a Place object. If not specified, the default is assumed to be "m" for "meters".
     slot_uri: as:units
-    domain: Place
+    domain_of: Place
     any_of:
       - range: unitEnum
-      - range: xsd:anyURI
+      - range: anyURI
   updated:
     description: The date and time at which the object was updated
     slot_uri: as:updated
-    domain: Object
+    domain_of: Object
     range: datetime
   width:
     description: On a Link, specifies a hint as to the rendering width in device-independent pixels of the linked resource.
     slot_uri: as:width
-    domain: Link
-    range: xsd:nonNegativeInteger
+    domain_of: Link
+    range: nonNegativeInteger
     minimum_value: 0
   subject:
     description: On a Relationship object, the subject property identifies one of the connected individuals. For instance, for a Relationship object describing "John is related to Sally", subject would refer to John.
-    is_a: subject
     slot_uri: as:subject
     multivalued: true
-    domain: Relationship
-    range:
-      - as:Object
-      - as:Link
+    domain_of: Relationship
+    any_of:
+      - range: Object
+      - range: Link
   relationship:
     description: On a Relationship object, the relationship property identifies the kind of relationship that exists between subject and object.
-    is_a: predicate
     slot_uri: as:relationship
     multivalued: true
-    domain: Relationship
+    domain_of: Relationship
     range: Object
   describes:
     description: On a Profile object, the describes property identifies the object described by the Profile.
     slot_uri: as:describes
-    domain: Profile
+    domain_of: Profile
     range: Object
   formerType:
     description: On a Tombstone object, the formerType property identifies the type of the object that was deleted.
     slot_uri: as:formerType
     multivalued: true
-    domain: Tombstone
+    domain_of: Tombstone
     range: Object
   deleted:
     description: On a Tombstone object, the deleted property is a timestamp for when the object was deleted.
     slot_uri: as:deleted
-    domain: Tombstone
+    domain_of: Tombstone
     range: datetime
 
 

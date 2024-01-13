@@ -8,18 +8,14 @@ SHELL := bash
 
 RUN = poetry run
 # get values from about.yaml file
-SCHEMA_NAME = $(shell ${SHELL} ./utils/get-value.sh name)
-SOURCE_SCHEMA_PATH = $(shell ${SHELL} ./utils/get-value.sh source_schema_path)
+SCHEMA_NAME = "linkml_activitypub"
+SOURCE_SCHEMA_PATH = "linkml_activitypub/activitypub.yaml"
 SOURCE_SCHEMA_DIR = $(dir $(SOURCE_SCHEMA_PATH))
 SRC = src
-DEST = project
-PYMODEL = $(SRC)/$(SCHEMA_NAME)/datamodel
+DEST = generated
+PYMODEL = $(SCHEMA_NAME)
 DOCDIR = docs
 EXAMPLEDIR = examples
-SHEET_MODULE = personinfo_enums
-SHEET_ID = $(shell ${SHELL} ./utils/get-value.sh google_sheet_id)
-SHEET_TABS = $(shell ${SHELL} ./utils/get-value.sh google_sheet_tabs)
-SHEET_MODULE_PATH = $(SOURCE_SCHEMA_DIR)/$(SHEET_MODULE).yaml
 
 # environment variables
 include config.env
@@ -103,8 +99,10 @@ gen-examples:
 # generates all project files
 
 gen-project: $(PYMODEL)
-	$(RUN) gen-project ${GEN_PARGS} -d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
+	$(RUN) gen-project ${GEN_PARGS} -d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)/dataclass/
 
+gen-pydantic: $(PYMODEL)
+	$(RUN) gen-pydantic $(SOURCE_SCHEMA_PATH) --pydantic-version 2 > $(PYMODEL)/activitypub.py
 
 test: test-schema test-python test-examples
 
@@ -185,4 +183,4 @@ clean:
 	rm -fr docs/*
 	rm -fr $(PYMODEL)/*
 
-include project.Makefile
+#include project.Makefile
