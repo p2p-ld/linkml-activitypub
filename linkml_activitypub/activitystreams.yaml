@@ -1,0 +1,968 @@
+id: https://github.com/p2p_ld/linkml-activitypub
+name: linkml-activitystreams
+title: linkml-activitystreams
+description: |-
+  LinkML representation of ActivityStreams 2 Schema.
+
+license: GNU GPL v3.0
+see_also:
+  - https://linkml-activitypub.readthedocs.io
+  - https://github.com/p2p_ld/linkml-activitypub
+  - https://www.w3.org/TR/activitystreams-vocabulary/
+
+imports:
+  - linkml:types
+prefixes:
+  as: http://www.w3.org/ns/activitystreams#
+  linkml: https://w3id.org/linkml/
+  owl: http://www.w3.org/2002/07/owl#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  xml: http://www.w3.org/XML/1998/namespace
+  xsd: http://www.w3.org/2001/XMLSchema#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  unit: http://qudt.org/2.1/vocab/unit/
+
+default_prefix: as
+default_range: string
+
+types:
+  anyURI:
+    uri: xsd:anyURI
+    typeof: string
+    base: str
+  durationType:
+    uri: xsd:duration
+    typeof: string
+    base: str
+  nonNegativeInteger:
+    uri: xsd:nonNegativeInteger
+    typeof: integer
+    base: int
+    minimum_value: 0
+  langString:
+    uri: rdf:langString
+    typeof: string
+    base: str
+
+enums:
+  unitEnum:
+    permissible_values:
+      cm:
+        meaning: unit:CM
+      feet:
+        meaning: unit:FT
+      inches:
+        meaning: unit:IN
+      km:
+        meaning: unit:KiloM
+      m:
+        meaning: unit:M
+      miles:
+        meaning: unit:MI
+
+
+classes:
+  Property:
+    class_uri: rdf:Property
+  Statement:
+    class_uri: rdf:Statement
+
+  # ----------------------------
+  # Core Types
+
+  Object:
+    description: Describes an object of any kind. The Object type serves as the base type for most of the other kinds of objects defined in the Activity Vocabulary, including other Core types such as Activity, IntransitiveActivity, Collection and OrderedCollection.
+    slots:
+      - attachment
+      - attributedTo
+      - audience
+      - bcc
+      - bto
+      - cc
+      - content
+      - context
+      - generator
+      - icon
+      - image
+      - inReplyTo
+      - location
+      - name
+      - preview
+      - replies
+      - summary
+      - tag
+      - to
+      - url
+      - duration
+      - endTime
+      - id
+      - mediaType
+      - published
+      - startTime
+      - updated
+    class_uri: as:Object
+    disjoint_with: Link
+
+  Link:
+    description: A Link is an indirect, qualified reference to a resource identified by a URL. The fundamental model for links is established by [ RFC5988]. Many of the properties defined by the Activity Vocabulary allow values that are either instances of Object or Link. When a Link is used, it establishes a qualified relation connecting the subject (the containing object) to the resource identified by the href. Properties of the Link are properties of the reference as opposed to properties of the resource.
+    slots:
+      - name
+      - preview
+      - height
+      - href
+      - hreflang
+      - id
+      - mediaType
+      - rel
+      - width
+    class_uri: as:Link
+    disjoint_with: as:Object
+    see_also:
+      - https://www.w3.org/TR/activitystreams-vocabulary/#bib-RFC5988
+
+  Activity:
+    description: An Activity is a subtype of Object that describes some form of action that may happen, is currently happening, or has already happened. The Activity type itself serves as an abstract base type for all types of activities. It is important to note that the Activity type itself does not carry any specific semantics about the kind of action being taken.
+    is_a: Object
+    slots:
+    - actor
+    - instrument
+    - object
+    - origin
+    - result
+    - target
+    class_uri: as:Activity
+
+  IntransitiveActivity:
+    description:
+      - An Activity that has no direct object@en
+    is_a: Activity
+    class_uri: as:IntransitiveActivity
+
+  Collection:
+    description: A Collection is a subtype of Object that represents ordered or unordered sets of Object or Link instances. Refer to the Activity Streams 2.0 Core specification for a complete description of the Collection type.
+    is_a: Object
+    slots:
+      - current
+      - first
+      - items
+      - last
+      - totalItems
+    class_uri: as:Collection
+    slot_usage:
+      items:
+        list_elements_ordered: false
+
+  OrderedCollection:
+    description: A subtype of Collection in which members of the logical collection are assumed to always be strictly ordered.
+    is_a: Collection
+    slot_usage:
+      items:
+        list_elements_ordered: true
+
+  CollectionPage:
+    description: Used to represent distinct subsets of items from a Collection. Refer to the Activity Streams 2.0 Core for a complete description of the CollectionPage object.
+    is_a: Collection
+    slots:
+      - next
+      - partOf
+      - prev
+    class_uri: as:CollectionPage
+
+  OrderedCollectionPage:
+    description: Used to represent ordered subsets of items from an OrderedCollection. Refer to the Activity Streams 2.0 Core for a complete description of the OrderedCollectionPage object.
+    is_a: OrderedCollection
+    slots:
+      - startIndex
+      - next
+      - partOf
+      - prev
+    class_uri: as:OrderedCollectionPage
+    slot_usage:
+      items:
+        list_elements_ordered: false
+
+  # ----------------------------
+  # Extended Types
+
+  Accept:
+    description: Indicates that the actor accepts the object. The target property can be used in certain circumstances to indicate the context into which the object has been accepted. 
+    is_a: Activity
+    class_uri: as:Accept
+
+  TentativeAccept:
+    description: A specialization of Accept indicating that the acceptance is tentative.
+    is_a: Accept
+    class_uri: as:TentativeAccept
+
+  Add:
+    description: Indicates that the actor has added the object to the target. If the target property is not explicitly specified, the target would need to be determined implicitly by context. The origin can be used to identify the context from which the object originated.
+    is_a: Activity
+    class_uri: as:Add
+
+  Arrive:
+    description: An IntransitiveActivity that indicates that the actor has arrived at the location. The origin can be used to identify the context from which the actor originated. The target typically has no defined meaning.
+    is_a: IntransitiveActivity
+    class_uri: as:Arrive
+
+  Create:
+    description: Indicates that the actor has created the object.
+    is_a: Activity
+    class_uri: as:Create
+
+  Delete:
+    description: Indicates that the actor has deleted the object. If specified, the origin indicates the context from which the object was deleted.
+    is_a: Activity
+    class_uri: as:Delete
+
+  Follow:
+    description:  Indicates that the actor is "following" the object. Following is defined in the sense typically used within Social systems in which the actor is interested in any activity performed by or on the object. The target and origin typically have no defined meaning.
+    is_a: Activity
+    class_uri: as:Follow
+
+  Ignore:
+    description: Indicates that the actor is ignoring the object. The target and origin typically have no defined meaning.
+    is_a: Activity
+    class_uri: as:Ignore
+
+  Join:
+    description: Indicates that the actor has joined the object. The target and origin typically have no defined meaning.
+    is_a: Activity
+    class_uri: as:Join
+
+  Leave:
+    description: Indicates that the actor has left the object. The target and origin typically have no meaning.
+    is_a: Activity
+    class_uri: as:Leave
+
+  Like:
+    description: Indicates that the actor likes, recommends or endorses the object. The target and origin typically have no defined meaning.
+    is_a: Activity
+    class_uri: as:Like
+
+  Offer:
+    description: Indicates that the actor is offering the object. If specified, the target indicates the entity to which the object is being offered.
+    is_a: Activity
+    class_uri: as:Offer
+
+  Invite:
+    description: A specialization of Offer in which the actor is extending an invitation for the object to the target.
+    is_a: Offer
+    class_uri: as:Invite
+
+  Reject:
+    description: Indicates that the actor is rejecting the object. The target and origin typically have no defined meaning.
+    is_a: Activity
+    class_uri: as:Reject
+
+  TentativeReject:
+    description: A specialization of Reject in which the rejection is considered tentative.
+    is_a: Reject
+    class_uri: as:TentativeReject
+
+  Remove:
+    description: Indicates that the actor is removing the object. If specified, the origin indicates the context from which the object is being removed.
+    is_a: Activity
+    class_uri: as:Remove
+
+  Undo:
+    description: Indicates that the actor is undoing the object. In most cases, the object will be an Activity describing some previously performed action (for instance, a person may have previously "liked" an article but, for whatever reason, might choose to undo that like at some later point in time). The target and origin typically have no defined meaning.
+    is_a: Activity
+    class_uri: as:Undo
+
+  Update:
+    description:  Indicates that the actor has updated the object. Note, however, that this vocabulary does not define a mechanism for describing the actual set of modifications made to object. The target and origin typically have no defined meaning.
+    is_a: Activity
+    class_uri: as:Update
+
+  View:
+    description: Indicates that the actor has viewed the object.
+    is_a: Activity
+    class_uri: as:View
+
+  Listen:
+    description: Indicates that the actor has listened to the object.
+    is_a: Activity
+    class_uri: as:Listen
+
+  Read:
+    description: Indicates that the actor has read the object.
+    is_a: Activity
+    class_uri: as:Read
+
+  Move:
+    description: Indicates that the actor has moved object from origin to target. If the origin or target are not specified, either can be determined by context.
+    is_a: Activity
+    class_uri: as:Move
+
+  Travel:
+    description: Indicates that the actor is traveling to target from origin. Travel is an IntransitiveObject whose actor specifies the direct object. If the target or origin are not specified, either can be determined by context.
+    is_a: IntransitiveActivity
+    class_uri: as:Travel
+
+  Announce:
+    description: Indicates that the actor is calling the target's attention the object. The origin typically has no defined meaning.
+    is_a: Activity
+    class_uri: as:Announce
+
+  Block:
+    description: Indicates that the actor is blocking the object. Blocking is a stronger form of Ignore. The typical use is to support social systems that allow one user to block activities or content of other users. The target and origin typically have no defined meaning.
+    is_a: Ignore
+    class_uri: as:Block
+
+  Flag:
+    description: Indicates that the actor is "flagging" the object. Flagging is defined in the sense common to many social platforms as reporting content as being inappropriate for any number of reasons.
+    is_a: Activity
+    class_uri: as:Flag
+
+  Dislike:
+    description: Indicates that the actor dislikes the object.
+    is_a: Activity
+    class_uri: as:Dislike
+
+  Question:
+    description: >
+      Represents a question being asked. Question objects are an extension of IntransitiveActivity. That is, the Question object is an Activity, but the direct object is the question itself and therefore it would not contain an object property.
+
+      Either of the anyOf and oneOf properties MAY be used to express possible answers, but a Question object MUST NOT have both properties.
+    is_a: IntransitiveActivity
+    slots:
+      - anyOf
+      - oneOf
+    class_uri: as:Question
+
+  # ------------------
+  # Actor Types
+
+  Application:
+    description: Describes a software application.
+    is_a: Object
+    class_uri: as:Application
+
+  Group:
+    description: Represents a formal or informal collective of Actors.
+    is_a: Object
+    class_uri: as:Group
+
+  Organization:
+    description: Represents an organization.
+    is_a: Object
+    class_uri: as:Organization
+
+  Person:
+    description: Represents an individual person.
+    is_a: Object
+    class_uri: as:Person
+
+  Service:
+    description: Represents a service of any kind.
+    is_a: Object
+    class_uri: as:Service
+
+  # -----------------------
+  # Object and Link Types
+
+  Relationship:
+    description: >
+      Describes a relationship between two individuals. The subject and object properties are used to identify the connected individuals.
+
+      See 5.2 Representing Relationships Between Entities for additional information.
+    is_a: Object
+    slots:
+      - object
+      - relationship
+      - subject
+    class_uri: as:Relationship
+    see_also:
+      - https://www.w3.org/TR/activitystreams-vocabulary/#connections
+
+  Document:
+    description: Represents a document of any kind.
+    is_a: Object
+    class_uri: as:Document
+
+  Article:
+    description:
+    is_a: Object
+    class_uri: as:Article
+
+  Audio:
+    description: Represents an audio document of any kind.
+    is_a: Document
+    class_uri: as:Audio
+
+  Image:
+    description: An image document of any kind
+    is_a: Document
+    class_uri: as:Image
+
+  Video:
+    description: Represents a video document of any kind.
+    is_a: Document
+    class_uri: as:Video
+
+  Note:
+    description: Represents a short written work typically less than a single paragraph in length.
+    is_a: Object
+    class_uri: as:Note
+
+  Page:
+    description: Represents a Web Page.
+    is_a: Object
+    class_uri: as:Page
+
+  Event:
+    description: Represents any kind of event.
+    is_a: Object
+    class_uri: as:Event
+
+  Place:
+    description: Represents a logical or physical location. See 5.3 Representing Places for additional information.
+    is_a: Object
+    slots:
+      - accuracy
+      - altitude
+      - latitude
+      - longitude
+      - radius
+      - units
+    class_uri: as:Place
+    see_also:
+      - https://www.w3.org/TR/activitystreams-vocabulary/#places
+
+  Mention:
+    description: A specialized Link that represents an @mention.
+    is_a: Link
+    class_uri: as:Mention
+
+  Profile:
+    description: A Profile is a content object that describes another Object, typically used to describe Actor Type objects. The describes property is used to reference the object being described by the profile.
+    is_a: Object
+    slots:
+    - describes
+    class_uri: as:Profile
+
+  Tombstone:
+    description: A Tombstone represents a content object that has been deleted. It can be used in Collections to signify that there used to be an object at this position, but it has been deleted.
+    is_a: Object
+    slots:
+      - formerType
+      - deleted
+    class_uri: as:Tombstone
+
+  # --------------------------------
+  # Not real but still used classes???
+  #
+
+  OrderedItems:
+    class_uri: as:OrderedItems
+    description: >
+      OrderedItems is not a real class in the ActivityStreams specification, but
+      it is used as the container of the items in `OrderedCollections`
+      
+
+slots:
+  id:
+    description: Provides the globally unique identifier for an Object or Link.
+    slot_uri: as:id
+    domain_of:
+      - Object
+      - Link
+    range: anyURI
+  type:
+    description: Identifies the Object or Link type. Multiple values may be specified.
+    domain_of:
+      - Object
+      - Link
+    range: anyURI
+    multivalued: true
+  actor:
+    description: Describes one or more entities that either performed or are expected to perform the activity. Any single activity can have multiple actors. The actor MAY be specified using an indirect Link.
+    is_a: attributedTo
+    slot_uri: as:actor
+    multivalued: true
+    domain_of: as:Activity
+    any_of:
+      - range: Object
+      - range: Link
+  attachment:
+    description: Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+    slot_uri: as:attachment
+    multivalued: true
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
+  attributedTo:
+    description: Identifies one or more entities to which this object is attributed. The attributed entities might not be Actors. For instance, an object might be attributed to the completion of another activity.
+    slot_uri: as:attributedTo
+    multivalued: true
+    domain_of:
+      - Link
+      - Object
+    any_of:
+      - range: Link
+      - range: Object
+  audience:
+    description: Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+    slot_uri: as:audience
+    multivalued: true
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
+  bcc:
+    description: Identifies one or more Objects that are part of the private secondary audience of this Object.
+    slot_uri: as:bcc
+    multivalued: true
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
+  bto:
+    description: Identifies an Object that is part of the private primary audience of this Object.
+    slot_uri: as:bto
+    multivalued: true
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
+  cc:
+    description: Identifies an Object that is part of the public secondary audience of this Object.
+    slot_uri: as:cc
+    multivalued: true
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
+  context:
+    description: > 
+      Identifies the context within which the object exists or an activity was performed.
+
+      The notion of "context" used is intentionally vague. The intended function is to serve as a means of grouping objects and activities that share a common originating context or purpose. An example could be all activities relating to a common project or event.
+    slot_uri: as:context
+    multivalued: true
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
+  current:
+    description: In a paged Collection, indicates the page that contains the most recently updated member items.
+    slot_uri: as:current
+    domain_of: as:Collection
+    any_of:
+      - range: CollectionPage
+      - range: OrderedCollectionPage
+      - range: Link
+  first:
+    description: In a paged Collection, indicates the furthest preceeding page of items in the collection.
+    slot_uri: as:first
+    domain_of: as:Collection
+    any_of:
+      - range: CollectionPage
+      - range: OrderedCollectionPage
+      - range: Link
+  generator:
+    description: Identifies the entity (e.g. an application) that generated the object.
+    slot_uri: as:generator
+    multivalued: true
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
+  icon:
+    description: Indicates an entity that describes an icon for this object. The image should have an aspect ratio of one (horizontal) to one (vertical) and should be suitable for presentation at a small size.
+    slot_uri: as:icon
+    multivalued: true
+    domain_of: Object
+    any_of:
+      - range: Image
+      - range: Link
+  image:
+    description: Indicates an entity that describes an image for this object. Unlike the icon property, there are no aspect ratio or display size limitations assumed.
+    slot_uri: as:image
+    multivalued: true
+    domain_of: Object
+    any_of:
+      - range: Image
+      - range: Link
+  inReplyTo:
+    description: Indicates one or more entities for which this object is considered a response.
+    slot_uri: as:inReplyTo
+    multivalued: true
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
+  instrument:
+    description: Identifies one or more objects used (or to be used) in the completion of an Activity.
+    slot_uri: as:instrument
+    multivalued: true
+    domain_of: Activity
+    any_of:
+      - range: Object
+      - range: Link
+  last:
+    description: In a paged Collection, indicates the furthest proceeding page of the collection.
+    slot_uri: as:last
+    domain_of: Collection
+    any_of:
+      - range: CollectionPage
+      - range: OrderedCollectionPage
+      - range: Link
+  location:
+    description: Indicates one or more physical or logical locations associated with the object.
+    slot_uri: as:location
+    multivalued: true
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
+  items:
+    description: Identifies the items contained in a collection. The items might be ordered or unordered.
+    slot_uri: as:items
+    multivalued: true
+    domain_of: Collection
+    any_of:
+      - range: Object
+      - range: Link
+  oneOf:
+    description: Identifies an exclusive option for a Question. Use of oneOf implies that the Question can have only a single answer. To indicate that a Question can have multiple answers, use anyOf.
+    slot_uri: as:oneOf
+    multivalued: true
+    domain_of: Question
+    any_of:
+      - range: Object
+      - range: Link
+  anyOf:
+    description: Identifies an inclusive option for a Question. Use of anyOf implies that the Question can have multiple answers. To indicate that a Question can have only one answer, use oneOf.
+    slot_uri: as:anyOf
+    multivalued: true
+    domain_of: Question
+    any_of:
+      - range: Object
+      - range: Link
+  closed:
+    description: Indicates that a question has been closed, and answers are no longer accepted.
+    domain_of: Question
+    any_of:
+      - range: Object
+      - range: Link
+      - range: datetime
+      - range: boolean
+  origin:
+    description: Describes an indirect object of the activity from which the activity is directed. The precise meaning of the origin is the object of the English preposition "from". For instance, in the activity "John moved an item to List B from List A", the origin of the activity is "List A".
+    slot_uri: as:origin
+    multivalued: true
+    domain_of: Activity
+    any_of:
+      - range: Object
+      - range: Link
+  next:
+    description: In a paged Collection, indicates the next page of items.
+    slot_uri: as:next
+    domain_of:
+      - CollectionPage
+      - OrderedCollectionPage
+    any_of:
+      - range: CollectionPage
+      - range: OrderedCollectionPage
+      - range: Link
+  object:
+    description: >
+      When used within an Activity, describes the direct object of the activity. For instance, in the activity "John added a movie to his wishlist", the object of the activity is the movie added.
+
+      When used within a Relationship describes the entity to which the subject is related.
+    slot_uri: as:object
+    multivalued: true
+    domain_of:
+      - Activity
+      - Relationship
+    any_of:
+      - range: Object
+      - range: Link
+  prev:
+    description: In a paged Collection, identifies the previous page of items.
+    slot_uri: as:prev
+    domain_of:
+      - CollectionPage
+      - OrderedCollectionPage
+    any_of:
+      - range: CollectionPage
+      - range: OrderedCollectionPage
+      - range: Link
+  preview:
+    description: Identifies an entity that provides a preview of this object.
+    slot_uri: as:preview
+    multivalued: true
+    domain_of:
+      - Link
+      - Object
+    any_of:
+      - range: Link
+      - range: Object
+  result:
+    description: Describes the result of the activity. For instance, if a particular action results in the creation of a new resource, the result property can be used to describe that new resource.
+    slot_uri: as:result
+    multivalued: true
+    domain_of: Activity
+    any_of:
+      - range: Object
+      - range: Link
+  replies:
+    description: Identifies a Collection containing objects considered to be responses to this object.
+    slot_uri: as:replies
+    domain_of: Object
+    range: Collection
+  tag:
+    description: One or more "tags" that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+    slot_uri: as:tag
+    multivalued: true
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
+  target:
+    description: Describes the indirect object, or target, of the activity. The precise meaning of the target is largely dependent on the type of action being described but will often be the object of the English preposition "to". For instance, in the activity "John added a movie to his wishlist", the target of the activity is John's wishlist. An activity can have more than one target.
+    slot_uri: as:target
+    multivalued: true
+    domain_of: Activity
+    any_of:
+      - range: Object
+      - range: Link
+  to:
+    description: Identifies an entity considered to be part of the public primary audience of an Object
+    slot_uri: as:to
+    multivalued: true
+    domain_of: Object
+    any_of:
+      - range: Object
+      - range: Link
+  url:
+    description: Identifies one or more links to representations of the object
+    slot_uri: as:url
+    multivalued: true
+    domain_of: Object
+    any_of:
+      - range: anyURI
+      - range: Link
+  accuracy:
+    description: Indicates the accuracy of position coordinates on a Place objects. Expressed in properties of percentage. e.g. "94.0" means "94.0% accurate".
+    slot_uri: as:accuracy
+    domain_of: Place
+    range: float
+    minimum_value: 0
+    maximum_value: 100
+  altitude:
+    description: Indicates the altitude of a place. The measurement units is indicated using the units property. If units is not specified, the default is assumed to be "m" indicating meters.
+    slot_uri: as:altitude
+    domain_of: Object
+    range: float
+  content:
+    description:  The content or textual representation of the Object encoded as a JSON string. By default, the value of content is HTML. The mediaType property can be used in the object to indicate a different content type. The content MAY be expressed using multiple language-tagged values.
+    slot_uri: as:content
+    multivalued: true
+    domain_of: Object
+    any_of:
+      - range: string
+      - range: langString
+  name:
+    description: A simple, human-readable, plain-text name for the object. HTML markup MUST NOT be included. The name MAY be expressed using multiple language-tagged values.
+    slot_uri: rdfs:name
+    multivalued: true
+    domain_of:
+      - Object
+      - Link
+    any_of:
+      - range: string
+      - range: langString
+  duration:
+    description: When the object describes a time-bound resource, such as an audio or video, a meeting, etc, the duration property indicates the object's approximate duration. The value MUST be expressed as an xsd:duration as defined by [ xmlschema11-2], section 3.3.6 (e.g. a period of 5 seconds is represented as "PT5S").
+    slot_uri: as:duration
+    domain_of: Object
+    range: durationType
+    see_also:
+      - https://www.w3.org/TR/xmlschema11-2/
+  height:
+    description: On a Link, specifies a hint as to the rendering height in device-independent pixels of the linked resource.
+    slot_uri: as:height
+    domain_of: Link
+    range: nonNegativeInteger
+    minimum_value: 0
+  href:
+    description: The target resource pointed to by a Link.
+    slot_uri: as:href
+    domain_of: Link
+    range: anyURI
+  hreflang:
+    description: Hints as to the language used by the target resource. Value MUST be a [BCP47] Language-Tag.
+    slot_uri: as:hreflang
+    close_mappings:
+      - schema:inLanguage
+    notes: Inheriting from schema:inLanguage in order to specify IETF BCP47 language codes since there isn't a formal ontology I can find
+    domain_of: Link
+    range: string
+  partOf:
+    description: Identifies the Collection to which a CollectionPage objects items belong.
+    slot_uri: as:partOf
+    domain_of:
+      - CollectionPage
+      - OrderedCollectionPage
+    any_of:
+      - range: Link
+      - range: Collection
+  latitude:
+    description: The latitude of a place
+    slot_uri: as:latitude
+    domain_of: Place
+    range: float
+  longitude:
+    description: The longitude of a place
+    slot_uri: as:longitude
+    domain_of: Place
+    range: float
+  mediaType:
+    description: >
+      When used on a Link, identifies the MIME media type of the referenced resource.
+
+      When used on an Object, identifies the MIME media type of the value of the content property. If not specified, the content property is assumed to contain text/html content.
+    slot_uri: as:mediaType
+    exact_mappings:
+      - schema:encodingFormat
+    notes: Like hreflang, casting as schema:encodingFormat to specify a MIME type
+    domain_of:
+      - Link
+      - Object
+    range: string
+  endTime:
+    description: The date and time describing the actual or expected ending time of the object. When used with an Activity object, for instance, the endTime property specifies the moment the activity concluded or is expected to conclude.
+    slot_uri: as:endTime
+    domain_of: Object
+    range: datetime
+  published:
+    description: The date and time at which the object was published
+    slot_uri: as:published
+    domain_of: Object
+    range: datetime
+  startTime:
+    description: The date and time describing the actual or expected starting time of the object. When used with an Activity object, for instance, the startTime property specifies the moment the activity began or is scheduled to begin.
+    slot_uri: as:startTime
+    domain_of: Object
+    range: datetime
+  radius:
+    description: The radius from the given latitude and longitude for a Place. The units is expressed by the units property. If units is not specified, the default is assumed to be "m" indicating "meters".
+    slot_uri: as:radius
+    domain_of: Place
+    range: float
+    minimum_value: 0
+  rel:
+    description: > 
+      A link relation associated with a Link. The value MUST conform to both the [HTML5] and [RFC5988] "link relation" definitions.
+
+      In the [HTML5], any string not containing the "space" U+0020, "tab" (U+0009), "LF" (U+000A), "FF" (U+000C), "CR" (U+000D) or "," (U+002C) characters can be used as a valid link relation.
+    notes: No validation is done or type could be found for declaring the RCF5988 or HTML5 link relation types
+    slot_uri: as:rel
+    multivalued: true
+    domain_of: Link
+    range: string
+  startIndex:
+    description: A non-negative integer value identifying the relative position within the logical view of a strictly ordered collection.
+    domain_of: OrderedCollectionPage
+    range: nonNegativeInteger
+    minimum_value: 0
+  summary:
+    description: A natural language summarization of the object encoded as HTML. Multiple language tagged summaries MAY be provided.
+    slot_uri: as:summary
+    multivalued: true
+    domain_of: Object
+    any_of:
+      - range: string
+      - range: langString
+  totalItems:
+    description: A non-negative integer specifying the total number of objects contained by the logical view of the collection. This number might not reflect the actual number of items serialized within the Collection object instance.
+    slot_uri: as:totalItems
+    domain_of: Collection
+    range: nonNegativeInteger
+    minimum_value: 0.0
+  units:
+    description: Specifies the measurement units for the radius and altitude properties on a Place object. If not specified, the default is assumed to be "m" for "meters".
+    slot_uri: as:units
+    domain_of: Place
+    any_of:
+      - range: unitEnum
+      - range: anyURI
+  updated:
+    description: The date and time at which the object was updated
+    slot_uri: as:updated
+    domain_of: Object
+    range: datetime
+  width:
+    description: On a Link, specifies a hint as to the rendering width in device-independent pixels of the linked resource.
+    slot_uri: as:width
+    domain_of: Link
+    range: nonNegativeInteger
+    minimum_value: 0
+  subject:
+    description: On a Relationship object, the subject property identifies one of the connected individuals. For instance, for a Relationship object describing "John is related to Sally", subject would refer to John.
+    slot_uri: as:subject
+    multivalued: true
+    domain_of: Relationship
+    any_of:
+      - range: Object
+      - range: Link
+  relationship:
+    description: On a Relationship object, the relationship property identifies the kind of relationship that exists between subject and object.
+    slot_uri: as:relationship
+    multivalued: true
+    domain_of: Relationship
+    range: Object
+  describes:
+    description: On a Profile object, the describes property identifies the object described by the Profile.
+    slot_uri: as:describes
+    domain_of: Profile
+    range: Object
+  formerType:
+    description: On a Tombstone object, the formerType property identifies the type of the object that was deleted.
+    slot_uri: as:formerType
+    multivalued: true
+    domain_of: Tombstone
+    range: Object
+  deleted:
+    description: On a Tombstone object, the deleted property is a timestamp for when the object was deleted.
+    slot_uri: as:deleted
+    domain_of: Tombstone
+    range: datetime
+
+
+  # These are extra properties that were in the OWL schema that we'll keep here in case ActivityPub reimplements them
+  #  objectType:
+  #    slot_uri: as:objectType
+  #    multivalued: true
+  #  rating:
+  #    description:
+  #    - A numeric rating (>= 0.0, <= 5.0) for the object@en
+  #    slot_uri: as:rating
+  #    multivalued: true
+  #  upstreamDuplicates:
+  #    slot_uri: as:upstreamDuplicates
+  #    multivalued: true
+  #  verb:
+  #    slot_uri: as:verb
+  #    multivalued: true
+  #  author:
+  #    description:
+  #      - Identifies the author of an object. Deprecated. Use as:attributedTo instead@en
+  #    is_a: attributedTo
+  #    slot_uri: as:author
+  #    multivalued: true
+  #  predicate:
+  #    slot_uri: rdf:predicate
+  #    multivalued: true
+  #  provider:
+  #    slot_uri: as:provider
+  #    multivalued: true
+  #  downstreamDuplicates:
+  #    slot_uri: as:downstreamDuplicates
+  #    multivalued: true
+
+
+
