@@ -1,0 +1,1547 @@
+@prefix as: <http://www.w3.org/ns/activitystreams#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix unit: <http://qudt.org/2.1/vocab/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+as:Property a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Property" ;
+    skos:exactMatch rdf:Property ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Statement a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Statement" ;
+    skos:exactMatch rdf:Statement ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:closed a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "closed" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link linkml:Datetime linkml:Boolean ) ] ;
+    skos:definition "Indicates that a question has been closed, and answers are no longer accepted." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:type a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "type" ;
+    rdfs:range as:anyURI ;
+    skos:definition "Identifies the Object or Link type. Multiple values may be specified." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Add a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Add" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor has added the object to the target. If the target property is not explicitly specified, the target would need to be determined implicitly by context. The origin can be used to identify the context from which the object originated." ;
+    skos:exactMatch as:Add ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Announce a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Announce" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor is calling the target's attention the object. The origin typically has no defined meaning." ;
+    skos:exactMatch as:Announce ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Application a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Application" ;
+    rdfs:subClassOf as:Object ;
+    skos:definition "Describes a software application." ;
+    skos:exactMatch as:Application ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Arrive a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Arrive" ;
+    rdfs:subClassOf as:IntransitiveActivity ;
+    skos:definition "An IntransitiveActivity that indicates that the actor has arrived at the location. The origin can be used to identify the context from which the actor originated. The target typically has no defined meaning." ;
+    skos:exactMatch as:Arrive ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Article a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Article" ;
+    rdfs:subClassOf as:Object ;
+    skos:exactMatch as:Article ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Audio a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Audio" ;
+    rdfs:subClassOf as:Document ;
+    skos:definition "Represents an audio document of any kind." ;
+    skos:exactMatch as:Audio ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Block a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Block" ;
+    rdfs:subClassOf as:Ignore ;
+    skos:definition "Indicates that the actor is blocking the object. Blocking is a stronger form of Ignore. The typical use is to support social systems that allow one user to block activities or content of other users. The target and origin typically have no defined meaning." ;
+    skos:exactMatch as:Block ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Create a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Create" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor has created the object." ;
+    skos:exactMatch as:Create ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Delete a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Delete" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor has deleted the object. If specified, the origin indicates the context from which the object was deleted." ;
+    skos:exactMatch as:Delete ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Dislike a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Dislike" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor dislikes the object." ;
+    skos:exactMatch as:Dislike ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Event a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Event" ;
+    rdfs:subClassOf as:Object ;
+    skos:definition "Represents any kind of event." ;
+    skos:exactMatch as:Event ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Flag a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Flag" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor is \"flagging\" the object. Flagging is defined in the sense common to many social platforms as reporting content as being inappropriate for any number of reasons." ;
+    skos:exactMatch as:Flag ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Follow a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Follow" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor is \"following\" the object. Following is defined in the sense typically used within Social systems in which the actor is interested in any activity performed by or on the object. The target and origin typically have no defined meaning." ;
+    skos:exactMatch as:Follow ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Group a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Group" ;
+    rdfs:subClassOf as:Object ;
+    skos:definition "Represents a formal or informal collective of Actors." ;
+    skos:exactMatch as:Group ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Invite a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Invite" ;
+    rdfs:subClassOf as:Offer ;
+    skos:definition "A specialization of Offer in which the actor is extending an invitation for the object to the target." ;
+    skos:exactMatch as:Invite ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Join a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Join" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor has joined the object. The target and origin typically have no defined meaning." ;
+    skos:exactMatch as:Join ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Leave a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Leave" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor has left the object. The target and origin typically have no meaning." ;
+    skos:exactMatch as:Leave ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Like a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Like" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor likes, recommends or endorses the object. The target and origin typically have no defined meaning." ;
+    skos:exactMatch as:Like ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Listen a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Listen" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor has listened to the object." ;
+    skos:exactMatch as:Listen ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Mention a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Mention" ;
+    rdfs:subClassOf as:Link ;
+    skos:definition "A specialized Link that represents an @mention." ;
+    skos:exactMatch as:Mention ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Move a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Move" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor has moved object from origin to target. If the origin or target are not specified, either can be determined by context." ;
+    skos:exactMatch as:Move ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Note a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Note" ;
+    rdfs:subClassOf as:Object ;
+    skos:definition "Represents a short written work typically less than a single paragraph in length." ;
+    skos:exactMatch as:Note ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:OrderedCollection a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "OrderedCollection" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:items ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty as:items ],
+        as:Collection ;
+    skos:definition "A subtype of Collection in which members of the logical collection are assumed to always be strictly ordered." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:OrderedItems a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "OrderedItems" ;
+    skos:definition """OrderedItems is not a real class in the ActivityStreams specification, but it is used as the container of the items in `OrderedCollections`
+""" ;
+    skos:exactMatch as:OrderedItems ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Organization a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Organization" ;
+    rdfs:subClassOf as:Object ;
+    skos:definition "Represents an organization." ;
+    skos:exactMatch as:Organization ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Page a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Page" ;
+    rdfs:subClassOf as:Object ;
+    skos:definition "Represents a Web Page." ;
+    skos:exactMatch as:Page ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Person a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Person" ;
+    rdfs:subClassOf as:Object ;
+    skos:definition "Represents an individual person." ;
+    skos:exactMatch as:Person ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Place a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Place" ;
+    rdfs:seeAlso <https://www.w3.org/TR/activitystreams-vocabulary/#places> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:units ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:latitude ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:altitude ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:longitude ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:latitude ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty as:longitude ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:Float [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:maxInclusive 100 ] ) ] ) ] ;
+            owl:onProperty as:accuracy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:unionOf ( as:UnitEnum as:anyURI ) ] ;
+            owl:onProperty as:units ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:accuracy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty as:latitude ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:altitude ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:accuracy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:radius ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:longitude ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:units ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty as:altitude ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:radius ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:Float [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] ) ] ;
+            owl:onProperty as:radius ],
+        as:Object ;
+    skos:definition "Represents a logical or physical location. See 5.3 Representing Places for additional information." ;
+    skos:exactMatch as:Place ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Profile a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Profile" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom as:Object ;
+            owl:onProperty as:describes ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:describes ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:describes ],
+        as:Object ;
+    skos:definition "A Profile is a content object that describes another Object, typically used to describe Actor Type objects. The describes property is used to reference the object being described by the profile." ;
+    skos:exactMatch as:Profile ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Question a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Question" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:anyOf ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:oneOf ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:anyOf ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:oneOf ],
+        as:IntransitiveActivity ;
+    skos:definition """Represents a question being asked. Question objects are an extension of IntransitiveActivity. That is, the Question object is an Activity, but the direct object is the question itself and therefore it would not contain an object property.
+Either of the anyOf and oneOf properties MAY be used to express possible answers, but a Question object MUST NOT have both properties.
+""" ;
+    skos:exactMatch as:Question ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Read a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Read" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor has read the object." ;
+    skos:exactMatch as:Read ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Relationship a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Relationship" ;
+    rdfs:seeAlso <https://www.w3.org/TR/activitystreams-vocabulary/#connections> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:object ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:relationship ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom as:Object ;
+            owl:onProperty as:relationship ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:subject ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:object ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:subject ],
+        as:Object ;
+    skos:definition """Describes a relationship between two individuals. The subject and object properties are used to identify the connected individuals.
+See 5.2 Representing Relationships Between Entities for additional information.
+""" ;
+    skos:exactMatch as:Relationship ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Remove a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Remove" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor is removing the object. If specified, the origin indicates the context from which the object is being removed." ;
+    skos:exactMatch as:Remove ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Service a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Service" ;
+    rdfs:subClassOf as:Object ;
+    skos:definition "Represents a service of any kind." ;
+    skos:exactMatch as:Service ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:TentativeAccept a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "TentativeAccept" ;
+    rdfs:subClassOf as:Accept ;
+    skos:definition "A specialization of Accept indicating that the acceptance is tentative." ;
+    skos:exactMatch as:TentativeAccept ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:TentativeReject a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "TentativeReject" ;
+    rdfs:subClassOf as:Reject ;
+    skos:definition "A specialization of Reject in which the rejection is considered tentative." ;
+    skos:exactMatch as:TentativeReject ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Tombstone a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Tombstone" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Datetime ;
+            owl:onProperty as:deleted ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:deleted ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:formerType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom as:Object ;
+            owl:onProperty as:formerType ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:deleted ],
+        as:Object ;
+    skos:definition "A Tombstone represents a content object that has been deleted. It can be used in Collections to signify that there used to be an object at this position, but it has been deleted." ;
+    skos:exactMatch as:Tombstone ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Travel a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Travel" ;
+    rdfs:subClassOf as:IntransitiveActivity ;
+    skos:definition "Indicates that the actor is traveling to target from origin. Travel is an IntransitiveObject whose actor specifies the direct object. If the target or origin are not specified, either can be determined by context." ;
+    skos:exactMatch as:Travel ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Undo a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Undo" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor is undoing the object. In most cases, the object will be an Activity describing some previously performed action (for instance, a person may have previously \"liked\" an article but, for whatever reason, might choose to undo that like at some later point in time). The target and origin typically have no defined meaning." ;
+    skos:exactMatch as:Undo ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Update a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Update" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor has updated the object. Note, however, that this vocabulary does not define a mechanism for describing the actual set of modifications made to object. The target and origin typically have no defined meaning." ;
+    skos:exactMatch as:Update ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Video a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Video" ;
+    rdfs:subClassOf as:Document ;
+    skos:definition "Represents a video document of any kind." ;
+    skos:exactMatch as:Video ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:View a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "View" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor has viewed the object." ;
+    skos:exactMatch as:View ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+unit:CM a owl:Class,
+        as:UnitEnum ;
+    rdfs:label "cm" ;
+    rdfs:subClassOf as:UnitEnum .
+
+unit:FT a owl:Class,
+        as:UnitEnum ;
+    rdfs:label "feet" ;
+    rdfs:subClassOf as:UnitEnum .
+
+unit:IN a owl:Class,
+        as:UnitEnum ;
+    rdfs:label "inches" ;
+    rdfs:subClassOf as:UnitEnum .
+
+unit:KiloM a owl:Class,
+        as:UnitEnum ;
+    rdfs:label "km" ;
+    rdfs:subClassOf as:UnitEnum .
+
+unit:M a owl:Class,
+        as:UnitEnum ;
+    rdfs:label "m" ;
+    rdfs:subClassOf as:UnitEnum .
+
+unit:MI a owl:Class,
+        as:UnitEnum ;
+    rdfs:label "miles" ;
+    rdfs:subClassOf as:UnitEnum .
+
+as:Accept a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Accept" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor accepts the object. The target property can be used in certain circumstances to indicate the context into which the object has been accepted." ;
+    skos:exactMatch as:Accept ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Ignore a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Ignore" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor is ignoring the object. The target and origin typically have no defined meaning." ;
+    skos:exactMatch as:Ignore ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Offer a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Offer" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor is offering the object. If specified, the target indicates the entity to which the object is being offered." ;
+    skos:exactMatch as:Offer ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Reject a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Reject" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "Indicates that the actor is rejecting the object. The target and origin typically have no defined meaning." ;
+    skos:exactMatch as:Reject ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:actor a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "actor" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    rdfs:subPropertyOf as:attributedTo ;
+    skos:definition "Describes one or more entities that either performed or are expected to perform the activity. Any single activity can have multiple actors. The actor MAY be specified using an indirect Link." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:anyOf a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "anyOf" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    skos:definition "Identifies an inclusive option for a Question. Use of anyOf implies that the Question can have multiple answers. To indicate that a Question can have only one answer, use oneOf." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:attachment a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "attachment" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    skos:definition "Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:audience a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "audience" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    skos:definition "Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:bcc a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "bcc" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    skos:definition "Identifies one or more Objects that are part of the private secondary audience of this Object." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:bto a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "bto" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    skos:definition "Identifies an Object that is part of the private primary audience of this Object." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:cc a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "cc" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    skos:definition "Identifies an Object that is part of the public secondary audience of this Object." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:content a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "content" ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:unionOf ( linkml:String as:langString ) ] ;
+    skos:definition "The content or textual representation of the Object encoded as a JSON string. By default, the value of content is HTML. The mediaType property can be used in the object to indicate a different content type. The content MAY be expressed using multiple language-tagged values." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:context a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "context" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    skos:definition """Identifies the context within which the object exists or an activity was performed.
+The notion of "context" used is intentionally vague. The intended function is to serve as a means of grouping objects and activities that share a common originating context or purpose. An example could be all activities relating to a common project or event.
+""" ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:durationType a owl:Class,
+        linkml:TypeDefinition ;
+    rdfs:subClassOf linkml:String .
+
+as:formerType a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "formerType" ;
+    rdfs:range as:Object ;
+    skos:definition "On a Tombstone object, the formerType property identifies the type of the object that was deleted." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:generator a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "generator" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    skos:definition "Identifies the entity (e.g. an application) that generated the object." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:icon a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "icon" ;
+    rdfs:range [ owl:unionOf ( as:Image as:Link ) ] ;
+    skos:definition "Indicates an entity that describes an icon for this object. The image should have an aspect ratio of one (horizontal) to one (vertical) and should be suitable for presentation at a small size." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:image a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "image" ;
+    rdfs:range [ owl:unionOf ( as:Image as:Link ) ] ;
+    skos:definition "Indicates an entity that describes an image for this object. Unlike the icon property, there are no aspect ratio or display size limitations assumed." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:inReplyTo a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "inReplyTo" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    skos:definition "Indicates one or more entities for which this object is considered a response." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:instrument a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "instrument" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    skos:definition "Identifies one or more objects used (or to be used) in the completion of an Activity." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:location a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "location" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    skos:definition "Indicates one or more physical or logical locations associated with the object." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:oneOf a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "oneOf" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    skos:definition "Identifies an exclusive option for a Question. Use of oneOf implies that the Question can have only a single answer. To indicate that a Question can have multiple answers, use anyOf." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:origin a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "origin" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    skos:definition "Describes an indirect object of the activity from which the activity is directed. The precise meaning of the origin is the object of the English preposition \"from\". For instance, in the activity \"John moved an item to List B from List A\", the origin of the activity is \"List A\"." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:rel a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "rel" ;
+    rdfs:range linkml:String ;
+    skos:definition """A link relation associated with a Link. The value MUST conform to both the [HTML5] and [RFC5988] "link relation" definitions.
+In the [HTML5], any string not containing the "space" U+0020, "tab" (U+0009), "LF" (U+000A), "FF" (U+000C), "CR" (U+000D) or "," (U+002C) characters can be used as a valid link relation.
+""" ;
+    skos:editorialNote "No validation is done or type could be found for declaring the RCF5988 or HTML5 link relation types" ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:relationship a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "relationship" ;
+    rdfs:range as:Object ;
+    skos:definition "On a Relationship object, the relationship property identifies the kind of relationship that exists between subject and object." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:result a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "result" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    skos:definition "Describes the result of the activity. For instance, if a particular action results in the creation of a new resource, the result property can be used to describe that new resource." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:subject a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "subject" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    skos:definition "On a Relationship object, the subject property identifies one of the connected individuals. For instance, for a Relationship object describing \"John is related to Sally\", subject would refer to John." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:summary a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "summary" ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:unionOf ( linkml:String as:langString ) ] ;
+    skos:definition "A natural language summarization of the object encoded as HTML. Multiple language tagged summaries MAY be provided." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:tag a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "tag" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    skos:definition "One or more \"tags\" that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:target a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "target" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    skos:definition "Describes the indirect object, or target, of the activity. The precise meaning of the target is largely dependent on the type of action being described but will often be the object of the English preposition \"to\". For instance, in the activity \"John added a movie to his wishlist\", the target of the activity is John's wishlist. An activity can have more than one target." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:to a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "to" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    skos:definition "Identifies an entity considered to be part of the public primary audience of an Object" ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:url a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "url" ;
+    rdfs:range [ owl:unionOf ( as:anyURI as:Link ) ] ;
+    skos:definition "Identifies one or more links to representations of the object" ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:accuracy a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "accuracy" ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:intersectionOf ( linkml:Float [ a rdfs:Datatype ;
+                        owl:onDatatype xsd:integer ;
+                        owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] [ a rdfs:Datatype ;
+                        owl:onDatatype xsd:integer ;
+                        owl:withRestrictions ( [ xsd:maxInclusive 100 ] ) ] ) ] ;
+    skos:definition "Indicates the accuracy of position coordinates on a Place objects. Expressed in properties of percentage. e.g. \"94.0\" means \"94.0% accurate\"." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:altitude a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "altitude" ;
+    rdfs:range linkml:Float ;
+    skos:definition "Indicates the altitude of a place. The measurement units is indicated using the units property. If units is not specified, the default is assumed to be \"m\" indicating meters." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:attributedTo a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "attributedTo" ;
+    rdfs:range [ owl:unionOf ( as:Link as:Object ) ] ;
+    skos:definition "Identifies one or more entities to which this object is attributed. The attributed entities might not be Actors. For instance, an object might be attributed to the completion of another activity." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:current a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "current" ;
+    rdfs:range [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
+    skos:definition "In a paged Collection, indicates the page that contains the most recently updated member items." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:deleted a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "deleted" ;
+    rdfs:range linkml:Datetime ;
+    skos:definition "On a Tombstone object, the deleted property is a timestamp for when the object was deleted." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:describes a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "describes" ;
+    rdfs:range as:Object ;
+    skos:definition "On a Profile object, the describes property identifies the object described by the Profile." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:duration a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "duration" ;
+    rdfs:range as:durationType ;
+    rdfs:seeAlso <https://www.w3.org/TR/xmlschema11-2/> ;
+    skos:definition "When the object describes a time-bound resource, such as an audio or video, a meeting, etc, the duration property indicates the object's approximate duration. The value MUST be expressed as an xsd:duration as defined by [ xmlschema11-2], section 3.3.6 (e.g. a period of 5 seconds is represented as \"PT5S\")." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:endTime a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "endTime" ;
+    rdfs:range linkml:Datetime ;
+    skos:definition "The date and time describing the actual or expected ending time of the object. When used with an Activity object, for instance, the endTime property specifies the moment the activity concluded or is expected to conclude." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:first a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "first" ;
+    rdfs:range [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
+    skos:definition "In a paged Collection, indicates the furthest preceeding page of items in the collection." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:height a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "height" ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:intersectionOf ( as:nonNegativeInteger [ a rdfs:Datatype ;
+                        owl:onDatatype xsd:integer ;
+                        owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] ) ] ;
+    skos:definition "On a Link, specifies a hint as to the rendering height in device-independent pixels of the linked resource." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:href a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "href" ;
+    rdfs:range as:anyURI ;
+    skos:definition "The target resource pointed to by a Link." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:hreflang a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "hreflang" ;
+    rdfs:range linkml:String ;
+    skos:closeMatch <http://schema.org/inLanguage> ;
+    skos:definition "Hints as to the language used by the target resource. Value MUST be a [BCP47] Language-Tag." ;
+    skos:editorialNote "Inheriting from schema:inLanguage in order to specify IETF BCP47 language codes since there isn't a formal ontology I can find" ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:last a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "last" ;
+    rdfs:range [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
+    skos:definition "In a paged Collection, indicates the furthest proceeding page of the collection." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:latitude a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "latitude" ;
+    rdfs:range linkml:Float ;
+    skos:definition "The latitude of a place" ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:longitude a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "longitude" ;
+    rdfs:range linkml:Float ;
+    skos:definition "The longitude of a place" ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:published a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "published" ;
+    rdfs:range linkml:Datetime ;
+    skos:definition "The date and time at which the object was published" ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:radius a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "radius" ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:intersectionOf ( linkml:Float [ a rdfs:Datatype ;
+                        owl:onDatatype xsd:integer ;
+                        owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] ) ] ;
+    skos:definition "The radius from the given latitude and longitude for a Place. The units is expressed by the units property. If units is not specified, the default is assumed to be \"m\" indicating \"meters\"." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:replies a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "replies" ;
+    rdfs:range as:Collection ;
+    skos:definition "Identifies a Collection containing objects considered to be responses to this object." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:startIndex a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "startIndex" ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:intersectionOf ( as:nonNegativeInteger [ a rdfs:Datatype ;
+                        owl:onDatatype xsd:integer ;
+                        owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] ) ] ;
+    skos:definition "A non-negative integer value identifying the relative position within the logical view of a strictly ordered collection." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:startTime a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "startTime" ;
+    rdfs:range linkml:Datetime ;
+    skos:definition "The date and time describing the actual or expected starting time of the object. When used with an Activity object, for instance, the startTime property specifies the moment the activity began or is scheduled to begin." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:totalItems a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "totalItems" ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:intersectionOf ( as:nonNegativeInteger [ a rdfs:Datatype ;
+                        owl:onDatatype xsd:integer ;
+                        owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] ) ] ;
+    skos:definition "A non-negative integer specifying the total number of objects contained by the logical view of the collection. This number might not reflect the actual number of items serialized within the Collection object instance." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:units a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "units" ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:unionOf ( as:UnitEnum as:anyURI ) ] ;
+    skos:definition "Specifies the measurement units for the radius and altitude properties on a Place object. If not specified, the default is assumed to be \"m\" for \"meters\"." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:updated a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "updated" ;
+    rdfs:range linkml:Datetime ;
+    skos:definition "The date and time at which the object was updated" ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:width a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "width" ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:intersectionOf ( as:nonNegativeInteger [ a rdfs:Datatype ;
+                        owl:onDatatype xsd:integer ;
+                        owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] ) ] ;
+    skos:definition "On a Link, specifies a hint as to the rendering width in device-independent pixels of the linked resource." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Document a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Document" ;
+    rdfs:subClassOf as:Object ;
+    skos:definition "Represents a document of any kind." ;
+    skos:exactMatch as:Document ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:IntransitiveActivity a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "IntransitiveActivity" ;
+    rdfs:subClassOf as:Activity ;
+    skos:definition "['An Activity that has no direct object@en']" ;
+    skos:exactMatch as:IntransitiveActivity ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:name a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "name" ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:unionOf ( linkml:String as:langString ) ] ;
+    skos:definition "A simple, human-readable, plain-text name for the object. HTML markup MUST NOT be included. The name MAY be expressed using multiple language-tagged values." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:object a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "object" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    skos:definition """When used within an Activity, describes the direct object of the activity. For instance, in the activity "John added a movie to his wishlist", the object of the activity is the movie added.
+When used within a Relationship describes the entity to which the subject is related.
+""" ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:preview a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "preview" ;
+    rdfs:range [ owl:unionOf ( as:Link as:Object ) ] ;
+    skos:definition "Identifies an entity that provides a preview of this object." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Image a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Image" ;
+    rdfs:subClassOf as:Document ;
+    skos:definition "An image document of any kind" ;
+    skos:exactMatch as:Image ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:id a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "id" ;
+    rdfs:range as:anyURI ;
+    skos:definition "Provides the globally unique identifier for an Object or Link." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:items a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "items" ;
+    rdfs:range [ owl:unionOf ( as:Object as:Link ) ] ;
+    skos:definition "Identifies the items contained in a collection. The items might be ordered or unordered." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:mediaType a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "mediaType" ;
+    rdfs:range linkml:String ;
+    skos:definition """When used on a Link, identifies the MIME media type of the referenced resource.
+When used on an Object, identifies the MIME media type of the value of the content property. If not specified, the content property is assumed to contain text/html content.
+""" ;
+    skos:editorialNote "Like hreflang, casting as schema:encodingFormat to specify a MIME type" ;
+    skos:exactMatch <http://schema.org/encodingFormat> ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:next a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "next" ;
+    rdfs:range [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
+    skos:definition "In a paged Collection, indicates the next page of items." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:partOf a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "partOf" ;
+    rdfs:range [ owl:unionOf ( as:Link as:Collection ) ] ;
+    skos:definition "Identifies the Collection to which a CollectionPage objects items belong." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:prev a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "prev" ;
+    rdfs:range [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
+    skos:definition "In a paged Collection, identifies the previous page of items." ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:langString a owl:Class,
+        linkml:TypeDefinition ;
+    rdfs:subClassOf linkml:String .
+
+as:Collection a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Collection" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:items ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:totalItems ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:current ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:current ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:last ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
+            owl:onProperty as:last ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:first ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:items ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
+            owl:onProperty as:first ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
+            owl:onProperty as:current ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:totalItems ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( as:nonNegativeInteger [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] ) ] ;
+            owl:onProperty as:totalItems ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:last ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:first ],
+        as:Object ;
+    skos:definition "A Collection is a subtype of Object that represents ordered or unordered sets of Object or Link instances. Refer to the Activity Streams 2.0 Core specification for a complete description of the Collection type." ;
+    skos:exactMatch as:Collection ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:nonNegativeInteger a owl:Class,
+        linkml:TypeDefinition ;
+    rdfs:subClassOf linkml:Integer .
+
+as:anyURI a owl:Class,
+        linkml:TypeDefinition ;
+    rdfs:subClassOf linkml:String .
+
+as:CollectionPage a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "CollectionPage" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:next ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Link as:Collection ) ] ;
+            owl:onProperty as:partOf ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
+            owl:onProperty as:next ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
+            owl:onProperty as:prev ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:prev ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:partOf ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:partOf ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:prev ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:next ],
+        as:Collection ;
+    skos:definition "Used to represent distinct subsets of items from a Collection. Refer to the Activity Streams 2.0 Core for a complete description of the CollectionPage object." ;
+    skos:exactMatch as:CollectionPage ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:OrderedCollectionPage a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "OrderedCollectionPage" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:prev ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( as:nonNegativeInteger [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] ) ] ;
+            owl:onProperty as:startIndex ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:startIndex ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:prev ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:next ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:partOf ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
+            owl:onProperty as:prev ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Link as:Collection ) ] ;
+            owl:onProperty as:partOf ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:startIndex ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:partOf ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:items ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty as:items ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:next ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
+            owl:onProperty as:next ],
+        as:OrderedCollection ;
+    skos:definition "Used to represent ordered subsets of items from an OrderedCollection. Refer to the Activity Streams 2.0 Core for a complete description of the OrderedCollectionPage object." ;
+    skos:exactMatch as:OrderedCollectionPage ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:UnitEnum a owl:Class,
+        linkml:EnumDefinition ;
+    owl:unionOf ( unit:CM unit:FT unit:IN unit:KiloM unit:M unit:MI ) ;
+    linkml:permissible_values unit:CM,
+        unit:FT,
+        unit:IN,
+        unit:KiloM,
+        unit:M,
+        unit:MI .
+
+as:Activity a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Activity" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:origin ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:result ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:actor ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:target ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:actor ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:object ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:target ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:result ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:instrument ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:origin ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:object ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:instrument ],
+        as:Object ;
+    skos:definition "An Activity is a subtype of Object that describes some form of action that may happen, is currently happening, or has already happened. The Activity type itself serves as an abstract base type for all types of activities. It is important to note that the Activity type itself does not carry any specific semantics about the kind of action being taken." ;
+    skos:exactMatch as:Activity ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Link a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Link" ;
+    rdfs:seeAlso <https://www.w3.org/TR/activitystreams-vocabulary/#bib-RFC5988> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty as:hreflang ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:width ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty as:mediaType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:unionOf ( linkml:String as:langString ) ] ;
+            owl:onProperty as:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom as:anyURI ;
+            owl:onProperty as:href ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( as:nonNegativeInteger [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] ) ] ;
+            owl:onProperty as:height ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:height ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom as:anyURI ;
+            owl:onProperty as:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Link as:Object ) ] ;
+            owl:onProperty as:preview ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:height ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:preview ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:mediaType ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:hreflang ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:href ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:rel ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( as:nonNegativeInteger [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] ) ] ;
+            owl:onProperty as:width ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:width ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:hreflang ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:mediaType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty as:rel ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:href ] ;
+    skos:definition "A Link is an indirect, qualified reference to a resource identified by a URL. The fundamental model for links is established by [ RFC5988]. Many of the properties defined by the Activity Vocabulary allow values that are either instances of Object or Link. When a Link is used, it establishes a qualified relation connecting the subject (the containing object) to the resource identified by the href. Properties of the Link are properties of the reference as opposed to properties of the resource." ;
+    skos:exactMatch as:Link ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+as:Object a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Object" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:published ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:unionOf ( linkml:String as:langString ) ] ;
+            owl:onProperty as:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:published ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:updated ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Datetime ;
+            owl:onProperty as:endTime ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:generator ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:attachment ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:updated ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:bcc ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:generator ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:image ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Link as:Object ) ] ;
+            owl:onProperty as:preview ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:attachment ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:unionOf ( linkml:String as:langString ) ] ;
+            owl:onProperty as:content ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:context ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:mediaType ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:bto ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:replies ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:startTime ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:cc ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Datetime ;
+            owl:onProperty as:updated ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:location ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Link as:Object ) ] ;
+            owl:onProperty as:attributedTo ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:url ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Datetime ;
+            owl:onProperty as:startTime ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Image as:Link ) ] ;
+            owl:onProperty as:icon ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:location ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:context ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:tag ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:duration ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:tag ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:cc ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:endTime ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom as:Collection ;
+            owl:onProperty as:replies ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:icon ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:preview ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:bcc ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:audience ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:to ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:anyURI as:Link ) ] ;
+            owl:onProperty as:url ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom as:anyURI ;
+            owl:onProperty as:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:audience ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:inReplyTo ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom as:durationType ;
+            owl:onProperty as:duration ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:endTime ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:bto ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:startTime ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Datetime ;
+            owl:onProperty as:published ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:to ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:duration ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:mediaType ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:attributedTo ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:replies ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:inReplyTo ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty as:mediaType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Image as:Link ) ] ;
+            owl:onProperty as:image ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:unionOf ( linkml:String as:langString ) ] ;
+            owl:onProperty as:summary ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:content ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:summary ] ;
+    skos:definition "Describes an object of any kind. The Object type serves as the base type for most of the other kinds of objects defined in the Activity Vocabulary, including other Core types such as Activity, IntransitiveActivity, Collection and OrderedCollection." ;
+    skos:exactMatch as:Object ;
+    skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
+
+<https://github.com/p2p_ld/linkml-activitypub> a owl:Ontology ;
+    rdfs:label "linkml-activitystreams" ;
+    dcterms:license "GNU GPL v3.0" ;
+    dcterms:title "linkml-activitystreams" ;
+    rdfs:seeAlso <https://github.com/p2p_ld/linkml-activitypub>,
+        <https://linkml-activitypub.readthedocs.io>,
+        <https://www.w3.org/TR/activitystreams-vocabulary/> ;
+    skos:definition "LinkML representation of ActivityStreams 2 Schema." .
+

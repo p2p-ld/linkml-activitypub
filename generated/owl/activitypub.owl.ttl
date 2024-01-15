@@ -5,7 +5,6 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix unit: <http://qudt.org/2.1/vocab/unit/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 as:Property a owl:Class,
@@ -213,7 +212,7 @@ as:OrderedCollection a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "OrderedCollection" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:allValuesFrom owl:Thing ;
             owl:onProperty as:items ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
@@ -266,6 +265,43 @@ as:Place a owl:Class,
             owl:onProperty as:altitude ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty as:radius ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:altitude ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty as:latitude ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:units ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:accuracy ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:latitude ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:latitude ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty as:altitude ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:longitude ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:accuracy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:units ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:longitude ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:unionOf ( as:UnitEnum as:anyURI ) ] ;
             owl:onProperty as:units ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
@@ -276,51 +312,14 @@ as:Place a owl:Class,
                                 owl:withRestrictions ( [ xsd:maxInclusive 100 ] ) ] ) ] ;
             owl:onProperty as:accuracy ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:altitude ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty as:units ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty as:altitude ],
+            owl:onProperty as:radius ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:Float [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:integer ;
                                 owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] ) ] ;
             owl:onProperty as:radius ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:latitude ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:longitude ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:radius ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty as:accuracy ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty as:latitude ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty as:latitude ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:unionOf ( as:UnitEnum as:anyURI ) ] ;
-            owl:onProperty as:units ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty as:longitude ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty as:radius ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:accuracy ],
         as:Object ;
     skos:definition "Represents a logical or physical location. See 5.3 Representing Places for additional information." ;
     skos:exactMatch as:Place ;
@@ -330,13 +329,13 @@ as:Profile a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Profile" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:describes ],
-        [ a owl:Restriction ;
             owl:allValuesFrom as:Object ;
             owl:onProperty as:describes ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty as:describes ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty as:describes ],
         as:Object ;
     skos:definition "A Profile is a content object that describes another Object, typically used to describe Actor Type objects. The describes property is used to reference the object being described by the profile." ;
@@ -351,12 +350,12 @@ as:Question a owl:Class,
             owl:onProperty as:anyOf ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty as:anyOf ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
             owl:onProperty as:oneOf ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty as:anyOf ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
             owl:onProperty as:oneOf ],
         as:IntransitiveActivity ;
     skos:definition """Represents a question being asked. Question objects are an extension of IntransitiveActivity. That is, the Question object is an Activity, but the direct object is the question itself and therefore it would not contain an object property.
@@ -379,22 +378,22 @@ as:Relationship a owl:Class,
     rdfs:seeAlso <https://www.w3.org/TR/activitystreams-vocabulary/#connections> ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
-            owl:onProperty as:object ],
+            owl:onProperty as:subject ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
-            owl:onProperty as:subject ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty as:object ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:subject ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:relationship ],
         [ a owl:Restriction ;
             owl:allValuesFrom as:Object ;
             owl:onProperty as:relationship ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:subject ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:relationship ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:object ],
         as:Object ;
     skos:definition """Describes a relationship between two individuals. The subject and object properties are used to identify the connected individuals.
 See 5.2 Representing Relationships Between Entities for additional information.
@@ -438,13 +437,10 @@ as:Tombstone a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Tombstone" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:formerType ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:Datetime ;
             owl:onProperty as:deleted ],
         [ a owl:Restriction ;
-            owl:allValuesFrom as:Object ;
+            owl:minCardinality 0 ;
             owl:onProperty as:formerType ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
@@ -452,6 +448,9 @@ as:Tombstone a owl:Class,
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty as:deleted ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom as:Object ;
+            owl:onProperty as:formerType ],
         as:Object ;
     skos:definition "A Tombstone represents a content object that has been deleted. It can be used in Collections to signify that there used to be an object at this position, but it has been deleted." ;
     skos:exactMatch as:Tombstone ;
@@ -497,32 +496,32 @@ as:View a owl:Class,
     skos:exactMatch as:View ;
     skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
 
-unit:CM a owl:Class,
+<http://qudt.org/2.1/vocab/unit/CM> a owl:Class,
         as:UnitEnum ;
     rdfs:label "cm" ;
     rdfs:subClassOf as:UnitEnum .
 
-unit:FT a owl:Class,
+<http://qudt.org/2.1/vocab/unit/FT> a owl:Class,
         as:UnitEnum ;
     rdfs:label "feet" ;
     rdfs:subClassOf as:UnitEnum .
 
-unit:IN a owl:Class,
+<http://qudt.org/2.1/vocab/unit/IN> a owl:Class,
         as:UnitEnum ;
     rdfs:label "inches" ;
     rdfs:subClassOf as:UnitEnum .
 
-unit:KiloM a owl:Class,
+<http://qudt.org/2.1/vocab/unit/KiloM> a owl:Class,
         as:UnitEnum ;
     rdfs:label "km" ;
     rdfs:subClassOf as:UnitEnum .
 
-unit:M a owl:Class,
+<http://qudt.org/2.1/vocab/unit/M> a owl:Class,
         as:UnitEnum ;
     rdfs:label "m" ;
     rdfs:subClassOf as:UnitEnum .
 
-unit:MI a owl:Class,
+<http://qudt.org/2.1/vocab/unit/MI> a owl:Class,
         as:UnitEnum ;
     rdfs:label "miles" ;
     rdfs:subClassOf as:UnitEnum .
@@ -1054,38 +1053,41 @@ as:Collection a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Collection" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
+            owl:onProperty as:last ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:items ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty as:first ],
         [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
-            owl:onProperty as:first ],
+            owl:minCardinality 0 ;
+            owl:onProperty as:last ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty as:totalItems ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
-            owl:onProperty as:current ],
+            owl:onProperty as:last ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
             owl:onProperty as:items ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:items ],
+            owl:allValuesFrom [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
+            owl:onProperty as:first ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty as:first ],
+            owl:onProperty as:current ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty as:current ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty as:last ],
+            owl:onProperty as:first ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:totalItems ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
-            owl:onProperty as:last ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:totalItems ],
+            owl:onProperty as:current ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( as:nonNegativeInteger [ a rdfs:Datatype ;
@@ -1093,11 +1095,8 @@ as:Collection a owl:Class,
                                 owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] ) ] ;
             owl:onProperty as:totalItems ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty as:last ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty as:current ],
+            owl:onProperty as:totalItems ],
         as:Object ;
     skos:definition "A Collection is a subtype of Object that represents ordered or unordered sets of Object or Link instances. Refer to the Activity Streams 2.0 Core specification for a complete description of the Collection type." ;
     skos:exactMatch as:Collection ;
@@ -1118,29 +1117,29 @@ as:CollectionPage a owl:Class,
             owl:allValuesFrom [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
             owl:onProperty as:prev ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:next ],
+        [ a owl:Restriction ;
             owl:allValuesFrom [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
             owl:onProperty as:next ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:prev ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty as:partOf ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty as:prev ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:partOf ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty as:next ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:partOf ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:prev ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ owl:unionOf ( as:Link as:Collection ) ] ;
             owl:onProperty as:partOf ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty as:next ],
+            owl:onProperty as:prev ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:partOf ],
         as:Collection ;
     skos:definition "Used to represent distinct subsets of items from a Collection. Refer to the Activity Streams 2.0 Core for a complete description of the CollectionPage object." ;
     skos:exactMatch as:CollectionPage ;
@@ -1150,36 +1149,6 @@ as:OrderedCollectionPage a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "OrderedCollectionPage" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
-            owl:onProperty as:prev ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty as:next ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty as:prev ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:Link as:Collection ) ] ;
-            owl:onProperty as:partOf ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty as:startIndex ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty as:items ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
-            owl:onProperty as:next ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:startIndex ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty as:partOf ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:next ],
-        [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( as:nonNegativeInteger [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:integer ;
@@ -1187,13 +1156,43 @@ as:OrderedCollectionPage a owl:Class,
             owl:onProperty as:startIndex ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty as:next ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:startIndex ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:prev ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
+            owl:onProperty as:next ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:CollectionPage as:OrderedCollectionPage as:Link ) ] ;
+            owl:onProperty as:prev ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty as:partOf ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty as:items ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:next ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:startIndex ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onProperty as:items ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:partOf ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty as:prev ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Link as:Collection ) ] ;
+            owl:onProperty as:partOf ],
         as:OrderedCollection ;
     skos:definition "Used to represent ordered subsets of items from an OrderedCollection. Refer to the Activity Streams 2.0 Core for a complete description of the OrderedCollectionPage object." ;
     skos:exactMatch as:OrderedCollectionPage ;
@@ -1201,38 +1200,26 @@ as:OrderedCollectionPage a owl:Class,
 
 as:UnitEnum a owl:Class,
         linkml:EnumDefinition ;
-    owl:unionOf ( unit:CM unit:FT unit:IN unit:KiloM unit:M unit:MI ) ;
-    linkml:permissible_values unit:CM,
-        unit:FT,
-        unit:IN,
-        unit:KiloM,
-        unit:M,
-        unit:MI .
+    owl:unionOf ( <http://qudt.org/2.1/vocab/unit/CM> <http://qudt.org/2.1/vocab/unit/FT> <http://qudt.org/2.1/vocab/unit/IN> <http://qudt.org/2.1/vocab/unit/KiloM> <http://qudt.org/2.1/vocab/unit/M> <http://qudt.org/2.1/vocab/unit/MI> ) ;
+    linkml:permissible_values <http://qudt.org/2.1/vocab/unit/CM>,
+        <http://qudt.org/2.1/vocab/unit/FT>,
+        <http://qudt.org/2.1/vocab/unit/IN>,
+        <http://qudt.org/2.1/vocab/unit/KiloM>,
+        <http://qudt.org/2.1/vocab/unit/M>,
+        <http://qudt.org/2.1/vocab/unit/MI> .
 
 as:Activity a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Activity" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
-            owl:onProperty as:target ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:origin ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty as:actor ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
-            owl:onProperty as:object ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
-            owl:onProperty as:origin ],
+            owl:onProperty as:target ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty as:result ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
-            owl:onProperty as:result ],
+            owl:onProperty as:object ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty as:instrument ],
@@ -1240,14 +1227,26 @@ as:Activity a owl:Class,
             owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
             owl:onProperty as:actor ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:target ],
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:origin ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
             owl:onProperty as:instrument ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty as:target ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:origin ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:result ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
             owl:onProperty as:object ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:result ],
         as:Object ;
     skos:definition "An Activity is a subtype of Object that describes some form of action that may happen, is currently happening, or has already happened. The Activity type itself serves as an abstract base type for all types of activities. It is important to note that the Activity type itself does not carry any specific semantics about the kind of action being taken." ;
     skos:exactMatch as:Activity ;
@@ -1259,53 +1258,69 @@ as:Link a owl:Class,
     rdfs:seeAlso <https://www.w3.org/TR/activitystreams-vocabulary/#bib-RFC5988> ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty as:height ],
+            owl:onProperty as:href ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:mediaType ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty as:href ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty as:rel ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty as:hreflang ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( as:nonNegativeInteger [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] ) ] ;
             owl:onProperty as:height ],
         [ a owl:Restriction ;
-            owl:allValuesFrom as:anyURI ;
-            owl:onProperty as:id ],
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:unionOf ( linkml:String as:langString ) ] ;
+            owl:onProperty as:name ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty as:name ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty as:mediaType ],
+            owl:onProperty as:id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:Link as:Object ) ] ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:rel ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:hreflang ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty as:preview ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty as:rel ],
+            owl:maxCardinality 1 ;
+            owl:onProperty as:height ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty as:href ],
+            owl:onProperty as:height ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty as:width ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty as:href ],
+            owl:onProperty as:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom as:anyURI ;
+            owl:onProperty as:id ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty as:width ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty as:mediaType ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty as:rel ],
+            owl:onProperty as:hreflang ],
         [ a owl:Restriction ;
             owl:allValuesFrom as:anyURI ;
             owl:onProperty as:href ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty as:hreflang ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:hreflang ],
-        [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( as:nonNegativeInteger [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:integer ;
@@ -1313,29 +1328,13 @@ as:Link a owl:Class,
             owl:onProperty as:width ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty as:preview ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty as:hreflang ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty as:mediaType ],
         [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:intersectionOf ( as:nonNegativeInteger [ a rdfs:Datatype ;
-                                owl:onDatatype xsd:integer ;
-                                owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] ) ] ;
-            owl:onProperty as:height ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty as:mediaType ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty as:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:unionOf ( linkml:String as:langString ) ] ;
-            owl:onProperty as:name ] ;
+            owl:allValuesFrom [ owl:unionOf ( as:Link as:Object ) ] ;
+            owl:onProperty as:preview ] ;
     skos:definition "A Link is an indirect, qualified reference to a resource identified by a URL. The fundamental model for links is established by [ RFC5988]. Many of the properties defined by the Activity Vocabulary allow values that are either instances of Object or Link. When a Link is used, it establishes a qualified relation connecting the subject (the containing object) to the resource identified by the href. Properties of the Link are properties of the reference as opposed to properties of the resource." ;
     skos:exactMatch as:Link ;
     skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
@@ -1344,194 +1343,194 @@ as:Object a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Object" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:updated ],
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:inReplyTo ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
             owl:onProperty as:attachment ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty as:icon ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:image ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
-            owl:onProperty as:bto ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:mediaType ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:bto ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom as:Collection ;
-            owl:onProperty as:replies ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:Link as:Object ) ] ;
-            owl:onProperty as:attributedTo ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:content ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
-            owl:onProperty as:location ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:Image as:Link ) ] ;
-            owl:onProperty as:image ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty as:duration ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:inReplyTo ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Datetime ;
-            owl:onProperty as:updated ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty as:updated ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:url ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
-            owl:onProperty as:tag ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:audience ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:Image as:Link ) ] ;
-            owl:onProperty as:icon ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom as:anyURI ;
-            owl:onProperty as:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:anyURI as:Link ) ] ;
-            owl:onProperty as:url ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Datetime ;
-            owl:onProperty as:endTime ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:endTime ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
-            owl:onProperty as:context ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Datetime ;
-            owl:onProperty as:published ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty as:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:summary ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:to ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:Link as:Object ) ] ;
-            owl:onProperty as:preview ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
-            owl:onProperty as:to ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:attributedTo ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:preview ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
-            owl:onProperty as:inReplyTo ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:replies ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:unionOf ( linkml:String as:langString ) ] ;
-            owl:onProperty as:name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty as:replies ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:duration ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
             owl:onProperty as:generator ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:startTime ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:unionOf ( linkml:String as:langString ) ] ;
-            owl:onProperty as:summary ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Datetime ;
-            owl:onProperty as:startTime ],
+            owl:maxCardinality 1 ;
+            owl:onProperty as:duration ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty as:mediaType ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:generator ],
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:bcc ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty as:attachment ],
+            owl:onProperty as:bto ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom as:durationType ;
+            owl:onProperty as:duration ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Image as:Link ) ] ;
+            owl:onProperty as:icon ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:endTime ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Image as:Link ) ] ;
+            owl:onProperty as:image ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:to ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:cc ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom as:Collection ;
+            owl:onProperty as:replies ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Datetime ;
+            owl:onProperty as:updated ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Datetime ;
+            owl:onProperty as:endTime ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:endTime ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom as:anyURI ;
+            owl:onProperty as:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:replies ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:preview ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:unionOf ( linkml:String as:langString ) ] ;
             owl:onProperty as:content ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty as:tag ],
+            owl:onProperty as:attributedTo ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:bcc ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:published ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:duration ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:replies ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:to ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:context ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:audience ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Link as:Object ) ] ;
+            owl:onProperty as:preview ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:updated ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
             owl:onProperty as:cc ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:audience ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:unionOf ( linkml:String as:langString ) ] ;
+            owl:onProperty as:summary ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:icon ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:generator ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:url ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:startTime ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:location ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:content ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Datetime ;
+            owl:onProperty as:published ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:inReplyTo ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:image ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:tag ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:anyURI as:Link ) ] ;
+            owl:onProperty as:url ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:startTime ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Datetime ;
+            owl:onProperty as:startTime ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:tag ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:attachment ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
+            owl:onProperty as:bto ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:updated ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:mediaType ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty as:summary ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( as:Link as:Object ) ] ;
+            owl:onProperty as:attributedTo ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty as:name ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty as:bcc ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty as:endTime ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty as:published ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
-            owl:onProperty as:bcc ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty as:mediaType ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ owl:unionOf ( as:Object as:Link ) ] ;
-            owl:onProperty as:audience ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:cc ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:published ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty as:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom as:durationType ;
-            owl:onProperty as:duration ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty as:startTime ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty as:context ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty as:location ] ;
+            owl:onProperty as:location ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty as:published ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:unionOf ( linkml:String as:langString ) ] ;
+            owl:onProperty as:name ] ;
     skos:definition "Describes an object of any kind. The Object type serves as the base type for most of the other kinds of objects defined in the Activity Vocabulary, including other Core types such as Activity, IntransitiveActivity, Collection and OrderedCollection." ;
     skos:exactMatch as:Object ;
     skos:inScheme <https://github.com/p2p_ld/linkml-activitypub> .
@@ -1541,10 +1540,6 @@ as:Object a owl:Class,
     dcterms:license "GNU GPL v3.0" ;
     dcterms:title "linkml-activitypub" ;
     rdfs:seeAlso <https://github.com/p2p_ld/linkml-activitypub>,
-        <https://linkml-activitypub.readthedocs.io>,
-        <https://www.w3.org/TR/activitystreams-vocabulary/> ;
-    skos:definition """LinkML representation of Activitypub (ActivityStreams) Schema.
-
-We are referring to this as an "ActivityPub" schema because wherever AP differs from ActivityStreams, 
-we favor ActivityPub.""" .
+        <https://linkml-activitypub.readthedocs.io> ;
+    skos:definition "Extension of ActivityStreams2 schema to include ActivityPub Actor and other definitions" .
 

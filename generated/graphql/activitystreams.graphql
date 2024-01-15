@@ -1,0 +1,1871 @@
+type Accept
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Activity
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Add
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Announce
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Application
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+  }
+
+type Arrive
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Article
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+  }
+
+type Audio
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+  }
+
+type Block
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Collection
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    current: String
+    first: String
+    items: [String]
+    last: String
+    totalItems: NonNegativeInteger
+  }
+
+type CollectionPage
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    current: String
+    first: String
+    items: [String]
+    last: String
+    totalItems: NonNegativeInteger
+    next: String
+    partOf: String
+    prev: String
+  }
+
+type Create
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Delete
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Dislike
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Document
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+  }
+
+type Event
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+  }
+
+type Flag
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Follow
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Group
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+  }
+
+type Ignore
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Image
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+  }
+
+type IntransitiveActivity
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Invite
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Join
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Leave
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Like
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Link
+  {
+    name: [String]
+    preview: [String]
+    height: NonNegativeInteger
+    href: AnyURI
+    hreflang: String
+    id: AnyURI
+    mediaType: String
+    rel: [String]
+    width: NonNegativeInteger
+  }
+
+type Listen
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Mention
+  {
+    name: [String]
+    preview: [String]
+    height: NonNegativeInteger
+    href: AnyURI
+    hreflang: String
+    id: AnyURI
+    mediaType: String
+    rel: [String]
+    width: NonNegativeInteger
+  }
+
+type Move
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Note
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+  }
+
+type Object
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+  }
+
+type Offer
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type OrderedCollection
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    current: String
+    first: String
+    last: String
+    totalItems: NonNegativeInteger
+    items: [String]
+  }
+
+type OrderedCollectionPage
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    current: String
+    first: String
+    last: String
+    totalItems: NonNegativeInteger
+    startIndex: NonNegativeInteger
+    next: String
+    partOf: String
+    prev: String
+    items: [String]
+  }
+
+type OrderedItems
+  {
+  }
+
+type Organization
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+  }
+
+type Page
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+  }
+
+type Person
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+  }
+
+type Place
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    accuracy: Float
+    altitude: Float
+    latitude: Float
+    longitude: Float
+    radius: Float
+    units: String
+  }
+
+type Profile
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    describes: Object
+  }
+
+type Property
+  {
+  }
+
+type Question
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+    anyOf: [String]
+    oneOf: [String]
+  }
+
+type Read
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Reject
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Relationship
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    object: [String]
+    relationship: [Object]
+    subject: [String]
+  }
+
+type Remove
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Service
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+  }
+
+type Statement
+  {
+  }
+
+type TentativeAccept
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type TentativeReject
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Tombstone
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    formerType: [Object]
+    deleted: Datetime
+  }
+
+type Travel
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Undo
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Update
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+
+type Video
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+  }
+
+type View
+  {
+    attachment: [String]
+    attributedTo: [String]
+    audience: [String]
+    bcc: [String]
+    bto: [String]
+    cc: [String]
+    content: [String]
+    context: [String]
+    generator: [String]
+    icon: [String]
+    image: [String]
+    inReplyTo: [String]
+    location: [String]
+    name: [String]
+    preview: [String]
+    replies: Collection
+    summary: [String]
+    tag: [String]
+    to: [String]
+    url: [String]
+    duration: DurationType
+    endTime: Datetime
+    id: AnyURI
+    mediaType: String
+    published: Datetime
+    startTime: Datetime
+    updated: Datetime
+    actor: [String]
+    instrument: [String]
+    object: [String]
+    origin: [String]
+    result: [String]
+    target: [String]
+  }
+

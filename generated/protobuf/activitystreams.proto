@@ -1,0 +1,1862 @@
+// Indicates that the actor accepts the object. The target property can be used in certain circumstances to indicate the context into which the object has been accepted.
+message Accept
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// An Activity is a subtype of Object that describes some form of action that may happen, is currently happening, or has already happened. The Activity type itself serves as an abstract base type for all types of activities. It is important to note that the Activity type itself does not carry any specific semantics about the kind of action being taken.
+message Activity
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// Indicates that the actor has added the object to the target. If the target property is not explicitly specified, the target would need to be determined implicitly by context. The origin can be used to identify the context from which the object originated.
+message Add
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// Indicates that the actor is calling the target's attention the object. The origin typically has no defined meaning.
+message Announce
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// Describes a software application.
+message Application
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ }
+// An IntransitiveActivity that indicates that the actor has arrived at the location. The origin can be used to identify the context from which the actor originated. The target typically has no defined meaning.
+message Arrive
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+message Article
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ }
+// Represents an audio document of any kind.
+message Audio
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ }
+// Indicates that the actor is blocking the object. Blocking is a stronger form of Ignore. The typical use is to support social systems that allow one user to block activities or content of other users. The target and origin typically have no defined meaning.
+message Block
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// A Collection is a subtype of Object that represents ordered or unordered sets of Object or Link instances. Refer to the Activity Streams 2.0 Core specification for a complete description of the Collection type.
+message Collection
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+  string current = 0
+  string first = 0
+ repeated  string items = 0
+  string last = 0
+  nonNegativeInteger totalItems = 0
+ }
+// Used to represent distinct subsets of items from a Collection. Refer to the Activity Streams 2.0 Core for a complete description of the CollectionPage object.
+message CollectionPage
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+  string current = 0
+  string first = 0
+ repeated  string items = 0
+  string last = 0
+  nonNegativeInteger totalItems = 0
+  string next = 0
+  string partOf = 0
+  string prev = 0
+ }
+// Indicates that the actor has created the object.
+message Create
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// Indicates that the actor has deleted the object. If specified, the origin indicates the context from which the object was deleted.
+message Delete
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// Indicates that the actor dislikes the object.
+message Dislike
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// Represents a document of any kind.
+message Document
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ }
+// Represents any kind of event.
+message Event
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ }
+// Indicates that the actor is "flagging" the object. Flagging is defined in the sense common to many social platforms as reporting content as being inappropriate for any number of reasons.
+message Flag
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// Indicates that the actor is "following" the object. Following is defined in the sense typically used within Social systems in which the actor is interested in any activity performed by or on the object. The target and origin typically have no defined meaning.
+message Follow
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// Represents a formal or informal collective of Actors.
+message Group
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ }
+// Indicates that the actor is ignoring the object. The target and origin typically have no defined meaning.
+message Ignore
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// An image document of any kind
+message Image
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ }
+// ['An Activity that has no direct object@en']
+message IntransitiveActivity
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// A specialization of Offer in which the actor is extending an invitation for the object to the target.
+message Invite
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// Indicates that the actor has joined the object. The target and origin typically have no defined meaning.
+message Join
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// Indicates that the actor has left the object. The target and origin typically have no meaning.
+message Leave
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// Indicates that the actor likes, recommends or endorses the object. The target and origin typically have no defined meaning.
+message Like
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// A Link is an indirect, qualified reference to a resource identified by a URL. The fundamental model for links is established by [ RFC5988]. Many of the properties defined by the Activity Vocabulary allow values that are either instances of Object or Link. When a Link is used, it establishes a qualified relation connecting the subject (the containing object) to the resource identified by the href. Properties of the Link are properties of the reference as opposed to properties of the resource.
+message Link
+ {
+ repeated  string name = 0
+ repeated  string preview = 0
+  nonNegativeInteger height = 0
+  anyURI href = 0
+  string hreflang = 0
+  anyURI id = 0
+  string mediaType = 0
+ repeated  string rel = 0
+  nonNegativeInteger width = 0
+ }
+// Indicates that the actor has listened to the object.
+message Listen
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// A specialized Link that represents an @mention.
+message Mention
+ {
+ repeated  string name = 0
+ repeated  string preview = 0
+  nonNegativeInteger height = 0
+  anyURI href = 0
+  string hreflang = 0
+  anyURI id = 0
+  string mediaType = 0
+ repeated  string rel = 0
+  nonNegativeInteger width = 0
+ }
+// Indicates that the actor has moved object from origin to target. If the origin or target are not specified, either can be determined by context.
+message Move
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// Represents a short written work typically less than a single paragraph in length.
+message Note
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ }
+// Describes an object of any kind. The Object type serves as the base type for most of the other kinds of objects defined in the Activity Vocabulary, including other Core types such as Activity, IntransitiveActivity, Collection and OrderedCollection.
+message Object
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ }
+// Indicates that the actor is offering the object. If specified, the target indicates the entity to which the object is being offered.
+message Offer
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// A subtype of Collection in which members of the logical collection are assumed to always be strictly ordered.
+message OrderedCollection
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+  string current = 0
+  string first = 0
+  string last = 0
+  nonNegativeInteger totalItems = 0
+ repeated  string items = 0
+ }
+// Used to represent ordered subsets of items from an OrderedCollection. Refer to the Activity Streams 2.0 Core for a complete description of the OrderedCollectionPage object.
+message OrderedCollectionPage
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+  string current = 0
+  string first = 0
+  string last = 0
+  nonNegativeInteger totalItems = 0
+  nonNegativeInteger startIndex = 0
+  string next = 0
+  string partOf = 0
+  string prev = 0
+ repeated  string items = 0
+ }
+// Represents an organization.
+message Organization
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ }
+// Represents a Web Page.
+message Page
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ }
+// Represents an individual person.
+message Person
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ }
+// Represents a logical or physical location. See 5.3 Representing Places for additional information.
+message Place
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+  float accuracy = 0
+  float altitude = 0
+  float latitude = 0
+  float longitude = 0
+  float radius = 0
+  string units = 0
+ }
+// A Profile is a content object that describes another Object, typically used to describe Actor Type objects. The describes property is used to reference the object being described by the profile.
+message Profile
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+  object describes = 0
+ }
+// Represents a question being asked. Question objects are an extension of IntransitiveActivity. That is, the Question object is an Activity, but the direct object is the question itself and therefore it would not contain an object property.
+// Either of the anyOf and oneOf properties MAY be used to express possible answers, but a Question object MUST NOT have both properties.
+// 
+message Question
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ repeated  string anyOf = 0
+ repeated  string oneOf = 0
+ }
+// Indicates that the actor has read the object.
+message Read
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// Indicates that the actor is rejecting the object. The target and origin typically have no defined meaning.
+message Reject
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// Describes a relationship between two individuals. The subject and object properties are used to identify the connected individuals.
+// See 5.2 Representing Relationships Between Entities for additional information.
+// 
+message Relationship
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string object = 0
+ repeated  object relationship = 0
+ repeated  string subject = 0
+ }
+// Indicates that the actor is removing the object. If specified, the origin indicates the context from which the object is being removed.
+message Remove
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// Represents a service of any kind.
+message Service
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ }
+// A specialization of Accept indicating that the acceptance is tentative.
+message TentativeAccept
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// A specialization of Reject in which the rejection is considered tentative.
+message TentativeReject
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// A Tombstone represents a content object that has been deleted. It can be used in Collections to signify that there used to be an object at this position, but it has been deleted.
+message Tombstone
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  object formerType = 0
+  datetime deleted = 0
+ }
+// Indicates that the actor is traveling to target from origin. Travel is an IntransitiveObject whose actor specifies the direct object. If the target or origin are not specified, either can be determined by context.
+message Travel
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// Indicates that the actor is undoing the object. In most cases, the object will be an Activity describing some previously performed action (for instance, a person may have previously "liked" an article but, for whatever reason, might choose to undo that like at some later point in time). The target and origin typically have no defined meaning.
+message Undo
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// Indicates that the actor has updated the object. Note, however, that this vocabulary does not define a mechanism for describing the actual set of modifications made to object. The target and origin typically have no defined meaning.
+message Update
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }
+// Represents a video document of any kind.
+message Video
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ }
+// Indicates that the actor has viewed the object.
+message View
+ {
+ repeated  string attachment = 0
+ repeated  string attributedTo = 0
+ repeated  string audience = 0
+ repeated  string bcc = 0
+ repeated  string bto = 0
+ repeated  string cc = 0
+ repeated  string content = 0
+ repeated  string context = 0
+ repeated  string generator = 0
+ repeated  string icon = 0
+ repeated  string image = 0
+ repeated  string inReplyTo = 0
+ repeated  string location = 0
+ repeated  string name = 0
+ repeated  string preview = 0
+  collection replies = 0
+ repeated  string summary = 0
+ repeated  string tag = 0
+ repeated  string to = 0
+ repeated  string url = 0
+  durationType duration = 0
+  datetime endTime = 0
+  anyURI id = 0
+  string mediaType = 0
+  datetime published = 0
+  datetime startTime = 0
+  datetime updated = 0
+ repeated  string actor = 0
+ repeated  string instrument = 0
+ repeated  string object = 0
+ repeated  string origin = 0
+ repeated  string result = 0
+ repeated  string target = 0
+ }

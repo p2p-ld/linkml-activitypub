@@ -2,4 +2,4 @@
 name: linkml-activitypub
 author: Jonny Saunders <sneakers-the-rat@protonmail.com>
 description: LinkML representation of linkml_activitypub Schema
-source_schema_path: linkml_activitypub/activitypub.yaml
+source_schema_path: linkml_activitypub/activitystreams.yaml

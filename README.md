@@ -1,10 +1,25 @@
 # linkml-activitypub
 
-LinkML representation of ActivityPub schema (which is mostly ActivityStreams except where it's not)
+LinkML representation of ActivityStreams and ActivityPub schema
 
 https://pypi.org/projects/linkml-activitypub
 
-## Process
+Source schema: 
+- `linkml_activitypub/activitystreams.yaml` - ActivityStreams2 vocabulary schema
+- `linkml_activitypub/activitypub.yaml` - ActivityPub Extensions to ActivityStreams2 (imports ActivityStreams2)
+
+Generated models:
+- `generated/` - All generated schema for both source schema
+- Pydantic 2 Models:
+  - `linkml_activitypub/activitystreams.py` 
+  - `linkml_activitypub/activitypub.py`
+- Dataclasses
+  - `linkml_activitypub/dataclass/activitystreams.py` 
+  - `linkml_activitypub/dataclass/activitypub.py`
+
+## ActivityStreams
+
+### Process
 
 Intermediate files are in the `data` directory
 
@@ -13,7 +28,7 @@ Intermediate files are in the `data` directory
 - `activitystreams2.ofn` - Convert to functional notation with [robot](http://robot.obolibrary.org/)
 - `activitystreams2.yaml` - Then to rough linkml using [schema-automator](https://linkml.io/schema-automator/)
 
-Then the final schema in `linkml_activitypub/activitypub.yaml`:
+Then the final schema in `linkml_activitypub/activitystreams.yaml`:
 - Reorder to match ActivityStreams 
 - Ensure correct
   - inheritance
@@ -47,18 +62,29 @@ Then the final schema in `linkml_activitypub/activitypub.yaml`:
   - `schema`: https://schema.org/ - for specifying IETF BCP 47 language codes
 
 
-## Notes
-
-Need properties...
-
-
-## Errata
+### Errata
 
 - `OrderedCollectionPage` is not a subclass of, and doesn't mix in `CollectionPage` since it would then have an ambiguous
   class definition, since `OrderedCollection` inherits from `Collection` but asserts that the `list_items_ordered` slot is `true`
   rather than `false`. Instead, the slots from `CollectionPage` are just duplicated.
   - Accordingly, the domain and range of slots that include `CollectionPage` also include `OrderedCollectionPage
 - Need to implement some `xsd:duration` pattern 
+
+### TODO
+
+- JSON-LD Serialization: https://www.w3.org/TR/activitystreams-core/#syntaxconventions
+- Collection serialization: "In the JSON serialization, the unordered items of a Collection are represented using the items property while ordered items are represented using the orderedItems property."
+  - Should `items` and `orderedItems` just be disjoint slots, rather than a slot with a special property modification?
+
+## ActivityPub
+
+## Process
+
+## Errata
+
+## TODO
+
+- Everything!
 
 # References
 

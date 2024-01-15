@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "linkml-activitypub"
-version = "0.1.0"
+version = "0.2.0"
 description = "LinkML representation of ActivityStreams Schema"
 authors = ["Jonny Saunders <sneakers-the-rat@protonmail.com>"]
 license = "GNU GPL v3.0"

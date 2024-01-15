@@ -10,15 +10,16 @@ RUN = poetry run
 # get values from about.yaml file
 SCHEMA_NAME = "linkml_activitypub"
 SOURCE_SCHEMA_PATH = "linkml_activitypub/activitypub.yaml"
+AS_SCHEMA_PATH = "linkml_activitypub/activitystreams.yaml"
+AP_SCHEMA_PATH = "linkml_activitypub/activitypub.yaml"
+
 SOURCE_SCHEMA_DIR = $(dir $(SOURCE_SCHEMA_PATH))
+SCHEMA_FILES := $(wildcard $(SOURCE_SCHEMA_DIR))
 SRC = src
 DEST = generated
 PYMODEL = $(SCHEMA_NAME)
 DOCDIR = docs
 EXAMPLEDIR = examples
-
-# environment variables
-include config.env
 
 GEN_PARGS =
 ifdef LINKML_GENERATORS_PROJECT_ARGS
@@ -99,10 +100,13 @@ gen-examples:
 # generates all project files
 
 gen-project: $(PYMODEL)
-	$(RUN) gen-project ${GEN_PARGS} -d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)/dataclass/
+	$(RUN) gen-project ${GEN_PARGS} -d $(DEST) $(AS_SCHEMA_PATH)
+	$(RUN) gen-project ${GEN_PARGS} -d $(DEST) $(AP_SCHEMA_PATH)
+	mv $(DEST)/*.py "${PYMODEL}/dataclass/"
 
 gen-pydantic: $(PYMODEL)
-	$(RUN) gen-pydantic $(SOURCE_SCHEMA_PATH) --pydantic-version 2 > $(PYMODEL)/activitypub.py
+	$(RUN) gen-pydantic $(AS_SCHEMA_PATH) --pydantic-version 2 > $(PYMODEL)/activitystreams.py
+	$(RUN) gen-pydantic $(AP_SCHEMA_PATH) --pydantic-version 2 > $(PYMODEL)/activitypub.py
 
 test: test-schema test-python test-examples
 
