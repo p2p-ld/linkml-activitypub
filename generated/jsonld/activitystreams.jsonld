@@ -4485,7 +4485,7 @@
   "source_file": "activitystreams.yaml",
   "source_file_date": "2024-01-14T21:45:03",
   "source_file_size": 33568,
-  "generation_date": "2024-01-14T21:50:28",
+  "generation_date": "2024-01-14T22:21:44",
   "@type": "SchemaDefinition",
   "@context": [
     "generated/jsonld/activitystreams.context.jsonld",

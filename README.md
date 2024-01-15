@@ -82,9 +82,14 @@ Then the final schema in `linkml_activitypub/activitystreams.yaml`:
 
 ## Errata
 
+- Currently we can't override and extend parent classes in LinkML ( https://github.com/linkml/linkml/issues/584#issuecomment-1891374150 ), 
+  so we need to copy the objects wholesale and modify them. this might lead to the activitystreams and activitypub schema getting out of sync.
+  - and https://github.com/linkml/linkml/issues/1825
+
 ## TODO
 
 - Everything!
+- 
 
 # References
 

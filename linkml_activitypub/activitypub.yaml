@@ -21,3 +21,139 @@ prefixes:
   xsd: http://www.w3.org/2001/XMLSchema#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
 default_prefix: ap
+
+classes:
+  Object:
+    is_a: as:Object
+    description: Describes an object of any kind. The Object type serves as the base type for most of the other kinds of objects defined in the Activity Vocabulary, including other Core types such as Activity, IntransitiveActivity, Collection and OrderedCollection.
+    slots:
+      - source
+      - likes
+      - shares
+    class_uri: ap:Object
+    disjoint_with: Link
+
+  Actor:
+    is_a: as:Actor
+    slots:
+      - inbox
+      - outbox
+      - following
+      - followers
+      - liked
+      - streams
+      - preferredUsername
+      - endpoints
+
+  Inbox:
+    description: STUB
+
+  Outbox:
+    description: STUB
+
+  Followers:
+    is_a: Collection
+    mixins:
+      - ActorCollectionMixin
+
+  Following:
+    is_a: Collection
+    mixins:
+      - ActorCollectionMixin
+
+
+
+  Likes:
+    is_a: Collection
+    slot_usage:
+      items:
+        range: as:Like
+
+  Shares:
+    is_a: Collection
+    slot_usage:
+      items:
+        range: as:Announce
+
+
+  Public:
+    is_a: as:Collection
+    description: The special "public" collection https://www.w3.org/TR/activitypub/#public-addressing
+
+  Source:
+    slots:
+      - content
+      - mediaType
+
+  # Static Entities
+  Endpoint:
+    slots:
+      - proxyURL
+      - oauthAuthorizationEndpoint
+      - oauthTokenEndpoint
+      - provideClientKey
+      - signClientKey
+      - sharedInbox
+
+  # Helper Classes
+
+  HTTPMixin:
+    description: "Mixin for collections that are supposed to behave as HTTP endpoints"
+    mixin: true
+    slots:
+      - http_action # whatever you call "GET/POST/etc."
+
+  CollectionMixin:
+    description: "Additional props that are specified for some of the AP collections"
+    mixin: true
+    slots:
+      - authorization
+      - deduplication
+      - filter # mapping between visibility levels and collection of actor
+
+  ActorCollectionMixin:
+    is_a: Collection
+    mixin: true
+    slot_usage:
+      items:
+        range: as:Actor
+
+slots:
+  source:
+    slot_uri: ap:source
+    range: Source
+    domain_of:
+      - Object
+  inbox:
+    description: STUB
+    required: true
+  outbox:
+    description: STUB
+    required: true
+  endpoints:
+    description: STUB
+    multivalued: true
+    range: Endpoints
+
+  liked:
+    description: STUB
+    required: false
+    multivalued: false
+    domain_of:
+      - as:Actor
+    range: Likes
+
+  likes:
+    description: STUB
+    required: false
+    multivalued: false
+    domain_of:
+      - as:Object
+    range: Likes
+  shares:
+    description: STUB
+    required: false
+    domain_of:
+      - as:Object
+    range: Shares
+

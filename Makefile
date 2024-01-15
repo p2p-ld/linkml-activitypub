@@ -108,6 +108,10 @@ gen-pydantic: $(PYMODEL)
 	$(RUN) gen-pydantic $(AS_SCHEMA_PATH) --pydantic-version 2 > $(PYMODEL)/activitystreams.py
 	$(RUN) gen-pydantic $(AP_SCHEMA_PATH) --pydantic-version 2 > $(PYMODEL)/activitypub.py
 
+gen-pydantic-ap: $(PYMODEL)
+	$(RUN) gen-pydantic $(AP_SCHEMA_PATH) --pydantic-version 2 > $(PYMODEL)/activitypub.py
+
+
 test: test-schema test-python test-examples
 
 test-schema:

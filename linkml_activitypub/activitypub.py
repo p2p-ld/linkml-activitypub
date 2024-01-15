@@ -42,18 +42,6 @@ class UnitEnum(str, Enum):
     
     
 
-class Property(ConfiguredBaseModel):
-    
-    None
-    
-    
-
-class Statement(ConfiguredBaseModel):
-    
-    None
-    
-    
-
 class Object(ConfiguredBaseModel):
     """
     Describes an object of any kind. The Object type serves as the base type for most of the other kinds of objects defined in the Activity Vocabulary, including other Core types such as Activity, IntransitiveActivity, Collection and OrderedCollection.
@@ -89,6 +77,27 @@ When used on an Object, identifies the MIME media type of the value of the conte
     published: Optional[datetime ] = Field(None, description="""The date and time at which the object was published""")
     startTime: Optional[datetime ] = Field(None, description="""The date and time describing the actual or expected starting time of the object. When used with an Activity object, for instance, the startTime property specifies the moment the activity began or is scheduled to begin.""")
     updated: Optional[datetime ] = Field(None, description="""The date and time at which the object was updated""")
+    
+    
+
+class Source(ConfiguredBaseModel):
+    
+    content: Optional[List[str]] = Field(default_factory=list, description="""The content or textual representation of the Object encoded as a JSON string. By default, the value of content is HTML. The mediaType property can be used in the object to indicate a different content type. The content MAY be expressed using multiple language-tagged values.""")
+    mediaType: Optional[str] = Field(None, description="""When used on a Link, identifies the MIME media type of the referenced resource.
+When used on an Object, identifies the MIME media type of the value of the content property. If not specified, the content property is assumed to contain text/html content.
+""")
+    
+    
+
+class Property(ConfiguredBaseModel):
+    
+    None
+    
+    
+
+class Statement(ConfiguredBaseModel):
+    
+    None
     
     
 
@@ -2367,9 +2376,10 @@ class OrderedItems(ConfiguredBaseModel):
 
 # Model rebuild
 # see https://pydantic-docs.helpmanual.io/usage/models/#rebuilding-a-model
+Object.model_rebuild()
+Source.model_rebuild()
 Property.model_rebuild()
 Statement.model_rebuild()
-Object.model_rebuild()
 Link.model_rebuild()
 Activity.model_rebuild()
 IntransitiveActivity.model_rebuild()
